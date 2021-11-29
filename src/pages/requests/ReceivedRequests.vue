@@ -1,5 +1,5 @@
 <template>
     <section>
-        <h3>Gangster Registration Form</h3>
+        <h3>Received Requests</h3>
     </section>
 </template>
