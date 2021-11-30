@@ -7,7 +7,7 @@
     </section>
     <section>
       <base-card>
-        <ul v-if="hasGangsters > 0">
+        <ul v-if="hasGangsters && hasSkills">
           <gangster-item
             v-for="gangster in filteredGangsters"
             :key="gangster.gangsterId"
@@ -22,7 +22,6 @@
           ></gangster-item>
         </ul>
         <p v-else>No Gangster Found!</p>
-        <p v-if="hasSkill === 0">Please choose at least one of the skills...</p>
       </base-card>
     </section>
   </div>
@@ -103,18 +102,16 @@ export default {
       });
     },
     hasGangsters() {
-      return this.gangsters.length;
+      return this.gangsters && this.gangsters.length > 0;
     },
-    hasSkill() {
-      return this.activeSkills.length;
+    hasSkills() {
+      return this.activeSkills && this.activeSkills.length > 0;
     },
+
   },
   methods: {
     filterGangsters(selectedSkills) {
       this.activeSkills = selectedSkills;
-      console.log(this.activeSkills);
-      console.log(this.hasSkill);
-      console.log(this.hasGangsters)
     },
   },
 };
