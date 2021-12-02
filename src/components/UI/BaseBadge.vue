@@ -20,10 +20,10 @@ export default {
 .badge {
   background-color: #ccc;
   color: #252525;
-  border-radius: 120px;
-  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  padding: 0.3rem 0.5rem;
   display: inline-block;
-  margin-right: 0.5rem;
+  margin-right: 0.3rem;
 }
 
 .blackmail {

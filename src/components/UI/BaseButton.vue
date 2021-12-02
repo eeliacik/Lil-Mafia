@@ -21,11 +21,11 @@ export default {
       default: false,
     },
     to: {
-      type: String,
+      type: [String, Object],
       required: false,
       default: '/',
     },
-  },
+  }
 };
 </script>
 
@@ -34,7 +34,7 @@ button,
 a {
   margin: 0.5rem;
   padding: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-decoration: none;
   border-radius: 12px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);

@@ -46,6 +46,7 @@ h1 {
 }
 
 p {
+  font-size: 1rem;
   margin: 0;
 }
 
@@ -60,6 +61,7 @@ p {
 header a {
   text-decoration: none;
   color: pink;
+  font-size: 1.2rem;
   margin: 0 0.25rem;
   padding: 0.5rem 0.75rem;
   display: inline-block;

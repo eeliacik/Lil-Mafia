@@ -10,8 +10,8 @@
         <ul v-if="hasGangsters && hasSkills">
           <gangster-item
             v-for="gangster in filteredGangsters"
-            :key="gangster.gangsterId"
-            :id="gangster.gangsterId"
+            :key="gangster.id"
+            :id="gangster.id"
             :firstName="gangster.firstName"
             :lastName="gangster.lastName"
             :aka="gangster.nickName"
@@ -30,84 +30,59 @@
 <script>
 import GangsterFilter from '../../components/gangsters/GangsterFilter.vue';
 import GangsterItem from '../../components/gangsters/GangsterItem.vue';
+
+import { ArrayIsEmpty } from '../../utilities/array';
+
 export default {
   components: { GangsterItem, GangsterFilter },
   data() {
     return {
       // filteredGangsters: [],
       activeSkills: ['blackmail', 'bully', 'kidnap', 'pickpocket'],
-      gangsters: [
-        {
-          gangsterId: 'g-001',
-          firstName: 'Abdurrahman',
-          lastName: 'Kıllanır',
-          nickName: 'The Kıll',
-          from: 'Yozgat',
-          description:
-            'I am the one of the most popular free agent gangsters from Yozgat.',
-          skills: ['blackmail', 'pickpocket', 'bully'],
-          hourlyRate: 100,
-        },
-        {
-          id: 'g-002',
-          firstName: 'Faysal',
-          lastName: 'Top',
-          nickName: 'Top Faysal',
-          from: 'Bursa',
-          description: 'I am the best kidnapper.',
-          skills: ['pickpocket', 'kidnap'],
-          hourlyRate: 120,
-        },
-        {
-          id: 'g-003',
-          firstName: 'Haldun',
-          lastName: 'Soyubozuk',
-          nickName: 'The Family Man',
-          from: 'Zonguldak',
-          description: 'Hello I will punish your enemies.',
-          skills: ['bully', 'blackmail'],
-          hourlyRate: 120,
-        },
-      ],
     };
   },
   computed: {
+    gangsters() {
+      return this.$store.getters['gangsters/gangsters'];
+    },
     filteredGangsters() {
       return this.gangsters.filter((gangster) => {
-        if (
-          this.activeSkills.includes('blackmail') &&
-          gangster.skills.includes('blackmail')
-        ) {
-          return true;
-        }
-        if (
-          this.activeSkills.includes('bully') &&
-          gangster.skills.includes('bully')
-        ) {
-          return true;
-        }
-        if (
-          this.activeSkills.includes('kidnap') &&
-          gangster.skills.includes('kidnap')
-        ) {
-          return true;
-        }
-        if (
-          this.activeSkills.includes('pickpocket') &&
-          gangster.skills.includes('pickpocket')
-        ) {
-          return true;
-        }
-        return false;
+        return this.activeSkills.some((skill) => {
+          return gangster.skills.includes(skill);
+        });
+        // if (
+        //   this.activeSkills.includes('blackmail') &&
+        //   gangster.skills.includes('blackmail')
+        // ) {
+        //   return true;
+        // }
+        // if (
+        //   this.activeSkills.includes('bully') &&
+        //   gangster.skills.includes('bully')
+        // ) {
+        //   return true;
+        // }
+        // if (
+        //   this.activeSkills.includes('kidnap') &&
+        //   gangster.skills.includes('kidnap')
+        // ) {
+        //   return true;
+        // }
+        // if (
+        //   this.activeSkills.includes('pickpocket') &&
+        //   gangster.skills.includes('pickpocket')
+        // ) {
+        //   return true;
+        // }
+        // return false;
       });
     },
     hasGangsters() {
-      return this.gangsters && this.gangsters.length > 0;
+      return ArrayIsEmpty(this.gangsters);
     },
     hasSkills() {
       return this.activeSkills && this.activeSkills.length > 0;
     },
-
   },
   methods: {
     filterGangsters(selectedSkills) {
