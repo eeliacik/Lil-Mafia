@@ -11,7 +11,7 @@
       ></base-badge>
     </div>
     <div class="actions">
-      <base-button mode="flat" link>Contact</base-button>
+      <base-button mode="flat" link :to="gangsterContactLink">Contact</base-button>
       <base-button mode="frame" link :to="gangsterDetailsLink"
         >View Details</base-button
       >
@@ -31,9 +31,6 @@ export default {
     'skills',
     'rate',
   ],
-  mounted() {
-    console.log(this.gangsterDetailsLink);
-  },
 
   computed: {
     fullName() {
@@ -44,6 +41,16 @@ export default {
       // return this.$route.path + '/' + this.id;   //  /gangsters/001
       return {
         name: 'gangster-detail',
+        params: {
+          id: this.id
+        }
+      };
+    },
+    gangsterContactLink() {
+      // return '/gangster/' + this.id;
+      // return this.$route.path + '/' + this.id;   //  /gangsters/001
+      return {
+        name: 'contact-gangster',
         params: {
           id: this.id
         }

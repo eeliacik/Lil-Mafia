@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Find Your Man</h2>
-    <span class="filter-control">
+    <span class="filter-block">
       <input
         id="blackmail"
         type="checkbox"
@@ -12,7 +12,7 @@
       />
       <label for="blackmail">Blackmail</label>
     </span>
-    <span class="filter-control">
+    <span class="filter-block">
       <input
         id="bully"
         type="checkbox"
@@ -23,7 +23,7 @@
       />
       <label for="bully">Bully</label>
     </span>
-    <span class="filter-control">
+    <span class="filter-block">
       <input
         id="kidnap"
         type="checkbox"
@@ -34,7 +34,7 @@
       />
       <label for="kidnap">Kidnap</label>
     </span>
-    <span class="filter-control">
+    <span class="filter-block">
       <input
         id="pickpocket"
         type="checkbox"
@@ -70,20 +70,20 @@ h2 {
   margin: 0.5rem;
 }
 
-.filter-control {
+.filter-block {
   margin: 0.5rem;
 }
 
-.filter-control label,
-.filter-control input {
+.filter-block label,
+.filter-block input {
   vertical-align: middle;
 }
 
-.filter-control label {
+.filter-block label {
   margin: 0.25rem;
 }
 
-.filter-control input {
+.filter-block input {
   margin: 0.25rem;
   height: 1.15rem;
   width: 1.15rem;

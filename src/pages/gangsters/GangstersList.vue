@@ -7,6 +7,11 @@
     </section>
     <section>
       <base-card>
+        <div class="list-button">
+          <base-button class="" link mode="flat" to="/registration"
+            >Register as a gangster</base-button
+          >
+        </div>
         <ul v-if="hasGangsters && hasSkills">
           <gangster-item
             v-for="gangster in filteredGangsters"
@@ -98,4 +103,9 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+.list-button {
+  display: flex;
+  justify-content: right;
+} 
 </style>

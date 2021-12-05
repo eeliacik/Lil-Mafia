@@ -1,6 +1,7 @@
 import { createStore } from 'vuex';
 
 import gangstersModule from './modules/gangsters/index.js';
+import requestsModule from './modules/requests/index.js';
 
 const store = createStore({
   state() {
@@ -8,6 +9,7 @@ const store = createStore({
   },
   modules: {
     gangsters: gangstersModule,
+    requests: requestsModule,
   },
 });
 

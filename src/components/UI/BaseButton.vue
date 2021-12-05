@@ -32,9 +32,9 @@ export default {
 <style scoped>
 button,
 a {
-  margin: 0.5rem;
+  margin: 0.5rem 0.5rem;
   padding: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-decoration: none;
   border-radius: 12px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.26);
@@ -43,8 +43,7 @@ a {
 .flat {
   background-color: seagreen;
   color: white;
-  border: none;
-
+  border: 1px solid seagreen;
 }
 
 .frame {

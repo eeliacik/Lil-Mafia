@@ -19,11 +19,14 @@ const router = createRouter({
       path: '/gangster/:id',
       component: GangsterDetail,
       props: true,
-      children: {
-        name: 'contact-gangster',
-        path: 'contact',
-        component: ContactGangster,
-      },
+      children: [
+        {
+          name: 'contact-gangster',
+          path: 'contact',
+          component: ContactGangster,
+          props: true,
+        },
+      ],
     },
     { path: '/registration', component: GangsterRegistration },
     { path: '/requests', component: ReceivedRequests },
