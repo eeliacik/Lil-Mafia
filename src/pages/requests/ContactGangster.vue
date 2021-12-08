@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="submitForm">
-    <base-card>
+    <base-card class="container">
       <h2>Send message to "{{ gangster.nickName }}"</h2>
       <div class="form-block">
         <div class="form-input" :class="{ invalid: !this.email.isValid }">
@@ -88,7 +88,7 @@ export default {
 
       this.$store.dispatch('requests/saveRequest', formData);
       this.$router.replace({
-        name: 'gangster-detail',
+        name: 'gangster-details',
         params: {
           id: this.id,
         },
@@ -99,6 +99,10 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  margin: 1rem auto;
+}
+
 .form-block {
   border: 1px solid gray;
   border-radius: 10px;

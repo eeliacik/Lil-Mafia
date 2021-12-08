@@ -40,7 +40,7 @@ export default {
       // return '/gangster/' + this.id;
       // return this.$route.path + '/' + this.id;   //  /gangsters/001
       return {
-        name: 'gangster-detail',
+        name: 'gangster-details',
         params: {
           id: this.id
         }

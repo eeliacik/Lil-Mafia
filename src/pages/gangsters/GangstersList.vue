@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section>
+    <section class="container">
       <base-card>
         <gangster-filter @get-skills="filterGangsters"></gangster-filter>
       </base-card>
@@ -86,7 +86,7 @@ export default {
       return ArrayIsEmpty(this.gangsters);
     },
     hasSkills() {
-      return this.activeSkills && this.activeSkills.length > 0;
+      return ArrayIsEmpty(this.activeSkills);
     },
   },
   methods: {
@@ -94,12 +94,18 @@ export default {
       this.activeSkills = selectedSkills;
     },
   },
+  mounted() {
+    console.log(this.gangsters)
+  },
 };
 </script>
 
 <style scoped>
+.container {
+  margin: 1rem auto;
+}
+
 ul {
-  margin: 0;
   padding: 0;
   list-style: none;
 }

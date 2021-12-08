@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import GangstersList from './pages/gangsters/GangstersList.vue';
-import GangsterDetail from './pages/gangsters/GangsterDetail.vue';
+import GangsterDetails from './pages/gangsters/GangsterDetails.vue';
 import GangsterRegistration from './pages/gangsters/GangsterRegistration.vue';
 import ContactGangster from './pages/requests/ContactGangster.vue';
 import ReceivedRequests from './pages/requests/ReceivedRequests.vue';
 import JobsList from './pages/jobs/JobsList.vue';
-import JobDetail from './pages/jobs/JobDetail.vue';
+import JobDetails from './pages/jobs/JobDetails.vue';
 import NotFound from './pages/NotFound.vue';
 
 const router = createRouter({
@@ -15,9 +15,9 @@ const router = createRouter({
     { name: 'home', path: '/', redirect: '/gangsters' },
     { name: 'gangsters', path: '/gangsters', component: GangstersList },
     {
-      name: 'gangster-detail',
+      name: 'gangster-details',
       path: '/gangster/:id',
-      component: GangsterDetail,
+      component: GangsterDetails,
       props: true,
       children: [
         {
@@ -28,11 +28,20 @@ const router = createRouter({
         },
       ],
     },
-    { path: '/registration', component: GangsterRegistration },
-    { path: '/requests', component: ReceivedRequests },
-    { path: '/jobs', component: JobsList },
-    { path: '/jobs/:id', component: JobDetail },
-    { path: '/:notFound(.*)', component: NotFound },
+    {
+      name: 'registration',
+      path: '/registration',
+      component: GangsterRegistration,
+    },
+    { name: 'requests', path: '/requests', component: ReceivedRequests },
+    { name: 'jobs', path: '/jobs', component: JobsList },
+    {
+      name: 'job-details',
+      path: '/job/:id',
+      component: JobDetails,
+      props: true,
+    },
+    { name: 'not-found', path: '/:notFound(.*)', component: NotFound },
   ],
 });
 

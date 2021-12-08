@@ -14,9 +14,10 @@ export default {
               nickName: 'The Kıll',
               from: 'Yozgat',
               description:
-                'I am the one of the most popular free agent gangsters from Yozgat.',
+                'I am the one of the most popular FA gangsters from Yozgat.',
               skills: ['blackmail', 'pickpocket', 'bully'],
               hourlyRate: 100,
+              appliedJobs: [],
             },
             {
               id: '002',
@@ -27,6 +28,7 @@ export default {
               description: 'I am the best kidnapper.',
               skills: ['pickpocket', 'kidnap'],
               hourlyRate: 120,
+              appliedJobs: [],
             },
             {
               id: '003',
@@ -37,6 +39,7 @@ export default {
               description: 'Hello I will punish your enemies.',
               skills: ['bully', 'blackmail'],
               hourlyRate: 120,
+              appliedJobs: [],
             },
           ],
         };

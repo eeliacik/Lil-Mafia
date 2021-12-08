@@ -1,5 +1,6 @@
 export default {
     requests(state) {
-        return state.requests;
+        const authenticatedGangsterId = '001';
+        return state.requests.filter( req => req.gangsterId === authenticatedGangsterId);
     },
 };

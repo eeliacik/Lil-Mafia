@@ -46,6 +46,12 @@ a {
   border: 1px solid seagreen;
 }
 
+.flat-red {
+  background-color: crimson;
+  color: white;
+  border: 1px solid crimson;
+}
+
 .frame {
   background-color: transparent;
   color: mediumpurple;

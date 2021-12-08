@@ -15,6 +15,13 @@ export default {
             'Hey there. I wanna rob hot-dog buffet at my neighborhood.. Can you help me?',
         },
         {
+          id: '1004',
+          gangsterId: '001',
+          email: 'caluygauyvcuca@dffd.ccs',
+          message:
+            'lorem ipsum ludogoretsz melt down..',
+        },
+        {
           id: '1002',
           gangsterId: '003',
           email: 'daroluk.huseyin@gdcn.com',

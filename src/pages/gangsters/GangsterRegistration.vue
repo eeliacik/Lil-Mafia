@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <base-card>
+  <section >
+    <base-card class="container">
       <h2>Gangster Registration</h2>
     </base-card>
     <base-card>
@@ -24,6 +24,9 @@ export default {
 <style scoped>
 h2 {
   margin: 1rem 0;
+}
 
+.container {
+  margin: 1rem auto;
 }
 </style>

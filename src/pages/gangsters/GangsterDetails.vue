@@ -1,11 +1,11 @@
 <template>
   <section>
-    <base-card>
+    <base-card class="container">
       <div class="details-card">
         <h2>{{ fullName }}</h2>
         <h3>from "{{ from }}"</h3>
         <h3>aKa "{{ aka }}"</h3>
-        <p>{{ description }}</p>
+        <p>{{ desc }}</p>
         <div>
           <base-badge
             v-for="skill in skills"
@@ -57,7 +57,7 @@ export default {
     from() {
       return this.gangster.from;
     },
-    description() {
+    desc() {
       return this.gangster.description;
     },
     skills() {
@@ -81,10 +81,17 @@ export default {
       this.sendButtonVisible = true;
     },
   },
+  created() {
+    console.log(this.id)
+  }
 };
 </script>
 
 <style scoped>
+.container {
+  margin: 1rem auto;
+}
+
 .details-card {
   border: 1px solid lightgray;
   border-radius: 10px;
