@@ -4,7 +4,7 @@
       <h2>Gangster Registration</h2>
     </base-card>
     <base-card>
-      <gangster-form @save-gangster="saveGangster"></gangster-form>
+      <gangster-form @register-gangster="registerGangster"></gangster-form>
     </base-card>
   </section>
 </template>
@@ -14,8 +14,8 @@ import GangsterForm from '../../components/gangsters/GangsterForm.vue';
 export default {
   components: { GangsterForm },
   methods: {
-    saveGangster(formData) {
-      this.$store.dispatch('gangsters/saveGangster', formData);
+    registerGangster(formData) {
+      this.$store.dispatch('gangsters/registerGangster', formData);
     },
   },
 };

@@ -82,7 +82,7 @@
 
 <script>
 export default {
-  emits: ['save-gangster'],
+  emits: ['register-gangster'],
   data() {
     return {
       firstName: {
@@ -162,9 +162,10 @@ export default {
           description: this.desc.val,
           hourlyRate: this.rate.val,
           skills: this.skills.val,
+          appliedJobs: [],
         };
 
-        this.$emit('save-gangster', formData);
+        this.$emit('register-gangster', formData);
 
         this.$router.replace('/gangsters');
     },

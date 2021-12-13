@@ -94,8 +94,13 @@ export default {
       this.activeSkills = selectedSkills;
     },
   },
+
+  created() {
+    this.$store.dispatch('gangsters/loadGangsters');
+  },
+
   mounted() {
-    console.log(this.gangsters)
+    console.log(this.gangsters);
   },
 };
 </script>
@@ -113,5 +118,5 @@ ul {
 .list-button {
   display: flex;
   justify-content: right;
-} 
+}
 </style>

@@ -39,20 +39,20 @@ export default {
     skills() {
       return this.job.skills;
     },
-    jobIsApplied() {
-      return !!this.$store.getters['gangsters/appliedJobs'].find(jobId => jobId === this.id);
-    },
+    // jobIsApplied() {
+    //   return !!this.$store.getters['gangsters/appliedJobs'].find(jobId => jobId === this.id);
+    // },
   },
-  methods: {
-    applyJob() {
-      const jobId = this.id;
-      this.$store.dispatch('gangsters/addJob', jobId);
-    },
-    withdrawApplication() {
-      const jobId = this.id;
-      this.$store.dispatch('gangsters/removeJob', jobId);
-    },
-  },
+  // methods: {
+  //   applyJob() {
+  //     const jobId = this.id;
+  //     this.$store.dispatch('gangsters/addJob', jobId);
+  //   },
+  //   withdrawApplication() {
+  //     const jobId = this.id;
+  //     this.$store.dispatch('gangsters/removeJob', jobId);
+  //   },
+  // },
   created() {
     console.log(this.jobIsApplied)
   },

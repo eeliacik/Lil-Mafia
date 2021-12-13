@@ -1,6 +1,6 @@
 export default {
-    addGangster(state, data) {
-        state.gangsters.unshift(data);
+    setGangsters(state, payload) {
+        state.gangsters = payload;
     },
     addJob(state, idData) {
         const authenticatedGangster = state.gangsters.find(gangster => gangster.id === idData.gangsterId);

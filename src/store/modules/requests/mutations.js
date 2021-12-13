@@ -1,5 +1,5 @@
 export default {
-  saveRequest(state, data) {
-    state.requests.unshift(data);
+  setRequests(state, payload) {
+    state.requests = payload;
   },
 };
