@@ -2,12 +2,12 @@ export default {
     setGangsters(state, payload) {
         state.gangsters = payload;
     },
-    addJob(state, idData) {
+    addOffer(state, idData) {
         const authenticatedGangster = state.gangsters.find(gangster => gangster.id === idData.gangsterId);
-        authenticatedGangster.appliedJobs.push(idData.jobId);
+        authenticatedGangster.offers.push(idData.jobId);
     },
-    removeJob(state, idData) {
+    removeOffer(state, idData) {
         const authenticatedGangster = state.gangsters.find(gangster => gangster.id === idData.gangsterId);
-        authenticatedGangster.appliedJobs.splice((authenticatedGangster.appliedJobs.findIndex(id => id === idData.jobId)), 1);
+        authenticatedGangster.offers.splice((authenticatedGangster.offers.findIndex(id => id === idData.jobId)), 1);
     },
 };

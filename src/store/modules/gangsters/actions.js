@@ -30,25 +30,25 @@ export default {
               description: responseData[key].description,
               skills: responseData[key].skills,
               hourlyRate: responseData[key].hourlyRate,
-              appliedJobs: responseData[key].appliedJobs,
+              offers: responseData[key].offers,
           }
           gangsters.push(gangster);
       }
       context.commit('setGangsters', gangsters);
     },
 
-  addJob(context, jobId) {
+  addOffer(context, jobId) {
     const idData = {
-      gangsterId: '001', // id of authenticated gangster.
+      gangsterId: '-MqslgL2UG70K1XNE3hV', // id of authenticated gangster.
       jobId: jobId,
     };
-    context.commit('addJob', idData);
+    context.commit('addOffer', idData);
   },
-  removeJob(context, jobId) {
+  removeOffer(context, jobId) {
     const idData = {
-      gangsterId: '001', // id of authenticated gangster.
+      gangsterId: '-MqslgL2UG70K1XNE3hV', // id of authenticated gangster.
       jobId: jobId,
     };
-    context.commit('removeJob', idData);
+    context.commit('removeOffer', idData);
   },
 };

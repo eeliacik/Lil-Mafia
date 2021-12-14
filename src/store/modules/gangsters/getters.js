@@ -2,8 +2,8 @@ export default {
   gangsters(state) {
     return state.gangsters;
   },
-  appliedJobs(state) {
-    const authenticatedGangsterId = '001';
-    return state.gangsters.find(gangster => gangster.id === authenticatedGangsterId).appliedJobs;
+  offers(state) {
+    const authenticatedGangsterId = '-MqslgL2UG70K1XNE3hV';
+    return state.gangsters.find(gangster => gangster.id === authenticatedGangsterId).offers;
   },
 };

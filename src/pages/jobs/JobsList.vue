@@ -1,11 +1,11 @@
 <template>
-  <section class="container">
+  <section>
     <base-card>
       <job-filter @get-skills="filterJobs"></job-filter>
     </base-card>
-    <div class="container">
+    <div>
       <base-card>
-        <ul class="list-container" v-if="hasJobs && hasSkills">
+        <ul v-if="hasJobs && hasSkills">
           <job-item
             v-for="job in filteredJobs"
             :key="job.id"
@@ -61,18 +61,11 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  margin: 1rem auto;
-}
 
 ul {
   list-style: none;
-}
-
-.list-container {
-  display: flex;
-  flex-direction: column;
   margin: 0;
   padding: 0;
 }
+
 </style>

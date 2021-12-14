@@ -1,7 +1,7 @@
 <template>
   <section>
-    <base-card class="container">
-      <div class="details-card">
+    <base-card>
+      <div>
         <h2>{{ fullName }}</h2>
         <h3>from "{{ from }}"</h3>
         <h3>aKa "{{ aka }}"</h3>
@@ -20,14 +20,6 @@
       <router-view></router-view>
 
       <div class="details-action">
-        <base-button
-          v-if="contactButtonVisible"
-          @click="openForm"
-          mode="flat"
-          link
-          :to="gangsterContactLink"
-          >Contact</base-button
-        >
         <base-button mode="frame" link to="/gangsters">Back to Gangsters</base-button>
       </div>
     </base-card>
@@ -37,11 +29,6 @@
 <script>
 export default {
   props: ['id'],
-  data() {
-    return {
-      contactButtonVisible: true,
-    };
-  },
   computed: {
     gangster() {
       return this.$store.getters['gangsters/gangsters'].find(
@@ -66,20 +53,6 @@ export default {
     rate() {
       return this.gangster.hourlyRate;
     },
-    gangsterContactLink() {
-      return {
-        name: 'contact-gangster',
-        params: {
-          id: this.id,
-        },
-      };
-    },
-  },
-  methods: {
-    openForm() {
-      this.contactButtonVisible = false;
-      this.sendButtonVisible = true;
-    },
   },
   created() {
     console.log(this.id)
@@ -88,16 +61,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  margin: 1rem auto;
-}
-
-.details-card {
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  padding: 1rem;
-}
-
 .details-action {
   display: flex;
   justify-content: flex-end;

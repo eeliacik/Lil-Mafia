@@ -3,8 +3,7 @@
     <nav>
       <div class="logo">
         <router-link to="/">
-          <h1>Lil'Mafia</h1>
-          <p>FREE AGENT GANGSTER HUB</p>
+          <h2>Lil'Mafia</h2>
         </router-link>
       </div>
       <ul>
@@ -12,10 +11,19 @@
           <router-link to="/gangsters">Gangsters</router-link>
         </li>
         <li>
+          <router-link to="/gangster-registration">Register</router-link>
+        </li>
+        <li>
           <router-link to="/jobs">Jobs</router-link>
         </li>
         <li>
-          <router-link to="/requests">Requests</router-link>
+          <router-link to="/job-registration">New Job</router-link>
+        </li>
+        <li>
+          <router-link to="/login">Log In</router-link>
+        </li>
+        <li>
+          <router-link to="/signup">Sign Up</router-link>
         </li>
       </ul>
     </nav>
@@ -25,7 +33,7 @@
 <style scoped>
 header {
   width: 100%;
-  height: 7rem;
+  height: 80px;
   display: flex;
   background-color: rgb(109, 99, 150);
   justify-content: center;
@@ -42,26 +50,16 @@ header nav {
 
 h1 {
   margin: 0;
-  font-size: 3.16rem;
-}
-
-p {
-  font-size: 1rem;
-  margin: 0;
 }
 
 .logo {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 header a {
   text-decoration: none;
   color: pink;
-  font-size: 1.2rem;
   margin: 0 0.25rem;
   padding: 0.5rem 0.75rem;
   display: inline-block;

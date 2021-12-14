@@ -12,14 +12,7 @@
             <input type="password" id="password" v-model="password.val" />
           </div>
           <div class="form-action">
-            <div v-if="loginMode" class="form-action">
-              <base-button mode="flat">Sign in</base-button>
-              <p @click="switchMode">or <a href="#">Create an account</a></p>
-            </div>
-            <div v-else class="form-action">
-              <base-button mode="flat">Create an account</base-button>
-              <p @click="switchMode">or <a href="#">Sign in</a></p>
-            </div>
+              <base-button mode="flat">Sign Up</base-button>
           </div>
         </form>
       </div>
@@ -39,15 +32,8 @@ export default {
         val: '',
         isValid: true,
       },
-      loginMode: true,
     };
   },
-    methods: {
-        switchMode() {
-            this.loginMode = !this.loginMode;
-        },
-    },
-
 };
 </script>
 

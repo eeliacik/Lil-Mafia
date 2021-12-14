@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>Available Jobs</h2>
-    <span class="filter-block">
+    <h3>Available Jobs</h3>
+    <span class="filter-item">
       <input
         id="blackmail"
         type="checkbox"
@@ -12,7 +12,7 @@
       />
       <label for="blackmail">Blackmail</label>
     </span>
-    <span class="filter-block">
+    <span class="filter-item">
       <input
         id="bully"
         type="checkbox"
@@ -23,7 +23,7 @@
       />
       <label for="bully">Bully</label>
     </span>
-    <span class="filter-block">
+    <span class="filter-item">
       <input
         id="kidnap"
         type="checkbox"
@@ -34,7 +34,7 @@
       />
       <label for="kidnap">Kidnap</label>
     </span>
-    <span class="filter-block">
+    <span class="filter-item">
       <input
         id="pickpocket"
         type="checkbox"
@@ -66,24 +66,24 @@ export default {
 </script>
 
 <style scoped>
-h2 {
+h3 {
   margin: 0.5rem;
 }
 
-.filter-block {
+.filter-item {
   margin: 0.5rem;
 }
 
-.filter-block label,
-.filter-block input {
+.filter-item label,
+.filter-item input {
   vertical-align: middle;
 }
 
-.filter-block label {
+.filter-item label {
   margin: 0.25rem;
 }
 
-.filter-block input {
+.filter-item input {
   margin: 0.25rem;
   height: 1.15rem;
   width: 1.15rem;

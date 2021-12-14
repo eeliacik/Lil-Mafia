@@ -1,18 +1,17 @@
 <template>
   <li>
-    <router-link :to="jobDetailsLink">
-      <base-card>
-        <h3>{{ title }}</h3>
-        <div>
-          <base-badge
-            v-for="skill in skills"
-            :key="skill"
-            :type="skill"
-            :title="skill"
-          ></base-badge>
-        </div>
-      </base-card>
-    </router-link>
+    <base-card>
+      <h3>{{ title }}</h3>
+      <div>
+        <base-badge
+          v-for="skill in skills"
+          :key="skill"
+          :type="skill"
+          :title="skill"
+        ></base-badge>
+      </div>
+        <router-link :to="jobDetailsLink">See Details</router-link>
+    </base-card>
   </li>
 </template>
 
@@ -37,12 +36,15 @@ a:visited {
   text-decoration: none;
 }
 
-li {
-  margin: 1rem;
-}
-
 h3 {
   margin: 0;
   padding: 0 0 1rem 0;
+}
+
+div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
 }
 </style>

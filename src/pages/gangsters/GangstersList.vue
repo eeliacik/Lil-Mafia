@@ -1,17 +1,7 @@
 <template>
   <div>
-    <section class="container">
-      <base-card>
-        <gangster-filter @get-skills="filterGangsters"></gangster-filter>
-      </base-card>
-    </section>
     <section>
       <base-card>
-        <div class="list-button">
-          <base-button class="" link mode="flat" to="/registration"
-            >Register as a gangster</base-button
-          >
-        </div>
         <ul v-if="hasGangsters && hasSkills">
           <gangster-item
             v-for="gangster in filteredGangsters"
@@ -33,13 +23,12 @@
 </template>
 
 <script>
-import GangsterFilter from '../../components/gangsters/GangsterFilter.vue';
 import GangsterItem from '../../components/gangsters/GangsterItem.vue';
 
 import { ArrayIsEmpty } from '../../utilities/array';
 
 export default {
-  components: { GangsterItem, GangsterFilter },
+  components: { GangsterItem },
   data() {
     return {
       // filteredGangsters: [],
@@ -94,12 +83,8 @@ export default {
       this.activeSkills = selectedSkills;
     },
   },
-
   created() {
     this.$store.dispatch('gangsters/loadGangsters');
-  },
-
-  mounted() {
     console.log(this.gangsters);
   },
 };

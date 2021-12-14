@@ -14,8 +14,8 @@
         </div>
       </div>
       <div class="details-action">
-        <base-button v-if="!jobIsApplied" mode="flat" @click="applyJob">Apply</base-button>
-        <base-button v-else mode="flat-red" @click="withdrawApplication">Withdraw Job Application</base-button>
+        <base-button v-if="!bidPlaced" mode="flat" @click="makeOffer">Place Your Bid</base-button>
+        <base-button v-else mode="flat-red" @click="withdrawOffer">Withdraw Offer</base-button>
         <base-button mode="frame" link to="/jobs">Back to Jobs</base-button>
       </div>
     </base-card>
@@ -39,22 +39,22 @@ export default {
     skills() {
       return this.job.skills;
     },
-    // jobIsApplied() {
-    //   return !!this.$store.getters['gangsters/appliedJobs'].find(jobId => jobId === this.id);
-    // },
+    bidPlaced() {
+      return this.$store.getters['gangsters/offers'];
+    },
   },
-  // methods: {
-  //   applyJob() {
-  //     const jobId = this.id;
-  //     this.$store.dispatch('gangsters/addJob', jobId);
-  //   },
-  //   withdrawApplication() {
-  //     const jobId = this.id;
-  //     this.$store.dispatch('gangsters/removeJob', jobId);
-  //   },
-  // },
+  methods: {
+    makeOffer() {
+      // const jobId = this.id;
+      // this.$store.dispatch('gangsters/addOffer', jobId);
+    },
+    withdrawOffer() {
+      // const jobId = this.id;
+      // this.$store.dispatch('gangsters/removeOffer', jobId);
+    },
+  },
   created() {
-    console.log(this.jobIsApplied)
+    console.log(this.bidPlaced)
   },
 };
 </script>

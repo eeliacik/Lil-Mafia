@@ -162,7 +162,7 @@ export default {
           description: this.desc.val,
           hourlyRate: this.rate.val,
           skills: this.skills.val,
-          appliedJobs: [],
+          offers: [],
         };
 
         this.$emit('register-gangster', formData);
