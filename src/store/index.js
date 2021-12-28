@@ -1,6 +1,7 @@
 import { createStore } from 'vuex';
 
 import gangstersModule from './modules/gangsters/index.js';
+import caposModule from './modules/capos/index.js';
 import jobsModule from './modules/jobs/index.js';
 import authenticationModule from './modules/authentication/index.js';
 
@@ -10,6 +11,7 @@ const store = createStore({
   },
   modules: {
     gangsters: gangstersModule,
+    capos: caposModule,
     jobs: jobsModule,
     authentication: authenticationModule,
   },

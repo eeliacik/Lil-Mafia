@@ -1,5 +1,6 @@
 <template>
   <section>
+    <base-card><h2>Log In</h2></base-card>
     <base-card class="container">
       <div class="form-block">
         <form @submit.prevent="submitForm">
@@ -13,8 +14,11 @@
           </div>
           <div class="form-action">
             <div class="form-action">
-              <base-button mode="flat">Log In</base-button>
-              <p>New to Lil'Mafia? <router-link to="/signup">Sign up</router-link> now.</p>
+              <button @click="login">Log In</button>
+              <p>
+                New to Lil'Mafia?
+                <router-link to="/signup">Sign up</router-link> now.
+              </p>
             </div>
           </div>
         </form>
@@ -37,17 +41,18 @@ export default {
       },
     };
   },
+  methods: {
+    login() {
+      const authData = { email: this.email.val, password: this.password.val };
+      this.$store.dispatch('login', authData);
+    },
+  },
 };
 </script>
 
 <style scoped>
-.container {
-  margin: 1rem auto;
-}
-
 .form-block {
-  border: 1px solid gray;
-  border-radius: 10px;
+  border: 1px solid lightgray;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -63,6 +68,7 @@ export default {
 .form-action {
   display: flex;
   justify-content: flex-start;
+  gap: 10px;
 }
 
 /* .form-action a:hover{
@@ -71,12 +77,16 @@ export default {
 
 a:visited,
 a:link {
-    text-decoration: none;
-    color: blue;
+  text-decoration: none;
+  color: blue;
 }
 
 label {
   font-weight: bold;
+}
+
+p {
+  margin: 0;
 }
 
 .invalid input,

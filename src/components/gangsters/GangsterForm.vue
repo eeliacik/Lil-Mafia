@@ -2,30 +2,59 @@
   <form @submit.prevent="submitForm">
     <div class="form-block" :class="{ invalid: !this.firstName.isValid }">
       <label for="firstname">Firstname</label>
-      <input id="firstname" type="text" v-model.trim="firstName.val" @blur="clearValidationError('firstName')" />
+      <input
+        id="firstname"
+        type="text"
+        v-model.trim="firstName.val"
+        @blur="clearValidationError('firstName')"
+      />
       <p v-if="!this.firstName.isValid">* Please enter your firstname</p>
     </div>
     <div class="form-block" :class="{ invalid: !this.lastName.isValid }">
       <label for="lastname">Lastname</label>
-      <input id="lastname" type="text" v-model.trim="lastName.val" @blur="clearValidationError('lastName')" />
+      <input
+        id="lastname"
+        type="text"
+        v-model.trim="lastName.val"
+        @blur="clearValidationError('lastName')"
+      />
       <p v-if="!this.lastName.isValid">* Please enter your lastname</p>
     </div>
     <div class="form-block" :class="{ invalid: !this.aka.isValid }">
       <label for="nickname">Nickname</label>
-      <input id="nickname" type="text" v-model.trim="aka.val" @blur="clearValidationError('aka')" />
+      <input
+        id="nickname"
+        type="text"
+        v-model.trim="aka.val"
+        @blur="clearValidationError('aka')"
+      />
       <p v-if="!this.lastName.isValid">* Please enter your nickname</p>
     </div>
     <div class="form-block" :class="{ invalid: !this.from.isValid }">
       <label for="from">From</label>
-      <input id="from" type="text" v-model.trim="from.val" @blur="clearValidationError('from')" />
+      <input
+        id="from"
+        type="text"
+        v-model.trim="from.val"
+        @blur="clearValidationError('from')"
+      />
       <p v-if="!this.from.isValid">* Please enter your hometown</p>
     </div>
     <div class="form-block" :class="{ invalid: !this.desc.isValid }">
       <label for="description">Description</label>
-      <textarea id="description" rows="5" v-model.trim="desc.val" @blur="clearValidationError('desc')" />
+      <textarea
+        id="description"
+        rows="5"
+        v-model.trim="desc.val"
+        @blur="clearValidationError('desc')"
+      />
       <p v-if="!this.desc.isValid">* Please describe yourself</p>
     </div>
-    <div class="form-block" :class="{ invalid: !this.skills.isValid }" @change="clearValidationError('skills')">
+    <div
+      class="form-block"
+      :class="{ invalid: !this.skills.isValid }"
+      @change="clearValidationError('skills')"
+    >
       <h4>Skills</h4>
       <div class="skill-checkbox">
         <input
@@ -61,28 +90,53 @@
         <input
           type="checkbox"
           name="skills"
+          value="launder"
+          id="launder"
+          v-model="skills.val"
+        />
+        <label for="launder">Launder</label>
+      </div>
+      <div class="skill-checkbox">
+        <input
+          type="checkbox"
+          name="skills"
           value="pickpocket"
           id="pickpocket"
           v-model="skills.val"
         />
         <label for="pickpocket">Pickpocket</label>
       </div>
+      <div class="skill-checkbox">
+        <input
+          type="checkbox"
+          name="skills"
+          value="smuggle"
+          id="smuggle"
+          v-model="skills.val"
+        />
+        <label for="smuggle">Smuggle</label>
+      </div>
       <p v-if="!this.skills.isValid">
         * Please choose at least one of the skills above
       </p>
     </div>
-    <div class="form-block" :class="{ invalid: !this.rate.isValid }">
-      <label for="rate">Hourly Rate</label>
-      <input id="rate" type="number" v-model.number="rate.val" @blur="clearValidationError('rate')" />
-      <p v-if="!this.rate.isValid">* Please enter your hourly rate</p>
+    <div class="form-block" :class="{ invalid: !this.email.isValid }">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" v-model.trim="email.val" @blur="clearValidationError('desc')" />
+      <p v-if="!this.email.isValid">* Please enter your email address</p>
     </div>
-    <base-button mode="flat">Register</base-button>
+    <div class="form-block" :class="{ invalid: !this.password.isValid }">
+      <label for="password">Password</label>
+      <input type="password" id="password" v-model="password.val" @blur="clearValidationError('desc')" />
+      <p v-if="!this.password.isValid">* Please enter a password (min 6 characters)</p>
+    </div>
+    <button>Sign Up</button>
   </form>
 </template>
 
 <script>
 export default {
-  emits: ['register-gangster'],
+  emits: ['sign-up-gangster'],
   data() {
     return {
       firstName: {
@@ -105,18 +159,22 @@ export default {
         val: '',
         isValid: true,
       },
-      rate: {
-        val: null,
-        isValid: true,
-      },
       skills: {
         val: [],
+        isValid: true,
+      },
+      email: {
+        val: '',
+        isValid: true,
+      },
+      password: {
+        val: '',
         isValid: true,
       },
       formIsValid: true,
     };
   },
-  
+
   methods: {
     clearValidationError(name) {
       this[name].isValid = true;
@@ -128,14 +186,20 @@ export default {
         this.formIsValid = false;
       }
     },
-    numberValidation(input) {
-      if (!this[input].val || input.val < 0) {
+    arrayValidation(input) {
+      if (this[input].val.length === 0) {
         this[input].isValid = false;
         this.formIsValid = false;
       }
     },
-    arrayValidation(input) {
-      if (this[input].val.length === 0) {
+    emailValidation(input) {
+      if (this[input].val === '' || !this[input].val.includes('@')) {
+        this[input].isValid = false;
+        this.formIsValid = false;
+      }
+    },
+    passwordValidation(input) {
+      if (this[input].val.length < 6) {
         this[input].isValid = false;
         this.formIsValid = false;
       }
@@ -148,26 +212,29 @@ export default {
       this.textValidation('aka');
       this.textValidation('from');
       this.textValidation('desc');
-      this.numberValidation('rate');
       this.arrayValidation('skills');
+      this.emailValidation('email');
+      this.passwordValidation('password');
 
       if (!this.formIsValid) {
         return;
       }
-        const formData = {
-          firstName: this.firstName.val,
-          lastName: this.lastName.val,
-          nickName: this.aka.val,
-          from: this.from.val,
-          description: this.desc.val,
-          hourlyRate: this.rate.val,
-          skills: this.skills.val,
-          offers: [],
-        };
+      const formData = {
+        firstName: this.firstName.val,
+        lastName: this.lastName.val,
+        nickName: this.aka.val,
+        from: this.from.val,
+        description: this.desc.val,
+        skills: this.skills.val,
+        offers: [],
+        email: this.email.val,
+        password: this.password.val,
+        userType: 'gangster'
+      };
 
-        this.$emit('register-gangster', formData);
+      this.$emit('sign-up-gangster', formData);
 
-        this.$router.replace('/gangsters');
+      this.$router.replace('/gangsters');
     },
   },
 };
@@ -215,5 +282,4 @@ p {
   font-size: 0.8rem;
   color: red;
 }
-
 </style>

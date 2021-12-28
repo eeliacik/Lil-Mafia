@@ -36,6 +36,11 @@ export default {
     color: white;
 }
 
+.launder {
+    background-color: rosybrown;
+    color: white;
+}
+
 .bully {
     background-color:cornflowerblue;
     color: white;
@@ -43,6 +48,11 @@ export default {
 
 .pickpocket {
     background-color:darkkhaki;
+    color: white;
+}
+
+.smuggle {
+    background-color: slategray;
     color: white;
 }
 

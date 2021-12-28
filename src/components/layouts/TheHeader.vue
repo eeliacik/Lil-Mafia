@@ -11,13 +11,10 @@
           <router-link to="/gangsters">Gangsters</router-link>
         </li>
         <li>
-          <router-link to="/gangster-registration">Register</router-link>
-        </li>
-        <li>
           <router-link to="/jobs">Jobs</router-link>
         </li>
         <li>
-          <router-link to="/job-registration">New Job</router-link>
+          <router-link to="/job-adding">New Job</router-link>
         </li>
         <li>
           <router-link to="/login">Log In</router-link>
@@ -33,78 +30,56 @@
 <style scoped>
 header {
   width: 100%;
-  height: 80px;
+  height: 90px;
   display: flex;
   background-color: rgb(109, 99, 150);
   justify-content: center;
   align-items: center;
 }
 
-header nav {
+nav {
   width: 90%;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-h1 {
-  margin: 0;
+.logo,
+.logo a,
+.logo a.router-link-active,
+.logo a:hover {
+  color: white;
+  border: none;
 }
 
-.logo {
-  margin: 0;
-  padding: 0;
-}
-
-header a {
+a {
   text-decoration: none;
   color: pink;
   margin: 0 0.25rem;
   padding: 0.5rem 0.75rem;
-  display: inline-block;
   border: 1px solid transparent;
   border-radius: 0.3rem;
 }
 
-.logo a {
-  color: white;
-  margin: 0;
-  padding: 0;
-}
-
-ul a:hover {
+a:hover {
   color: lightsalmon;
   border: 1px solid lightsalmon;
-  /* box-shadow: 1px 1px 10px rgba(255, 160, 122, 0.33); */
 }
 
 a:active,
-a.router-link-active,
-a.router-link-active:hover {
+a.router-link-active {
   color: pink;
   border: 1px solid pink;
   /* box-shadow: 1px 1px 10px rgba(255, 192, 193, 0.33); */
 }
 
-.logo a:active,
-.logo a:hover,
-.logo a.router-link-active,
-.logo a.router-link-active:hover {
-  color: white;
-  border-color: transparent;
-}
-
-header ul {
+ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-li {
-  margin: 0, 0.5rem;
 }
 </style>

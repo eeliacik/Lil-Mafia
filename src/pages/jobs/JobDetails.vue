@@ -3,6 +3,9 @@
     <base-card class="container">
       <div class="details-card">
         <h2>{{ title }}</h2>
+        <h3>
+          {{ terr }}
+        </h3>
         <p>{{ desc }}</p>
         <div>
           <base-badge
@@ -14,8 +17,12 @@
         </div>
       </div>
       <div class="details-action">
-        <base-button v-if="!bidPlaced" mode="flat" @click="makeOffer">Place Your Bid</base-button>
-        <base-button v-else mode="flat-red" @click="withdrawOffer">Withdraw Offer</base-button>
+        <base-button v-if="!bidPlaced" mode="flat" @click="makeOffer"
+          >Place Your Bid</base-button
+        >
+        <base-button v-else mode="flat-red" @click="withdrawOffer"
+          >Withdraw Offer</base-button
+        >
         <base-button mode="frame" link to="/jobs">Back to Jobs</base-button>
       </div>
     </base-card>
@@ -23,7 +30,6 @@
 </template>
 
 <script>
-
 export default {
   props: ['id'],
   computed: {
@@ -33,6 +39,9 @@ export default {
     title() {
       return this.job.title;
     },
+    terr() {
+      return this.job.territory;
+    },
     desc() {
       return this.job.description;
     },
@@ -40,7 +49,8 @@ export default {
       return this.job.skills;
     },
     bidPlaced() {
-      return this.$store.getters['gangsters/offers'];
+      return false;
+      // return this.$store.getters['gangsters/offers'];
     },
   },
   methods: {
@@ -52,9 +62,6 @@ export default {
       // const jobId = this.id;
       // this.$store.dispatch('gangsters/removeOffer', jobId);
     },
-  },
-  created() {
-    console.log(this.bidPlaced)
   },
 };
 </script>

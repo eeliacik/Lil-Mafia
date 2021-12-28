@@ -1,85 +1,119 @@
 <template>
   <form @submit.prevent="submitForm">
-    <base-card>
-      <div
-        class="form-block"
-        :class="{ invalid: !this.title.isValid }"
-        @change="clearValidationError('title')"
-      >
-        <label for="title">Title</label>
-        <input id="title" type="text" v-model.trim="title.val" />
-        <p v-if="!this.title.isValid">* Please enter the job title</p>
+    <div class="form-block" :class="{ invalid: !this.title.isValid }">
+      <label for="title">Title</label>
+      <input
+        id="title"
+        type="text"
+        v-model.trim="title.val"
+        @blur="clearValidationError('title')"
+      />
+      <p v-if="!this.title.isValid">* Please enter the job title</p>
+    </div>
+    <div class="form-block" :class="{ invalid: !this.terr.isValid }">
+      <label for="territory">Territory</label>
+      <input
+        id="territory"
+        type="text"
+        v-model.trim="terr.val"
+        @blur="clearValidationError('terr')"
+      />
+      <p v-if="!this.terr.isValid">* Please enter the territory</p>
+    </div>
+    <div class="form-block" :class="{ invalid: !this.desc.isValid }">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        rows="5"
+        v-model.trim="desc.val"
+        @blur="clearValidationError('desc')"
+      />
+      <p v-if="!this.desc.isValid">* Please enter the job description</p>
+    </div>
+    <div
+      class="form-block"
+      :class="{ invalid: !this.skills.isValid }"
+      @change="clearValidationError('skills')"
+    >
+      <h4>Skills</h4>
+      <div class="skill-checkbox">
+        <input
+          type="checkbox"
+          name="skills"
+          value="blackmail"
+          id="blackmail"
+          v-model="skills.val"
+        />
+        <label for="blackmail">Blackmail</label>
       </div>
-      <div
-        class="form-block"
-        :class="{ invalid: !this.desc.isValid }"
-        @change="clearValidationError('desc')"
-      >
-        <label for="description">Description</label>
-        <textarea id="description" rows="5" v-model.trim="desc.val" />
-        <p v-if="!this.desc.isValid">* Please enter the job description</p>
+      <div class="skill-checkbox">
+        <input
+          type="checkbox"
+          name="skills"
+          value="bully"
+          id="bully"
+          v-model="skills.val"
+        />
+        <label for="bully">Bully</label>
       </div>
-      <div
-        class="form-block"
-        :class="{ invalid: !this.skills.isValid }"
-        @change="clearValidationError('skills')"
-      >
-        <h4>Skills</h4>
-        <div class="skill-checkbox">
-          <input
-            type="checkbox"
-            name="skills"
-            value="blackmail"
-            id="blackmail"
-            v-model="skills.val"
-          />
-          <label for="blackmail">Blackmail</label>
-        </div>
-        <div class="skill-checkbox">
-          <input
-            type="checkbox"
-            name="skills"
-            value="bully"
-            id="bully"
-            v-model="skills.val"
-          />
-          <label for="bully">Bully</label>
-        </div>
-        <div class="skill-checkbox">
-          <input
-            type="checkbox"
-            name="skills"
-            value="kidnap"
-            id="kidnap"
-            v-model="skills.val"
-          />
-          <label for="kidnap">Kidnap</label>
-        </div>
-        <div class="skill-checkbox">
-          <input
-            type="checkbox"
-            name="skills"
-            value="pickpocket"
-            id="pickpocket"
-            v-model="skills.val"
-          />
-          <label for="pickpocket">Pickpocket</label>
-        </div>
-        <p v-if="!this.skills.isValid">
-          * Please choose at least one of the skills above
-        </p>
+      <div class="skill-checkbox">
+        <input
+          type="checkbox"
+          name="skills"
+          value="kidnap"
+          id="kidnap"
+          v-model="skills.val"
+        />
+        <label for="kidnap">Kidnap</label>
       </div>
-      <button>Create Job</button>
-    </base-card>
+      <div class="skill-checkbox">
+        <input
+          type="checkbox"
+          name="skills"
+          value="launder"
+          id="launder"
+          v-model="skills.val"
+        />
+        <label for="launder">Launder</label>
+      </div>
+      <div class="skill-checkbox">
+        <input
+          type="checkbox"
+          name="skills"
+          value="pickpocket"
+          id="pickpocket"
+          v-model="skills.val"
+        />
+        <label for="pickpocket">Pickpocket</label>
+      </div>
+      <div class="skill-checkbox">
+        <input
+          type="checkbox"
+          name="skills"
+          value="smuggle"
+          id="smuggle"
+          v-model="skills.val"
+        />
+        <label for="smuggle">Smuggle</label>
+      </div>
+      <p v-if="!this.skills.isValid">
+        * Please choose at least one of the skills above
+      </p>
+    </div>
+    <button>Create Job</button>
   </form>
 </template>
 
 <script>
 export default {
-    emits: ['register-job'],
+  emits: ['add-job'],
   data() {
     return {
       title: {
+        val: '',
+        isValid: true,
+      },
+      terr: {
         val: '',
         isValid: true,
       },
@@ -114,22 +148,24 @@ export default {
     submitForm() {
       this.formIsValid = true;
       this.textValidation('title');
+      this.textValidation('terr');
       this.textValidation('desc');
       this.arrayValidation('skills');
 
       if (!this.formIsValid) {
         return;
       }
-        const formData = {
-          title: this.title.val,
-          description: this.desc.val,
-          skills: this.skills.val,
-          offers: [],
-        };
+      const formData = {
+        title: this.title.val,
+        territory: this.terr.val,
+        description: this.desc.val,
+        skills: this.skills.val,
+        offers: [],
+      };
 
-        this.$emit('register-job', formData);
+      this.$emit('add-job', formData);
 
-        this.$router.replace('/jobs');
+      this.$router.replace('/jobs');
     },
   },
 };

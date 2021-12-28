@@ -1,7 +1,6 @@
 <template>
   <li>
     <h3>{{ fullName }}, aka "{{ aka }}"</h3>
-    <h4>${{ rate }}/hour</h4>
     <div>
       <base-badge
         v-for="skill in skills"
@@ -11,9 +10,7 @@
       ></base-badge>
     </div>
     <div class="actions">
-      <base-button mode="frame" link :to="gangsterDetailsLink"
-        >View Details</base-button
-      >
+      <router-link :to="gangsterDetailsLink">View Details</router-link>
     </div>
   </li>
 </template>
@@ -28,7 +25,6 @@ export default {
     'from',
     'desc',
     'skills',
-    'rate',
   ],
 
   computed: {
@@ -51,21 +47,12 @@ export default {
 
 <style scoped>
 li {
-  margin: 1rem 0;
-  padding: 1rem;
-  border: 1px solid lightgray
+  border: 1px solid lightgray;
+  padding: 10px;
 }
 
-h3 {
-  font-size: 1.5rem;
-  margin: 0.5rem 0;
-}
-h4 {
-  margin: 0.5rem 0;
-}
-
-div {
-  margin: 0.5rem 0;
+h3, h4 {
+  margin: 0;
 }
 
 .actions {

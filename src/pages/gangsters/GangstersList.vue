@@ -1,38 +1,38 @@
 <template>
-  <div>
-    <section>
-      <base-card>
-        <ul v-if="hasGangsters && hasSkills">
-          <gangster-item
-            v-for="gangster in filteredGangsters"
-            :key="gangster.id"
-            :id="gangster.id"
-            :firstName="gangster.firstName"
-            :lastName="gangster.lastName"
-            :aka="gangster.nickName"
-            :from="gangster.from"
-            :desc="gangster.description"
-            :skills="gangster.skills"
-            :rate="gangster.hourlyRate"
-          ></gangster-item>
-        </ul>
-        <p v-else>No Gangster Found!</p>
-      </base-card>
-    </section>
-  </div>
+  <section>
+    <base-card>
+      <h2>Gangster List</h2>
+    </base-card>
+    <base-card>
+      <ul v-if="hasGangsters && hasSkills">
+        <gangster-item
+          v-for="gangster in filteredGangsters"
+          :key="gangster.id"
+          :id="gangster.id"
+          :firstName="gangster.firstName"
+          :lastName="gangster.lastName"
+          :aka="gangster.nickName"
+          :from="gangster.from"
+          :desc="gangster.description"
+          :skills="gangster.skills"
+        ></gangster-item>
+      </ul>
+      <p v-else>No Gangster Found!</p>
+    </base-card>
+  </section>
 </template>
 
 <script>
 import GangsterItem from '../../components/gangsters/GangsterItem.vue';
 
-import { ArrayIsEmpty } from '../../utilities/array';
+import { ArrayNotEmpty } from '../../utilities/array_not_empty';
 
 export default {
   components: { GangsterItem },
   data() {
     return {
       // filteredGangsters: [],
-      activeSkills: ['blackmail', 'bully', 'kidnap', 'pickpocket'],
+      activeSkills: ['blackmail', 'bully', 'kidnap', 'launder', 'pickpocket', 'smuggle'],
     };
   },
   computed: {
@@ -63,8 +63,20 @@ export default {
         //   return true;
         // }
         // if (
+        //   this.activeSkills.includes('launder') &&
+        //   gangster.skills.includes('launder')
+        // ) {
+        //   return true;
+        // }
+        // if (
         //   this.activeSkills.includes('pickpocket') &&
         //   gangster.skills.includes('pickpocket')
+        // ) {
+        //   return true;
+        // }
+        // if (
+        //   this.activeSkills.includes('smuggle') &&
+        //   gangster.skills.includes('smuggle')
         // ) {
         //   return true;
         // }
@@ -72,10 +84,10 @@ export default {
       });
     },
     hasGangsters() {
-      return ArrayIsEmpty(this.gangsters);
+      return ArrayNotEmpty(this.gangsters);
     },
     hasSkills() {
-      return ArrayIsEmpty(this.activeSkills);
+      return ArrayNotEmpty(this.activeSkills);
     },
   },
   methods: {
@@ -85,19 +97,18 @@ export default {
   },
   created() {
     this.$store.dispatch('gangsters/loadGangsters');
-    console.log(this.gangsters);
   },
 };
 </script>
 
 <style scoped>
-.container {
-  margin: 1rem auto;
-}
-
 ul {
+  margin: 0;
   padding: 0;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .list-button {

@@ -1,5 +1,6 @@
 <template>
   <section>
+    <base-card><h2>Jobs</h2></base-card>
     <base-card>
       <job-filter @get-skills="filterJobs"></job-filter>
     </base-card>
@@ -25,13 +26,13 @@
 import JobItem from '../../components/jobs/JobItem.vue';
 import JobFilter from '../../components/jobs/JobFilter.vue';
 
-import { ArrayIsEmpty } from '../../utilities/array.js';
+import { ArrayNotEmpty } from '../../utilities/array_not_empty.js';
 
 export default {
   components: { JobItem, JobFilter },
   data() {
     return {
-      activeSkills: ['blackmail', 'bully', 'kidnap', 'pickpocket'],
+      activeSkills: ['blackmail', 'bully', 'kidnap', 'launder', 'pickpocket', 'smuggle'],
     };
   },
   computed: {
@@ -46,16 +47,19 @@ export default {
       });
     },
     hasJobs() {
-      return ArrayIsEmpty(this.jobs);
+      return ArrayNotEmpty(this.jobs);
     },
     hasSkills() {
-      return ArrayIsEmpty(this.activeSkills);
+      return ArrayNotEmpty(this.activeSkills);
     },
   },
   methods: {
     filterJobs(selectedSkills) {
       this.activeSkills = selectedSkills;
     },
+  },
+  created() {
+    this.$store.dispatch('jobs/loadJobs');
   },
 };
 </script>

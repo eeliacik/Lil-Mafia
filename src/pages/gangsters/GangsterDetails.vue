@@ -14,13 +14,12 @@
             :title="skill"
           ></base-badge>
         </div>
-        <h3>{{ rate }}$/hour</h3>
       </div>
 
       <router-view></router-view>
 
       <div class="details-action">
-        <base-button mode="frame" link to="/gangsters">Back to Gangsters</base-button>
+        <router-link to="/gangsters">Back to Gangsters</router-link>
       </div>
     </base-card>
   </section>
@@ -50,13 +49,7 @@ export default {
     skills() {
       return this.gangster.skills;
     },
-    rate() {
-      return this.gangster.hourlyRate;
-    },
   },
-  created() {
-    console.log(this.id)
-  }
 };
 </script>
 

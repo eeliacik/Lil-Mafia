@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  props: ['id', 'title', 'desc', 'skills'],
+  props: ['id', 'title', 'skills'],
   computed: {
     jobDetailsLink() {
       return {

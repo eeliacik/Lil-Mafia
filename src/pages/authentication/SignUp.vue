@@ -1,90 +1,44 @@
 <template>
   <section>
-    <base-card class="container">
-      <div class="form-block">
-        <form @submit.prevent="submitForm">
-          <div class="form-input">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" v-model.trim="email.val" />
-          </div>
-          <div class="form-input">
-            <label for="password">Password</label>
-            <input type="password" id="password" v-model="password.val" />
-          </div>
-          <div class="form-action">
-              <base-button mode="flat">Sign Up</base-button>
-          </div>
-        </form>
+    <base-card><h2>Sign Up</h2></base-card>
+    <base-card>
+      <button @click="switchUserType('gangster')">Register as Gangster</button>
+      <button @click="switchUserType('capo')">Register as Capo</button>
+    </base-card>
+    <base-card>
+      <div v-if="userType === 'gangster'">
+        <gangster-form @sign-up-gangster="signUp"></gangster-form>
+      </div>
+      <div v-else>
+        <capo-form @sign-up-capo="signUp"></capo-form>
       </div>
     </base-card>
   </section>
 </template>
 
 <script>
+import GangsterForm from '../../components/gangsters/GangsterForm.vue';
+import CapoForm from '../../components/capos/CapoForm.vue';
 export default {
+  components: { CapoForm, GangsterForm },
   data() {
     return {
-      email: {
-        val: '',
-        isValid: true,
-      },
-      password: {
-        val: '',
-        isValid: true,
-      },
+      userType: 'gangster',
     };
+  },
+  methods: {
+    signUp(formData) {
+      this.$store.dispatch('signUp', formData);
+      if (this.userType === 'gangster') {
+        this.$router.replace('/jobs');
+      } else {
+        this.$router.replace('/job-adding');
+      }
+    },
+
+    switchUserType(type) {
+      this.userType = type;
+    },
   },
 };
 </script>
-
-<style scoped>
-.container {
-  margin: 1rem auto;
-}
-
-.form-block {
-  border: 1px solid gray;
-  border-radius: 10px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.form-input {
-  padding: 0.5rem 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-action {
-  display: flex;
-  justify-content: flex-start;
-}
-
-/* .form-action a:hover{
-  color: orange;
-} */
-
-a:visited,
-a:link {
-    text-decoration: none;
-    color: blue;
-}
-
-label {
-  font-weight: bold;
-}
-
-.invalid input,
-.invalid textarea {
-  border: 1px solid red;
-}
-
-.invalid p {
-  margin: 0;
-  padding: 0;
-  font-size: 0.8rem;
-  color: red;
-}
-</style>

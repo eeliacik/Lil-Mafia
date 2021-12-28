@@ -5,10 +5,9 @@ import SignUp from './pages/authentication/SignUp.vue';
 import LogIn from './pages/authentication/LogIn.vue';
 import GangstersList from './pages/gangsters/GangstersList.vue';
 import GangsterDetails from './pages/gangsters/GangsterDetails.vue';
-import GangsterRegistration from './pages/gangsters/GangsterRegistration.vue';
 import JobsList from './pages/jobs/JobsList.vue';
 import JobDetails from './pages/jobs/JobDetails.vue';
-import JobRegistration from './pages/jobs/JobRegistration.vue';
+import JobAdding from './pages/jobs/JobAdding.vue';
 import NotFound from './pages/NotFound.vue';
 
 const router = createRouter({
@@ -24,16 +23,11 @@ const router = createRouter({
       component: GangsterDetails,
       props: true,
     },
-    {
-      name: 'gangster-registration',
-      path: '/gangster-registration',
-      component: GangsterRegistration,
-    },
     { name: 'jobs', path: '/jobs', component: JobsList },
     {
-      name: 'job-registration',
-      path: '/job-registration',
-      component: JobRegistration,
+      name: 'job-adding',
+      path: '/job-adding',
+      component: JobAdding,
     },
     {
       name: 'job-details',
