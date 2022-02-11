@@ -11,3 +11,12 @@
     </base-card>
   </section>
 </template>
+
+
+<style scoped>
+a:visited,
+a:link {
+  text-decoration: none;
+  color: blue;
+}
+</style>

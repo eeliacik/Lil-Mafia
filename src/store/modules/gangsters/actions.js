@@ -1,7 +1,9 @@
-
-import { postType } from '../../../axios/mafia/mafia';
-import { postGangster } from '../../../axios/mafia/mafia';
-import { getGangsters } from '../../../axios/mafia/mafia';
+import {
+  postType,
+  postGangster,
+  getGangsters,
+  postOffer,
+} from '../../../axios/mafia/mafia';
 
 export default {
   registerGangster(context, payload) {
@@ -9,7 +11,6 @@ export default {
     const token = context.rootGetters.token;
     postType(userId, token, payload.userType);
     postGangster(userId, token, payload.gangsterData);
-   
   },
   async loadGangsters(context) {
     const token = context.rootGetters.token;
@@ -32,18 +33,28 @@ export default {
     context.commit('setGangsters', gangsters);
   },
 
-  addOffer(context, jobId) {
-    const idData = {
-      gangsterId: '-MqslgL2UG70K1XNE3hV', // id of authenticated gangster. first gangster's id.
-      jobId: jobId,
-    };
-    context.commit('addOffer', idData);
+  addOffer(context, bid) {
+    const userId = context.rootGetters.userId;
+    const token = context.rootGetters.token;
+    const offers = context.getters.gangsters.find(
+      (gangster) => gangster.id === userId
+    ).offers;
+    
+    console.log(offers);
+
+    offers.push(bid);
+    postOffer(userId, token, offers);
   },
   removeOffer(context, jobId) {
-    const idData = {
-      gangsterId: '-MqslgL2UG70K1XNE3hV', // id of authenticated gangster. first gangster's id.
-      jobId: jobId,
-    };
-    context.commit('removeOffer', idData);
+    const userId = context.rootGetters.userId;
+    const token = context.rootGetters.token;
+    const offers = context.getters.gangsters.find(
+      (gangster) => gangster.id === userId
+    ).offers;
+    offers.splice(offers.findIndex(offer => offer.jobId === jobId));
+
+    console.log(offers);
+
+    postOffer(userId, token, offers);
   },
 };

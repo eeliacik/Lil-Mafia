@@ -160,7 +160,7 @@ export default {
         territory: this.terr.val,
         description: this.desc.val,
         skills: this.skills.val,
-        offers: [],
+        bids: [{gangsterId: 'take this!', price: 0}],
       };
 
       this.$emit('add-job', formData);

@@ -10,7 +10,7 @@
       ></base-badge>
     </div>
     <div class="actions">
-      <router-link :to="gangsterDetailsLink">View Details</router-link>
+      <router-link :to="gangsterDetailsLink">View Gangster Details</router-link>
     </div>
   </li>
 </template>

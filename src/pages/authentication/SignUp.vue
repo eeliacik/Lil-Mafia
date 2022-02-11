@@ -1,6 +1,7 @@
 <template>
   <section>
-    <base-card><h2>Sign Up</h2></base-card>
+    <base-card><h2>Sign Up</h2>
+    </base-card>
     <base-card>
       <button @click="switchUserType('gangster')">Register as Gangster</button>
       <button @click="switchUserType('capo')">Register as Capo</button>
@@ -27,13 +28,17 @@ export default {
     };
   },
   methods: {
-    signUp(formData) {
-      this.$store.dispatch('signUp', formData);
-      if (this.userType === 'gangster') {
+    async signUp(formData) {
+      this.$store.dispatch('signUp', formData)
+      .then((userType) => {
+      if (userType === 'gangster') {
         this.$router.replace('/jobs');
       } else {
-        this.$router.replace('/job-adding');
-      }
+        this.$router.replace('/newjob');
+      }})
+      .catch((error) => {
+        console.log(error);
+      })
     },
 
     switchUserType(type) {

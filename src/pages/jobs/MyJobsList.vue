@@ -1,6 +1,6 @@
 <template>
   <section>
-    <base-card><h2>Jobs</h2></base-card>
+    <base-card><h2>My Jobs</h2></base-card>
     <base-card>
       <job-filter @get-skills="filterJobs"></job-filter>
     </base-card>
@@ -32,20 +32,33 @@ export default {
   components: { JobItem, JobFilter },
   data() {
     return {
-      activeSkills: ['blackmail', 'bully', 'kidnap', 'launder', 'pickpocket', 'smuggle'],
+      activeSkills: [
+        'blackmail',
+        'bully',
+        'kidnap',
+        'launder',
+        'pickpocket',
+        'smuggle',
+      ],
     };
   },
   computed: {
+    capoId() {
+      return this.$store.getters.userId;
+    },
     jobs() {
       return this.$store.getters['jobs/jobs'];
     },
     filteredJobs() {
-      return this.jobs.filter((job) => {
-        return this.activeSkills.some((skill) => {
-          return job.skills.includes(skill);
-        });
-      });
+      return this.jobs
+        .filter((job) => {
+          return this.activeSkills.some((skill) => {
+            return job.skills.includes(skill);
+          });
+        })
+        .filter((job) => job.capoId === this.capoId);
     },
+
     hasJobs() {
       return ArrayNotEmpty(this.jobs);
     },
@@ -66,11 +79,9 @@ export default {
 </script>
 
 <style scoped>
-
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 </style>

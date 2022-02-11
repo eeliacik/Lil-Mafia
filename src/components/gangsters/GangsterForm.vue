@@ -226,15 +226,13 @@ export default {
         from: this.from.val,
         description: this.desc.val,
         skills: this.skills.val,
-        offers: [],
+        offers: [{jobId: 'take this!', price: 0}],
         email: this.email.val,
         password: this.password.val,
         userType: 'gangster'
       };
 
       this.$emit('sign-up-gangster', formData);
-
-      this.$router.replace('/gangsters');
     },
   },
 };

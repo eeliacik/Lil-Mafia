@@ -1,9 +1,7 @@
 <template>
   <section>
     <base-card>
-      <h2>Gangster List</h2>
-    </base-card>
-    <base-card>
+    <h2>Gangsters</h2>
       <ul v-if="hasGangsters && hasSkills">
         <gangster-item
           v-for="gangster in filteredGangsters"
@@ -31,7 +29,6 @@ export default {
   components: { GangsterItem },
   data() {
     return {
-      // filteredGangsters: [],
       activeSkills: ['blackmail', 'bully', 'kidnap', 'launder', 'pickpocket', 'smuggle'],
     };
   },
@@ -44,43 +41,6 @@ export default {
         return this.activeSkills.some((skill) => {
           return gangster.skills.includes(skill);
         });
-        // if (
-        //   this.activeSkills.includes('blackmail') &&
-        //   gangster.skills.includes('blackmail')
-        // ) {
-        //   return true;
-        // }
-        // if (
-        //   this.activeSkills.includes('bully') &&
-        //   gangster.skills.includes('bully')
-        // ) {
-        //   return true;
-        // }
-        // if (
-        //   this.activeSkills.includes('kidnap') &&
-        //   gangster.skills.includes('kidnap')
-        // ) {
-        //   return true;
-        // }
-        // if (
-        //   this.activeSkills.includes('launder') &&
-        //   gangster.skills.includes('launder')
-        // ) {
-        //   return true;
-        // }
-        // if (
-        //   this.activeSkills.includes('pickpocket') &&
-        //   gangster.skills.includes('pickpocket')
-        // ) {
-        //   return true;
-        // }
-        // if (
-        //   this.activeSkills.includes('smuggle') &&
-        //   gangster.skills.includes('smuggle')
-        // ) {
-        //   return true;
-        // }
-        // return false;
       });
     },
     hasGangsters() {
@@ -95,9 +55,9 @@ export default {
       this.activeSkills = selectedSkills;
     },
   },
-  created() {
-    this.$store.dispatch('gangsters/loadGangsters');
-  },
+  // created() {
+  //   this.$store.dispatch('gangsters/loadGangsters');
+  // },
 };
 </script>
 

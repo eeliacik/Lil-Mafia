@@ -21,6 +21,7 @@
               </p>
             </div>
           </div>
+          <p v-if="isLoading">Signing In...</p>
         </form>
       </div>
     </base-card>
@@ -39,12 +40,23 @@ export default {
         val: '',
         isValid: true,
       },
+      isLoading: false,
     };
   },
   methods: {
-    login() {
+    async login() {
+      this.isLoading = true;
       const authData = { email: this.email.val, password: this.password.val };
-      this.$store.dispatch('login', authData);
+      this.$store.dispatch('login', authData)
+      .then((userType)=> {
+        
+        console.log('login ' + userType)
+
+        this.$router.push(userType === 'gangster' ? '/jobs' : '/myjobs')
+      })
+      .catch((error) => {
+        console.log(error);
+      })
     },
   },
 };

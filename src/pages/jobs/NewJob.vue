@@ -3,7 +3,7 @@
     <h2>New Job</h2>
   </base-card>
   <base-card>
-    <job-form @add-job="addJob"></job-form>
+    <job-form @add-job="newjob"></job-form>
   </base-card>
 </template>
 
@@ -13,8 +13,8 @@ import JobForm from '../../components/jobs/JobForm.vue';
 export default {
   components: { JobForm },
   methods: {
-    addJob(formData) {
-      this.$store.dispatch('jobs/addJob', formData);
+    newjob(formData) {
+      this.$store.dispatch('jobs/newjob', formData);
     },
   },
 };

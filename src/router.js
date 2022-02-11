@@ -7,7 +7,9 @@ import GangstersList from './pages/gangsters/GangstersList.vue';
 import GangsterDetails from './pages/gangsters/GangsterDetails.vue';
 import JobsList from './pages/jobs/JobsList.vue';
 import JobDetails from './pages/jobs/JobDetails.vue';
-import JobAdding from './pages/jobs/JobAdding.vue';
+import NewJob from './pages/jobs/NewJob.vue';
+import MyJobsList from './pages/jobs/MyJobsList.vue';
+import OffersList from './pages/offers/OffersList.vue';
 import NotFound from './pages/NotFound.vue';
 
 const router = createRouter({
@@ -24,16 +26,18 @@ const router = createRouter({
       props: true,
     },
     { name: 'jobs', path: '/jobs', component: JobsList },
+    { name: 'my-jobs', path: '/myjobs', component: MyJobsList },
     {
-      name: 'job-adding',
-      path: '/job-adding',
-      component: JobAdding,
+      name: 'new-job',
+      path: '/newjob',
+      component: NewJob,
     },
     {
       name: 'job-details',
       path: '/job/:id',
       component: JobDetails,
       props: true,
+      children: [{ path: 'offers', component: OffersList }],
     },
     { name: 'not-found', path: '/:notFound(.*)', component: NotFound },
   ],

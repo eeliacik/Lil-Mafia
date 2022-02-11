@@ -3,10 +3,11 @@
     <base-card>
       <div>
         <h2>{{ fullName }}</h2>
-        <h3>from "{{ from }}"</h3>
+        <h3>From "{{ from }}"</h3>
         <h3>aKa "{{ aka }}"</h3>
-        <p>{{ desc }}</p>
+        <p>Description: {{ desc }}</p>
         <div>
+          Skills: 
           <base-badge
             v-for="skill in skills"
             :key="skill"
@@ -15,19 +16,22 @@
           ></base-badge>
         </div>
       </div>
-
-      <router-view></router-view>
-
       <div class="details-action">
-        <router-link to="/gangsters">Back to Gangsters</router-link>
+        <router-link to="">Back to Job</router-link>
       </div>
+    </base-card>
+    <base-card>
+      <h2>Offer for "job name" is "price" $
+      </h2>
+      <button>Accept and Send Message</button>
+      <button>Decline Offer</button>
     </base-card>
   </section>
 </template>
 
 <script>
 export default {
-  props: ['id'],
+  props: ['id', 'job'],
   computed: {
     gangster() {
       return this.$store.getters['gangsters/gangsters'].find(
@@ -49,6 +53,10 @@ export default {
     skills() {
       return this.gangster.skills;
     },
+  },
+  created() {
+    console.log(this.$route.params)
+    console.log(this.gangster)
   },
 };
 </script>

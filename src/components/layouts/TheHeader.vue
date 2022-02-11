@@ -8,29 +8,51 @@
       </div>
       <ul>
         <li>
-          <router-link to="/gangsters">Gangsters</router-link>
+          <router-link v-if="userType === 'gangster'" to="/jobs">Jobs</router-link>
+        </li>
+        <!-- <li>
+          <router-link v-if="userType === 'capo'" to="/gangsters">Gangsters</router-link>
+        </li> -->
+        <li>
+          <router-link v-if="userType === 'capo'" to="/myjobs">My Jobs</router-link>
         </li>
         <li>
-          <router-link to="/jobs">Jobs</router-link>
+          <router-link v-if="userType === 'capo'" to="/newjob">New Job</router-link>
         </li>
         <li>
-          <router-link to="/job-adding">New Job</router-link>
+          <router-link v-if="!isAuthenticated" to="/signup">Sign Up</router-link>
         </li>
         <li>
-          <router-link to="/login">Log In</router-link>
-        </li>
-        <li>
-          <router-link to="/signup">Sign Up</router-link>
+          <router-link v-if="!isAuthenticated" to="/login">Login</router-link>
+          <router-link v-else @click="logout" to="/">Logout</router-link>
         </li>
       </ul>
     </nav>
   </header>
 </template>
 
+<script>
+export default {
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
+    },
+    userType() {
+      return this.$store.getters.userType;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
+    },
+  },
+}
+</script>
+
 <style scoped>
 header {
   width: 100%;
-  height: 90px;
+  height: 120px;
   display: flex;
   background-color: rgb(109, 99, 150);
   justify-content: center;
@@ -38,7 +60,7 @@ header {
 }
 
 nav {
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -56,10 +78,10 @@ nav {
 a {
   text-decoration: none;
   color: pink;
-  margin: 0 0.25rem;
-  padding: 0.5rem 0.75rem;
+  margin: 0 5px;
+  padding: 5px;
   border: 1px solid transparent;
-  border-radius: 0.3rem;
+  border-radius: 2px;
 }
 
 a:hover {

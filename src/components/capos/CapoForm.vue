@@ -106,7 +106,6 @@ export default {
         this.formIsValid = false;
       }
     },
-
     submitForm() {
       this.formIsValid = true;
       this.textValidation('firstName');
@@ -122,15 +121,11 @@ export default {
         firstName: this.firstName.val,
         lastName: this.lastName.val,
         nickName: this.nickName.val,
-        jobs: [],
         email: this.email.val,
         password: this.password.val,
         userType: 'capo',
       }
-
       this.$emit('sign-up-capo', formData);
-
-      this.$router.replace('/job-adding');
     },
   },
 };
