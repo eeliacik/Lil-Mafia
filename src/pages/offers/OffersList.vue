@@ -34,7 +34,9 @@ export default {
       return this.$route.params.id;
     },
     gangsterOffers() {
-      return this.gangsters.filter((gangster) => gangster.offers.jobId !== this.jobId);
+      return this.gangsters.filter((gangster) => {
+        return gangster.offers.find((offer) => offer.jobId === this.id);
+      });
     },
   },
   created() {
