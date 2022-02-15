@@ -10,7 +10,9 @@
           :title="skill"
         ></base-badge>
       </div>
+      <button>
         <router-link :to="jobDetailsLink">Job Details</router-link>
+      </button>
     </base-card>
   </li>
 </template>
@@ -30,11 +32,11 @@ export default {
 </script>
 
 <style scoped>
-/* a:link,
+a:link,
 a:visited {
   color: black;
   text-decoration: none;
-} */
+}
 
 h3 {
   margin: 0;
@@ -45,6 +47,5 @@ div {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 </style>

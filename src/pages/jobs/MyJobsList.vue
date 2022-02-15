@@ -7,14 +7,13 @@
     <div>
       <base-card>
         <ul v-if="hasJobs && hasSkills">
-          <job-item
+          <my-job-item
             v-for="job in filteredJobs"
             :key="job.id"
             :id="job.id"
             :title="job.title"
-            :skills="job.skills"
-            :desc="job.description"
-          ></job-item>
+            :bids="job.bids"
+          ></my-job-item>
         </ul>
         <p v-else>No Jobs Found!</p>
       </base-card>
@@ -23,13 +22,13 @@
 </template>
 
 <script>
-import JobItem from '../../components/jobs/JobItem.vue';
+import MyJobItem from '../../components/jobs/MyJobItem.vue';
 import JobFilter from '../../components/jobs/JobFilter.vue';
 
 import { ArrayNotEmpty } from '../../utilities/array_not_empty.js';
 
 export default {
-  components: { JobItem, JobFilter },
+  components: { MyJobItem, JobFilter },
   data() {
     return {
       activeSkills: [
@@ -41,6 +40,10 @@ export default {
         'smuggle',
       ],
     };
+  },
+  created() {
+    this.$store.dispatch('jobs/loadJobs');
+    this.$store.dispatch('gangsters/loadGangsters');
   },
   computed: {
     capoId() {
@@ -70,10 +73,6 @@ export default {
     filterJobs(selectedSkills) {
       this.activeSkills = selectedSkills;
     },
-  },
-  created() {
-    this.$store.dispatch('jobs/loadJobs');
-    this.$store.dispatch('gangsters/loadGangsters');
   },
 };
 </script>

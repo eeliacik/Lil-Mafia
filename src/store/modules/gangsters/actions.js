@@ -39,7 +39,7 @@ export default {
     const offers = context.getters.gangsters.find(
       (gangster) => gangster.id === userId
     ).offers;
-    
+
     console.log(offers);
 
     offers.push(bid);
@@ -51,10 +51,46 @@ export default {
     const offers = context.getters.gangsters.find(
       (gangster) => gangster.id === userId
     ).offers;
-    offers.splice(offers.findIndex(offer => offer.jobId === jobId));
+    offers.splice(offers.findIndex((offer) => offer.jobId === jobId));
 
     console.log(offers);
 
     postOffer(userId, token, offers);
+  },
+  acceptOffer(context, offerData) {
+    const gangsterId = offerData.gangsterId;
+    const jobId = offerData.jobId;
+    const token = context.rootGetters.token;
+    const offers = context.getters.gangsters.find(
+      (gangster) => gangster.id === gangsterId
+    ).offers;
+
+    console.log(offers);
+
+    const newOffers = offers.map((offer) =>
+      offer.jobId === jobId ? { ...offer, status: 'accepted' } : offer
+    );
+
+    console.log(newOffers);
+
+    postOffer(gangsterId, token, newOffers);
+  },
+  declineOffer(context, offerData) {
+    const gangsterId = offerData.gangsterId;
+    const jobId = offerData.jobId;
+    const token = context.rootGetters.token;
+    const offers = context.getters.gangsters.find(
+      (gangster) => gangster.id === gangsterId
+    ).offers;
+
+    console.log(offers);
+
+    const newOffers = offers.map((offer) =>
+      offer.jobId === jobId ? { ...offer, status: 'declined' } : offer
+    );
+
+    console.log(newOffers);
+
+    postOffer(gangsterId, token, newOffers);
   },
 };

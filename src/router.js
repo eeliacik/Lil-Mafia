@@ -9,7 +9,6 @@ import JobsList from './pages/jobs/JobsList.vue';
 import JobDetails from './pages/jobs/JobDetails.vue';
 import NewJob from './pages/jobs/NewJob.vue';
 import MyJobsList from './pages/jobs/MyJobsList.vue';
-import OffersList from './pages/offers/OffersList.vue';
 import NotFound from './pages/NotFound.vue';
 
 const router = createRouter({
@@ -37,7 +36,6 @@ const router = createRouter({
       path: '/job/:id',
       component: JobDetails,
       props: true,
-      children: [{ path: 'offers', component: OffersList }],
     },
     { name: 'not-found', path: '/:notFound(.*)', component: NotFound },
   ],

@@ -36,23 +36,54 @@ export default {
   addBid(context, bid) {
     const userId = context.rootGetters.userId;
     const token = context.rootGetters.token;
-    const bids = context.getters.jobs.find(job => job.id === bid.jobId).bids;
-    const newBid = { gangsterId: userId, price: bid.price };
+    const bids = context.getters.jobs.find((job) => job.id === bid.jobId).bids;
+    const newBid = { gangsterId: userId, price: bid.price, status: bid.status };
     bids.push(newBid);
 
     console.log(bids);
 
     postBid(bid.jobId, token, bids);
   },
-
   removeBid(context, jobId) {
     const userId = context.rootGetters.userId;
     const token = context.rootGetters.token;
-    const bids = context.getters.jobs.find(job => job.id === jobId).bids;
-    bids.splice(bids.findIndex(bid => bid.gangsterId === userId));
-    
+    const bids = context.getters.jobs.find((job) => job.id === jobId).bids;
+    bids.splice(bids.findIndex((bid) => bid.gangsterId === userId));
+
     console.log(bids);
 
     postBid(jobId, token, bids);
+  },
+  acceptBid(context, offerData) {
+    const gangsterId = offerData.gangsterId;
+    const jobId = offerData.jobId;
+    const token = context.rootGetters.token;
+    const bids = context.getters.jobs.find((job) => job.id === jobId).bids;
+
+    console.log(bids);
+
+    const newBids = bids.map((bid) =>
+      bid.gangsterId === gangsterId ? { ...bid, status: 'accepted' } : bid
+    );
+
+    console.log(newBids);
+
+    postBid(jobId, token, newBids);
+  },
+  declineBid(context, offerData) {
+    const gangsterId = offerData.gangsterId;
+    const jobId = offerData.jobId;
+    const token = context.rootGetters.token;
+    const bids = context.getters.jobs.find((job) => job.id === jobId).bids;
+
+    console.log(bids);
+
+    const newBids = bids.map((bid) =>
+      bid.gangsterId === gangsterId ? { ...bid, status: 'declined' } : bid
+    );
+
+    console.log(newBids);
+
+    postBid(jobId, token, newBids);
   },
 };

@@ -5,6 +5,9 @@
       @place-bid="placeBid"
       @close-dialog="closeDialog"
     ></job-bidding>
+          <base-card class="header">
+        <h2>Job Details</h2>
+      </base-card>
     <base-card class="container">
       <div class="details-card">
         <h2>{{ title }}</h2>
@@ -26,22 +29,6 @@
           <button v-if="!bidPlaced" @click="openBidding">Place Your Bid</button>
           <button v-else @click="withdrawOffer">Withdraw Offer</button>
         </div>
-        <div v-else>
-          <div v-if="isUserJob && hasBids">
-            <button v-show="!offersVisible">
-              <router-link
-                :to="'/job/' + this.id + '/offers'"
-                @click="toggleOffers"
-                >Show Offers</router-link
-              >
-            </button>
-            <button v-show="offersVisible">
-              <router-link :to="'/job/' + this.id" @click="toggleOffers"
-                >Hide Offers</router-link
-              >
-            </button>
-          </div>
-        </div>
         <div>
           <button v-if="isUserJob">
             <router-link to="/myjobs">Back to My Jobs</router-link>
@@ -52,20 +39,43 @@
         </div>
       </div>
     </base-card>
-    <router-view></router-view>
+    <div v-if="userType === 'capo'">
+    <div v-if="hasOffers">
+      <base-card class="header">
+        <h2>Received Offers</h2>
+      </base-card>
+    <base-card>
+      <ul>
+        <offer-item
+          v-for="gangster in gangsterOffers"
+          :key="gangster.id"
+          :id="gangster.id"
+          :aka="gangster.nickName"
+          :offers="gangster.offers"
+          :job="this.job"
+        ></offer-item>
+      </ul>
+    </base-card>
+    </div>
+    <div v-else>
+      <base-card class="header">
+        <h2>No offers received yet.</h2>
+      </base-card>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
-import jobBidding from '../../components/jobs/JobBidding.vue';
+import JobBidding from '../../components/jobs/JobBidding.vue';
+import OfferItem from '../../components/offers/OfferItem.vue';
 
 export default {
   props: ['id'],
-  components: { jobBidding },
+  components: { JobBidding, OfferItem },
   data() {
     return {
       showDialog: false,
-      offersVisible: false,
     };
   },
   computed: {
@@ -93,11 +103,19 @@ export default {
     isUserJob() {
       return this.job.capoId === this.userId;
     },
-    hasBids() {
-      return this.job.bids.length > 1;
-    },
     bidPlaced() {
       return !!this.job.bids.find((bid) => bid.gangsterId === this.userId);
+    },
+    gangsters() {
+      return this.$store.getters['gangsters/gangsters'];
+    },
+    gangsterOffers() {
+      return this.gangsters.filter((gangster) => {
+        return gangster.offers.find((offer) => offer.jobId === this.id);
+      });
+    },
+    hasOffers() {
+      return !!this.gangsterOffers.length;
     },
   },
   methods: {
@@ -108,7 +126,7 @@ export default {
     },
     placeBid(price) {
       const jobId = this.id;
-      const bid = { jobId: jobId, price: price };
+      const bid = { jobId: jobId, price: price, status:'waiting' };
       this.$store.dispatch('gangsters/addOffer', bid);
       this.$store.dispatch('jobs/addBid', bid);
     },
@@ -120,14 +138,40 @@ export default {
     closeDialog() {
       this.showDialog = false;
     },
-    toggleOffers() {
-      this.offersVisible = !this.offersVisible;
-    },
+  },
+  mounted() {
+    console.log(this.hasOffers);
   },
 };
 </script>
 
 <style scoped>
+a:link,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+h2 {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   margin: 1rem auto;
 }

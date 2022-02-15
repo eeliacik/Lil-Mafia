@@ -226,7 +226,7 @@ export default {
         from: this.from.val,
         description: this.desc.val,
         skills: this.skills.val,
-        offers: [{jobId: 'take this!', price: 0}],
+        offers: [{jobId: 'take this!', price: 0, status: 'zzz'}],
         email: this.email.val,
         password: this.password.val,
         userType: 'gangster'

@@ -1,60 +1,54 @@
 <template>
   <li>
-    <h2>{{ price }} $</h2>
     <div class="items">
-      <h2>"{{ aka }}"</h2>
-      <h3>{{ fullName }}</h3>
+      <h3>"{{ aka }}"</h3>
+      <h2>{{ price }} $</h2>
+      <p>Offer {{ status }}</p>
     </div>
     <div class="actions">
-      <router-link :to="gangsterDetailsLink">See Gangster</router-link>
+      <button>
+        <router-link :to="gangsterDetailsLink">See Gangster</router-link>
+      </button>
     </div>
   </li>
 </template>
 
 <script>
 export default {
-  props: [
-    'id',
-    'firstName',
-    'lastName',
-    'aka',
-    'from',
-    'desc',
-    'skills',
-    'offers',
-    'job',
-  ],
+  props: ['id', 'aka', 'offers', 'job'],
 
   computed: {
-    fullName() {
-      return this.firstName + ' ' + this.lastName;
-    },
-    offer() {
-      return this.offers.find((offer) => offer.jobId === this.job);
-    },
     price() {
-      return this.offered.price;
+      return this.offers.find((offer) => offer.jobId === this.job.id).price;
+    },
+    status() {
+      return this.offers.find((offer) => offer.jobId === this.job.id).status;
     },
     gangsterDetailsLink() {
       return {
         name: 'gangster-details',
         params: {
           id: this.id,
-          job: this.job,
+          jobId: this.job.id,
+          jobTitle: this.job.title,
         },
       };
     },
-  },
-  created() {
-    console.log('offer:', this.offer);
-    console.log('price:', this.price);
-    console.log('gangsterDetailsLink:', this.gangsterDetailsLink);
   },
 };
 </script>
 
 <style scoped>
+a:link,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
 li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   border: 1px solid lightgray;
   padding: 10px;
 }
@@ -66,12 +60,14 @@ h4 {
 }
 
 .items {
+  width: 60%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 }
 
 .actions {
+  width: 40%;
   display: flex;
   justify-content: flex-end;
 }

@@ -160,12 +160,12 @@ export default {
         territory: this.terr.val,
         description: this.desc.val,
         skills: this.skills.val,
-        bids: [{gangsterId: 'take this!', price: 0}],
+        bids: [{gangsterId: 'take this!', price: 0, status: 'zzz'}],
       };
 
       this.$emit('add-job', formData);
 
-      this.$router.replace('/jobs');
+      this.$router.replace('/myjobs');
     },
   },
 };

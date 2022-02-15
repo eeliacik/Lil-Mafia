@@ -28,9 +28,9 @@ export function getJobs(token) {
   return instance.get(`/jobs.json?auth=${token}`);
 }
 
-export function postOffer(userId, token, offers) {
+export function postOffer(gangsterId, token, offers) {
   return instance.patch(
-    `/gangsters/${userId}.json?auth=${token}`,
+    `/gangsters/${gangsterId}.json?auth=${token}`,
     { offers: offers }
   );
 }
