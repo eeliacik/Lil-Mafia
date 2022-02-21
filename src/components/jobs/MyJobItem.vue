@@ -3,7 +3,7 @@
     <base-card>
       <h3>{{ title }}</h3>
       <div v-show="offerCount === 2">
-        <h2>{{ offerCount - 1 }}</h2>
+        <h2>1 </h2>
         <p>Offer</p>
       </div>
       <div v-show="offerCount > 2">
@@ -35,6 +35,11 @@ export default {
         params: { id: this.id },
       };
     },
+  },
+  created() {
+    console.log('job id:', this.id)
+    console.log('offer count:', this.offerCount);
+    console.log('bids:', this.bids);
   },
 };
 </script>

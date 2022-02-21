@@ -165,7 +165,7 @@ export default {
 
       this.$emit('add-job', formData);
 
-      this.$router.replace('/myjobs');
+      
     },
   },
 };

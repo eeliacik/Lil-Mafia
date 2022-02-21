@@ -63,10 +63,18 @@ export default {
             token: data.idToken,
             tokenExpiration: data.expiresIn,
           });
-        context.dispatch('loadUserType')
-          resolve(context.rootGetters.userType);
-          
-          console.log('postLogin ' + context.rootGetters.userType);
+          // context.dispatch('loadUserType')
+          // resolve(context.rootGetters.userType);
+
+          // console.log('postLogin ' + context.rootGetters.userType);
+          return data;
+        })
+        .then(({ localId, idToken }) => {
+          return getType(localId, idToken);
+        })
+        .then(({ data }) => {
+          context.commit('setType', data);
+          resolve(data.userType);
         })
         .catch((error) => {
           reject(error);

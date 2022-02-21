@@ -15,6 +15,7 @@ export default {
   methods: {
     newjob(formData) {
       this.$store.dispatch('jobs/newjob', formData);
+      this.$router.replace('/myjobs');
     },
   },
 };

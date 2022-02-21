@@ -1,6 +1,6 @@
 <template>
   <section>
-    <base-card><h2>Jobs</h2></base-card>
+    <base-card class="header"><h2>Jobs</h2></base-card>
     <base-card>
       <job-filter @get-skills="filterJobs"></job-filter>
     </base-card>
@@ -8,7 +8,7 @@
       <base-card>
         <ul v-if="hasJobs && hasSkills">
           <job-item
-            v-for="job in filteredJobs"
+            v-for="job in availableJobs"
             :key="job.id"
             :id="job.id"
             :title="job.title"
@@ -32,10 +32,20 @@ export default {
   components: { JobItem, JobFilter },
   data() {
     return {
-      activeSkills: ['blackmail', 'bully', 'kidnap', 'launder', 'pickpocket', 'smuggle'],
+      activeSkills: [
+        'blackmail',
+        'bully',
+        'kidnap',
+        'launder',
+        'pickpocket',
+        'smuggle',
+      ],
     };
   },
   computed: {
+    userId() {
+      return this.$store.getters.userId;
+    },
     jobs() {
       return this.$store.getters['jobs/jobs'];
     },
@@ -44,6 +54,11 @@ export default {
         return this.activeSkills.some((skill) => {
           return job.skills.includes(skill);
         });
+      });
+    },
+    availableJobs() {
+      return this.filteredJobs.filter((job) => {
+        return !job.bids.some((bid) => { return bid.gangsterId === this.userId});
       });
     },
     hasJobs() {
@@ -62,15 +77,25 @@ export default {
     this.$store.dispatch('jobs/loadJobs');
     this.$store.dispatch('gangsters/loadGangsters');
   },
+  mounted() {
+    console.log(this.userId);
+    console.log('filtered jobs:', this.filteredJobs);
+    console.log('available jobs:', this.availableJobs);
+  },
 };
 </script>
 
 <style scoped>
-
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 </style>

@@ -2,26 +2,35 @@
   <header>
     <nav>
       <div class="logo">
-        <router-link to="/">
+        <router-link :to="homeLink">
           <h2>Lil'Mafia</h2>
         </router-link>
       </div>
       <ul>
         <li>
-          <router-link v-if="userType === 'gangster'" to="/jobs">Jobs</router-link>
+          <router-link v-if="userType === 'gangster'" to="/jobs"
+            >Jobs</router-link
+          >
+        </li>
+        <li>
+          <router-link v-if="userType === 'gangster'" to="/myoffers"
+            >My Offers</router-link
+          >
+        </li>
+        <li>
+          <router-link v-if="userType === 'capo'" to="/myjobs"
+            >My Jobs</router-link
+          >
         </li>
         <!-- <li>
-          <router-link v-if="userType === 'capo'" to="/gangsters">Gangsters</router-link>
+          <router-link v-if="userType === 'capo'" to="/newjob"
+            >New Job</router-link
+          >
         </li> -->
-        <li>
-          <router-link v-if="userType === 'capo'" to="/myjobs">My Jobs</router-link>
-        </li>
-        <li>
-          <router-link v-if="userType === 'capo'" to="/newjob">New Job</router-link>
-        </li>
-        <li>
-          <router-link v-if="!isAuthenticated" to="/signup">Sign Up</router-link>
-        </li>
+        <!-- <li>
+          <router-link v-if="!isAuthenticated" to="/signup"
+            >Sign Up</router-link>
+        </li> -->
         <li>
           <router-link v-if="!isAuthenticated" to="/login">Login</router-link>
           <router-link v-else @click="logout" to="/">Logout</router-link>
@@ -40,13 +49,22 @@ export default {
     userType() {
       return this.$store.getters.userType;
     },
+    homeLink() {
+      if (this.userType === 'gangster') {
+        return '/jobs';
+      } else if (this.userType === 'capo') {
+        return '/myjobs';
+      } else {
+        return '/';
+      }
+    },
   },
   methods: {
     logout() {
       this.$store.dispatch('logout');
     },
   },
-}
+};
 </script>
 
 <style scoped>

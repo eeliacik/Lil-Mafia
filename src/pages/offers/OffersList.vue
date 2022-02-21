@@ -1,49 +1,39 @@
 <template>
   <section>
+    <base-card class="header"><h2>My Offers</h2></base-card>
     <base-card>
-    <h3>Received Offers</h3>
-      <ul>
-        <offer-item
-          v-for="gangster in gangsterOffers"
-          :key="gangster.id"
-          :id="gangster.id"
-          :firstName="gangster.firstName"
-          :lastName="gangster.lastName"
-          :aka="gangster.nickName"
-          :from="gangster.from"
-          :desc="gangster.description"
-          :skills="gangster.skills"
-          :offers="gangster.offers"
-          :job="this.jobId"
-        ></offer-item>
+      <p v-if="offers.length === 0">You haven't place any bid yet.</p>
+      <ul v-else>
+        <gangster-offers
+          v-for="offer in offers"
+          :key="offer.jobId"
+          :id="offer.jobId"
+          :price="offer.price"
+          :status="offer.status"
+        ></gangster-offers>
       </ul>
     </base-card>
   </section>
 </template>
 
 <script>
-import OfferItem from '../../components/offers/OfferItem.vue';
+import GangsterOffers from '../../components/offers/GangsterOffers.vue';
 
 export default {
-  components: { OfferItem },
+  components: { GangsterOffers },
   computed: {
     gangsters() {
       return this.$store.getters['gangsters/gangsters'];
     },
-    jobId() {
-      return this.$route.params.id;
-    },
-    gangsterOffers() {
-      return this.gangsters.filter((gangster) => {
-        return gangster.offers.find((offer) => offer.jobId === this.id);
-      });
+    offers() {
+      return this.gangsters
+        .find((gangster) => gangster.id === this.$store.getters.userId)
+        .offers.filter((offer) => offer.jobId !== 'take this!');
     },
   },
   created() {
-    console.log(this.jobId)
-  },
-  mounted() {
-    console.log(this.jobId, this.gangsterOffers);
+    console.log('gangster id:', this.gangsterId);
+    console.log('offers:', this.offers);
   },
 };
 </script>
@@ -56,6 +46,13 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .list-button {

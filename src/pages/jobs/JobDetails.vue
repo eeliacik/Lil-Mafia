@@ -5,9 +5,9 @@
       @place-bid="placeBid"
       @close-dialog="closeDialog"
     ></job-bidding>
-          <base-card class="header">
-        <h2>Job Details</h2>
-      </base-card>
+    <base-card class="header">
+      <h2>Job Details</h2>
+    </base-card>
     <base-card class="container">
       <div class="details-card">
         <h2>{{ title }}</h2>
@@ -25,9 +25,8 @@
         </div>
       </div>
       <div class="details-action">
-        <div v-if="userType === 'gangster'">
-          <button v-if="!bidPlaced" @click="openBidding">Place Your Bid</button>
-          <button v-else @click="withdrawOffer">Withdraw Offer</button>
+        <div v-if="userType === 'gangster' && !bidPlaced">
+          <button @click="openBidding">Place Your Bid</button>
         </div>
         <div>
           <button v-if="isUserJob">
@@ -40,27 +39,27 @@
       </div>
     </base-card>
     <div v-if="userType === 'capo'">
-    <div v-if="hasOffers">
-      <base-card class="header">
-        <h2>Received Offers</h2>
-      </base-card>
-    <base-card>
-      <ul>
-        <offer-item
-          v-for="gangster in gangsterOffers"
-          :key="gangster.id"
-          :id="gangster.id"
-          :aka="gangster.nickName"
-          :offers="gangster.offers"
-          :job="this.job"
-        ></offer-item>
-      </ul>
-    </base-card>
-    </div>
-    <div v-else>
-      <base-card class="header">
-        <h2>No offers received yet.</h2>
-      </base-card>
+      <div v-if="hasOffers">
+        <base-card class="header">
+          <h2>Received Offers</h2>
+        </base-card>
+        <base-card>
+          <ul>
+            <capo-offers
+              v-for="gangster in gangsterOffers"
+              :key="gangster.id"
+              :id="gangster.id"
+              :aka="gangster.nickName"
+              :offers="gangster.offers"
+              :job="this.job"
+            ></capo-offers>
+          </ul>
+        </base-card>
+      </div>
+      <div v-else>
+        <base-card class="header">
+          <h2>No offers received yet.</h2>
+        </base-card>
       </div>
     </div>
   </section>
@@ -68,11 +67,11 @@
 
 <script>
 import JobBidding from '../../components/jobs/JobBidding.vue';
-import OfferItem from '../../components/offers/OfferItem.vue';
+import CapoOffers from '../../components/offers/CapoOffers.vue';
 
 export default {
   props: ['id'],
-  components: { JobBidding, OfferItem },
+  components: { JobBidding, CapoOffers },
   data() {
     return {
       showDialog: false,
@@ -106,6 +105,9 @@ export default {
     bidPlaced() {
       return !!this.job.bids.find((bid) => bid.gangsterId === this.userId);
     },
+    bidStatus() {
+      return this.job.bids.find((bid) => bid.gangsterId === this.userId).status;
+    },
     gangsters() {
       return this.$store.getters['gangsters/gangsters'];
     },
@@ -126,7 +128,7 @@ export default {
     },
     placeBid(price) {
       const jobId = this.id;
-      const bid = { jobId: jobId, price: price, status:'waiting' };
+      const bid = { jobId: jobId, price: price, status: 'waiting' };
       this.$store.dispatch('gangsters/addOffer', bid);
       this.$store.dispatch('jobs/addBid', bid);
     },
@@ -140,7 +142,8 @@ export default {
     },
   },
   mounted() {
-    console.log(this.hasOffers);
+    console.log('has offers', this.hasOffers);
+    console.log('gangster offers', this.gangsterOffers);
   },
 };
 </script>
