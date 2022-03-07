@@ -2,6 +2,7 @@
   <section>
     <job-bidding
       :showDialog="showDialog"
+      :sendingBid="sendingBid"
       @place-bid="placeBid"
       @close-dialog="closeDialog"
     ></job-bidding>
@@ -75,6 +76,7 @@ export default {
   data() {
     return {
       showDialog: false,
+      sendingBid: false,
     };
   },
   computed: {
@@ -123,27 +125,45 @@ export default {
   methods: {
     openBidding() {
       this.showDialog = true;
-
-      console.log(this.job, this.bidPlaced);
     },
-    placeBid(price) {
+    async placeBid(price) {
       const jobId = this.id;
       const bid = { jobId: jobId, price: price, status: 'waiting' };
-      this.$store.dispatch('gangsters/addOffer', bid);
-      this.$store.dispatch('jobs/addBid', bid);
+      this.sendingBid = true;
+      try {
+        await this.$store.dispatch('gangsters/addOffer', bid);
+        await this.$store.dispatch('jobs/addBid', bid);
+      } catch (error) {
+        console.error(error);
+      }
+      this.showDialog = false;
+      this.sendingBid = false;
+      this.$router.push('/myoffers');
     },
-    withdrawOffer() {
-      const jobId = this.id;
-      this.$store.dispatch('gangsters/removeOffer', jobId);
-      this.$store.dispatch('jobs/removeBid', jobId);
-    },
+    // placeBid(price) {
+    //   const jobId = this.id;
+    //   const bid = { jobId: jobId, price: price, status: 'waiting' };
+    //   this.sendingBid = true;
+    //   this.$store
+    //     .dispatch('gangsters/addOffer', bid)
+    //     .then(() => {
+    //       return this.$store.dispatch('jobs/addBid', bid);
+    //     })
+    //     .then(() => {
+    //       this.showDialog = false;
+    //     })
+    //     .then(() => {
+    //       this.sendingBid = false;
+    //       this.$router.push('/myoffers');
+    //     });
+    // },
     closeDialog() {
       this.showDialog = false;
     },
   },
-  mounted() {
-    console.log('has offers', this.hasOffers);
-    console.log('gangster offers', this.gangsterOffers);
+  created() {
+    this.$store.dispatch('jobs/loadJobs');
+    this.$store.dispatch('gangsters/loadGangsters');
   },
 };
 </script>

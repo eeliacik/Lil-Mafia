@@ -13,7 +13,9 @@
           >
         </li>
         <li>
-          <router-link v-if="userType === 'gangster'" to="/myoffers"
+          <router-link
+            v-if="userType === 'gangster'"
+            to="/myoffers"
             >My Offers</router-link
           >
         </li>

@@ -58,11 +58,13 @@ export default {
     },
     availableJobs() {
       return this.filteredJobs.filter((job) => {
-        return !job.bids.some((bid) => { return bid.gangsterId === this.userId});
+        return !job.bids.some((bid) => {
+          return bid.gangsterId === this.userId;
+        });
       });
     },
     hasJobs() {
-      return ArrayNotEmpty(this.jobs);
+      return ArrayNotEmpty(this.availableJobs);
     },
     hasSkills() {
       return ArrayNotEmpty(this.activeSkills);
@@ -76,11 +78,6 @@ export default {
   created() {
     this.$store.dispatch('jobs/loadJobs');
     this.$store.dispatch('gangsters/loadGangsters');
-  },
-  mounted() {
-    console.log(this.userId);
-    console.log('filtered jobs:', this.filteredJobs);
-    console.log('available jobs:', this.availableJobs);
   },
 };
 </script>

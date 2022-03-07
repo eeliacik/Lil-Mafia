@@ -4,7 +4,8 @@
     <div>
       <base-card>
         <h4><router-link to="/newjob">+ New Job</router-link></h4>
-        <ul v-if="hasJobs">
+        <p v-if="!hasJobs">You haven't add any job yet.</p>
+        <ul v-else>
           <my-job-item
             v-for="job in myJobs"
             :key="job.id"
@@ -13,7 +14,6 @@
             :bids="job.bids"
           ></my-job-item>
         </ul>
-        <p v-else>No Jobs Found!</p>
       </base-card>
     </div>
   </section>

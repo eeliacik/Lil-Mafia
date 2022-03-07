@@ -23,9 +23,6 @@ export default {
             return '/offer/' + this.id;
         },
     },
-    created() {
-        console.log(this.job)
-    },
 }
 </script>
 

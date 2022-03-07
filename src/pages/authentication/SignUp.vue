@@ -1,18 +1,18 @@
 <template>
   <section>
-    <base-card><h2>Sign Up</h2>
-    </base-card>
+    <base-card><h2>Sign Up</h2> </base-card>
     <base-card>
       <button @click="switchUserType('gangster')">Register as Gangster</button>
       <button @click="switchUserType('capo')">Register as Capo</button>
     </base-card>
     <base-card>
-      <div v-if="userType === 'gangster'">
+      <div v-if="typeSelect === 'gangster'">
         <gangster-form @sign-up-gangster="signUp"></gangster-form>
       </div>
       <div v-else>
         <capo-form @sign-up-capo="signUp"></capo-form>
       </div>
+    <p v-if="isLoading">Signing Up...</p>
     </base-card>
   </section>
 </template>
@@ -24,25 +24,25 @@ export default {
   components: { CapoForm, GangsterForm },
   data() {
     return {
-      userType: 'gangster',
+      typeSelect: 'gangster',
+      isLoading: false,
     };
   },
   methods: {
-    async signUp(formData) {
-      this.$store.dispatch('signUp', formData)
-      .then((userType) => {
-      if (userType === 'gangster') {
-        this.$router.replace('/jobs');
-      } else {
-        this.$router.replace('/newjob');
-      }})
-      .catch((error) => {
-        console.log(error);
-      })
+    signUp(formData) {
+      this.isLoading = true;
+      this.$store
+        .dispatch('signUp', formData)
+        .then((data) => {
+          this.isLoading = false;
+          this.$router.replace(data.userType === 'gangster' ? '/jobs' : '/newjob')
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-
     switchUserType(type) {
-      this.userType = type;
+      this.typeSelect = type;
     },
   },
 };

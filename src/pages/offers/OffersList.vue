@@ -2,7 +2,7 @@
   <section>
     <base-card class="header"><h2>My Offers</h2></base-card>
     <base-card>
-      <p v-if="offers.length === 0">You haven't place any bid yet.</p>
+      <p v-if="offers.length === 0">You haven't bid on any job yet.</p>
       <ul v-else>
         <gangster-offers
           v-for="offer in offers"
@@ -31,9 +31,10 @@ export default {
         .offers.filter((offer) => offer.jobId !== 'take this!');
     },
   },
-  created() {
-    console.log('gangster id:', this.gangsterId);
-    console.log('offers:', this.offers);
+   created() {
+    this.$store.dispatch('jobs/loadJobs');
+    this.$store.dispatch('gangsters/loadGangsters');
+    console.log('offers: ', this.offers)
   },
 };
 </script>

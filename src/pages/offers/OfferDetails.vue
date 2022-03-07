@@ -20,8 +20,12 @@
         </div>
       </div>
       <p v-if="bidPlaced && bidStatus === 'accepted'">Your offer accepted.</p>
-          <p v-else-if="bidPlaced && bidStatus === 'declined'">Your offer rejected.</p>
-          <p v-else-if="bidPlaced && bidStatus === 'waiting'">Your offer is waiting.</p>
+      <p v-else-if="bidPlaced && bidStatus === 'declined'">
+        Your offer rejected.
+      </p>
+      <p v-else-if="bidPlaced && bidStatus === 'waiting'">
+        Your offer is waiting.
+      </p>
       <div class="details-action">
         <div v-if="userType === 'gangster'">
           <button
@@ -36,6 +40,7 @@
             <router-link to="/myoffers">Back to My Offers</router-link>
           </button>
         </div>
+        <p v-show="withdrawing">Withdrawing...</p>
       </div>
     </base-card>
   </section>
@@ -44,6 +49,11 @@
 <script>
 export default {
   props: ['id'],
+  data() {
+    return {
+      withdrawing: false,
+    };
+  },
   computed: {
     job() {
       return this.$store.getters['jobs/jobs'].find((job) => job.id === this.id);
@@ -77,10 +87,17 @@ export default {
     },
   },
   methods: {
-    withdrawOffer() {
+    async withdrawOffer() {
+      this.withdrawing = true;
       const jobId = this.id;
-      this.$store.dispatch('gangsters/removeOffer', jobId);
-      this.$store.dispatch('jobs/removeBid', jobId);
+      try {
+        await this.$store.dispatch('gangsters/removeOffer', jobId);
+        await this.$store.dispatch('jobs/removeBid', jobId);
+      } catch (error) {
+        console.error(error);
+      }
+      this.withdrawing = false;
+      this.$router.push('/myoffers');
     },
   },
 };

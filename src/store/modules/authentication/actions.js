@@ -10,8 +10,7 @@ export default {
         password: formData.password,
         returnSecureToken: true,
       };
-      console.log(authData);
-
+      const userType = { userType: formData.userType };
       postSignUp(authData)
         .then(({ data }) => {
           context.commit('setUser', {
@@ -19,7 +18,9 @@ export default {
             token: data.idToken,
             tokenExpiration: data.expiresIn,
           });
-          const userType = { userType: formData.userType };
+          return data;
+        })
+        .then(() => {
           if (formData.userType === 'gangster') {
             const gangsterData = {
               firstName: formData.firstName,
@@ -34,6 +35,7 @@ export default {
               userType,
               gangsterData,
             });
+            return;
           } else {
             const capoData = {
               firstName: formData.firstName,
@@ -41,8 +43,12 @@ export default {
               nickName: formData.nickName,
             };
             context.dispatch('capos/registerCapo', { userType, capoData });
-            resolve(context.rootGetters.userType);
+            return;
           }
+        })
+        .then(() => {
+          context.commit('setType', userType);
+          resolve(userType);
         })
         .catch((error) => {
           reject(error);
@@ -63,10 +69,6 @@ export default {
             token: data.idToken,
             tokenExpiration: data.expiresIn,
           });
-          // context.dispatch('loadUserType')
-          // resolve(context.rootGetters.userType);
-
-          // console.log('postLogin ' + context.rootGetters.userType);
           return data;
         })
         .then(({ localId, idToken }) => {
@@ -79,18 +81,9 @@ export default {
         .catch((error) => {
           reject(error);
         });
-    })
+    });
   },
-  async loadUserType(context) {
-    const userId = context.rootGetters.userId;
-    const token = context.rootGetters.token;
-    const response = await getType(userId, token);
-    const responseData = await response.data;
-    context.commit('setType', responseData);
 
-    console.log('loadUserType ' + responseData.userType);
-
-  },
   logout(context) {
     context.commit('setUser', {
       email: null,

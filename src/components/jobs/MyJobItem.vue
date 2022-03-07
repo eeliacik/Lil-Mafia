@@ -36,11 +36,6 @@ export default {
       };
     },
   },
-  created() {
-    console.log('job id:', this.id)
-    console.log('offer count:', this.offerCount);
-    console.log('bids:', this.bids);
-  },
 };
 </script>
 

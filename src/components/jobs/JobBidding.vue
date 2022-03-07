@@ -2,13 +2,14 @@
   <teleport to="body">
     <div v-if="showDialog" @click="closeDialog" class="backdrop"></div>
     <dialog open v-if="showDialog">
-      <div>
+      <div v-if="!sendingBid">
         <label for="bid">Place your bid ($) </label>
         <input id="bid" type="number" min="1" max="1000000" v-model="price" />
-      </div>
-      <div>
         <button @click="placeBid">Bid</button>
         <button @click="closeDialog">Close</button>
+      </div>
+      <div v-else>
+        <p>Bidding...</p>
       </div>
     </dialog>
   </teleport>
@@ -16,7 +17,7 @@
 
 <script>
 export default {
-  props: ['showDialog'],
+  props: ['showDialog', 'sendingBid'],
   emits: ['close-dialog', 'place-bid'],
   data() {
     return {
@@ -29,7 +30,6 @@ export default {
     },
     placeBid() {
       this.$emit('place-bid', this.price);
-      this.closeDialog();
     },
   },
 };

@@ -25,19 +25,22 @@
         <h2>{{ price }} $</h2>
         <h3>to finish "{{ title }}"</h3>
       </div>
-      <div class="details-action">
-        <div v-if="status === 'waiting'">
-          <button class="accept-button" @click="acceptOffer">
-            Accept Offer
-          </button>
-          <button class="decline-button" @click="declineOffer">
-            Decline Offer
+      <p v-show="isLoading">Loading...</p>
+      <div v-if="!this.isLoading">
+        <div class="details-action">
+          <div v-if="status === 'waiting'">
+            <button class="accept-button" @click="acceptOffer">
+              Accept Offer
+            </button>
+            <button class="decline-button" @click="declineOffer">
+              Decline Offer
+            </button>
+          </div>
+          <p v-else>You have {{ status }} this offer.</p>
+          <button>
+            <router-link :to="backToJob">Back to Job</router-link>
           </button>
         </div>
-        <p v-else>You have {{ status }} this offer.</p>
-        <button>
-          <router-link :to="backToJob">Back to Job</router-link>
-        </button>
       </div>
     </base-card>
   </section>
@@ -46,6 +49,11 @@
 <script>
 export default {
   props: ['id'],
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
   computed: {
     gangster() {
       return this.$store.getters['gangsters/gangsters'].find(
@@ -86,28 +94,36 @@ export default {
     },
   },
   methods: {
-    acceptOffer() {
+    async acceptOffer() {
+      this.isLoading = true;
       const offerData = {
         jobId: this.$route.params.jobId,
         gangsterId: this.id,
       };
-      this.$store.dispatch('gangsters/acceptOffer', offerData);
-      this.$store.dispatch('jobs/acceptBid', offerData);
+      try {
+        await this.$store.dispatch('gangsters/acceptOffer', offerData);
+        await this.$store.dispatch('jobs/acceptBid', offerData);
+      } catch (error) {
+        console.error(error);
+      }
+      this.isLoading = false;
       this.$router.push(this.backToJob);
     },
-    declineOffer() {
+    async declineOffer() {
+      this.isLoading = true;
       const offerData = {
         jobId: this.$route.params.jobId,
         gangsterId: this.id,
       };
-      this.$store.dispatch('gangsters/declineOffer', offerData);
-      this.$store.dispatch('jobs/declineBid', offerData);
+      try {
+        await this.$store.dispatch('gangsters/declineOffer', offerData);
+        await this.$store.dispatch('jobs/declineBid', offerData);
+      } catch (error) {
+        console.error(error);
+      }
+      this.isLoading = false;
       this.$router.push(this.backToJob);
     },
-  },
-  mounted() {
-    console.log(this.$route.params);
-    console.log(this.gangster);
   },
 };
 </script>

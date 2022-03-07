@@ -44,14 +44,12 @@ export default {
     };
   },
   methods: {
-    async login() {
+    login() {
       this.isLoading = true;
       const authData = { email: this.email.val, password: this.password.val };
       this.$store.dispatch('login', authData)
       .then((userType)=> {
-        
-        console.log('login ' + userType)
-
+        this.isLoading = false;
         this.$router.push(userType === 'gangster' ? '/jobs' : '/myjobs')
       })
       .catch((error) => {
