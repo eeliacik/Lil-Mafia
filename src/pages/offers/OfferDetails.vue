@@ -94,10 +94,13 @@ export default {
         await this.$store.dispatch('gangsters/removeOffer', jobId);
         await this.$store.dispatch('jobs/removeBid', jobId);
       } catch (error) {
-        console.error(error);
+        console.error(JSON.stringify(error));
+      } finally {
+
+        this.withdrawing = false;
+        this.$router.push('/myoffers');
       }
-      this.withdrawing = false;
-      this.$router.push('/myoffers');
+      
     },
   },
 };

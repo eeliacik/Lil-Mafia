@@ -23,12 +23,11 @@ export default {
   components: { GangsterOffers },
   computed: {
     gangsters() {
-      return this.$store.getters['gangsters/gangsters'];
+      return this.$store.getters['gangsters/gangsters'] || [];
     },
     offers() {
-      return this.gangsters
-        .find((gangster) => gangster.id === this.$store.getters.userId)
-        .offers.filter((offer) => offer.jobId !== 'take this!');
+      const gangster = this.gangsters.find((gangster) => gangster.id === this.$store.getters.userId)
+      return gangster ? gangster.offers.filter((offer) => offer.jobId !== 'take this!') : []
     },
   },
    created() {
