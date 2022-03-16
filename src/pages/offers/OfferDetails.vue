@@ -96,11 +96,9 @@ export default {
       } catch (error) {
         console.error(JSON.stringify(error));
       } finally {
-
         this.withdrawing = false;
         this.$router.push('/myoffers');
       }
-      
     },
   },
 };
@@ -138,7 +136,7 @@ ul {
 }
 
 .details-card {
-  border: 1px solid lightgray;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 1rem;
 }
 
