@@ -17,15 +17,7 @@
 
 <script>
 export default {
-  props: [
-    'id',
-    'firstName',
-    'lastName',
-    'aka',
-    'from',
-    'desc',
-    'skills',
-  ],
+  props: ['id', 'firstName', 'lastName', 'aka', 'from', 'desc', 'skills'],
 
   computed: {
     fullName() {
@@ -37,8 +29,8 @@ export default {
       return {
         name: 'gangster-details',
         params: {
-          id: this.id
-        }
+          id: this.id,
+        },
       };
     },
   },
@@ -47,11 +39,12 @@ export default {
 
 <style scoped>
 li {
-  border: 1px solid lightgray;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 10px;
 }
 
-h3, h4 {
+h3,
+h4 {
   margin: 0;
 }
 

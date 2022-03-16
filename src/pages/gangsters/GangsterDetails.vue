@@ -129,6 +129,7 @@ export default {
 </script>
 
 <style scoped>
+
 a:link,
 a:visited {
   color: black;

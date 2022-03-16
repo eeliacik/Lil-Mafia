@@ -3,7 +3,7 @@
     <nav>
       <div class="logo">
         <router-link :to="homeLink">
-          <h2>Lil'Mafia</h2>
+          <h1>Lil'Mafia</h1>
         </router-link>
       </div>
       <ul>
@@ -70,6 +70,11 @@ export default {
 </script>
 
 <style scoped>
+
+h1 {
+  font-size: 32px;
+}
+
 header {
   width: 100%;
   height: 120px;

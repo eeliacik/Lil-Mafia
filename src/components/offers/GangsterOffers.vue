@@ -14,16 +14,16 @@
 </template>
 <script>
 export default {
-    props: ['id', 'price', 'status'],
-    computed: {
-        job() {
-            return this.$store.getters['jobs/jobs'].find((job) => job.id === this.id);
-        },
-        offerDatailsLink() {
-            return '/offer/' + this.id;
-        },
+  props: ['id', 'price', 'status'],
+  computed: {
+    job() {
+      return this.$store.getters['jobs/jobs'].find((job) => job.id === this.id);
     },
-}
+    offerDatailsLink() {
+      return '/offer/' + this.id;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -37,7 +37,7 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 1px solid lightgray;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 10px;
 }
 

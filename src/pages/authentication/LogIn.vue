@@ -47,14 +47,15 @@ export default {
     login() {
       this.isLoading = true;
       const authData = { email: this.email.val, password: this.password.val };
-      this.$store.dispatch('login', authData)
-      .then((userType)=> {
-        this.isLoading = false;
-        this.$router.push(userType === 'gangster' ? '/jobs' : '/myjobs')
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+      this.$store
+        .dispatch('login', authData)
+        .then((userType) => {
+          this.isLoading = false;
+          this.$router.push(userType === 'gangster' ? '/jobs' : '/myjobs');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
@@ -62,7 +63,7 @@ export default {
 
 <style scoped>
 .form-block {
-  border: 1px solid lightgray;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 1rem;
   display: flex;
   flex-direction: column;
