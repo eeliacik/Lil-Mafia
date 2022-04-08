@@ -1,4 +1,4 @@
-### Lil'Mafia
+# Lil'Mafia
 
 ## vue-crud-project
 
