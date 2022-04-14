@@ -2,7 +2,7 @@
 
 ## A Free Agent Gangster Hub
 
-## CRUD app in Vue.js
+## CRUD app with Vue.js
 
 ## https://vue-crud-project-3e582.web.app/
 
