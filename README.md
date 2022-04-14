@@ -1,6 +1,8 @@
 # Lil'Mafia
 
-## vue-crud-project
+## A Free Agent Gangster Hub
+
+## CRUD app in Vue.js
 
 ## https://vue-crud-project-3e582.web.app/
 
