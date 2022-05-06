@@ -4,7 +4,7 @@
 
 ### Description: ...
 
-[Open App](https://vue-crud-project-3e582.web.app/)
+Open [Lil'Mafia](https://vue-crud-project-3e582.web.app/)
 
 ### Status: I am working on visual design. 
 
