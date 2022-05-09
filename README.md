@@ -1,10 +1,10 @@
 # Lil'Mafia
 
-A free agent gangster hub that meets capos and gangsters based on job finding by skills and bidding on jobs. Users can register as a Capo or a Gangster.
+A tiny mafia hub that brings together free-agent capos and gangsters based on job matching by skills. Users can register as a Capo or a Gangster.
 
 #### Capos
 - Create and remove jobs
-- See gangsters details who make bid 
+- See gangsters details who made bid 
 - Accept or decline received bids from gangsters
 - Follow bids status
 
