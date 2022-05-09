@@ -4,14 +4,14 @@ A tiny mafia hub that brings together free-agent capos and gangsters based on jo
 
 #### Capos
 - Create and remove jobs
-- See gangsters details who made bid 
+- See bids for created jobs
+- Enter gangsters details who made bid 
 - Accept or decline received bids from gangsters
-- Follow bids status
 
 #### Gangsters
 - Find jobs by skills filter
 - See job details
-- Make bids and follow bid status
+- Make bids and follow status of bids
 
 ## Demo
 Here is the working live demo of [Lil'Mafia](https://vue-crud-project-3e582.web.app/).
