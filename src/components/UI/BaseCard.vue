@@ -1,14 +1,16 @@
 <template>
-  <div>
+  <div class="base-card">
     <slot></slot>
   </div>
 </template>
 
-<style scoped>
-div {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  margin: 10px auto;
-  padding: 10px;
-  max-width: 640px;
+<style>
+.base-card {
+  width: auto;
+  padding: 0.6rem;
+  background-color: var(--theme-color-dark-2);
+  color: var(--theme-color-light-2);
+  border-radius: 0.2rem;
+  box-shadow: 0 0.12rem 0.2rem var(--theme-dark-shadow);
 }
 </style>

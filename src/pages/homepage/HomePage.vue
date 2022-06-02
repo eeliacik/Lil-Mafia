@@ -1,12 +1,12 @@
 <template>
-  <section>
-    <base-card>
-      <h3>Find your man. Get finished your dirty job.</h3>
-      <router-link to="/signup">
-        <h3>START PARTY NOW!</h3>
-      </router-link>
-    </base-card>
-  </section>
+  <div class="hero-container">
+    <div class="hero-text">
+      A tiny mafia hub that brings together capos & gangsters
+    </div>
+    <router-link class="hero-link" to="/signup">
+     Get this party started!
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -16,13 +16,32 @@ export default {
       return this.$store.getters.userType;
     },
   },
-}
+};
 </script>
 
-<style scoped>
-a:visited,
-a:link {
-  text-decoration: none;
-  color: blue;
+<style lang="scss">
+.hero-container {
+  width: 100%;
+  max-width: calc(var(--max-width) * 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.hero-text {
+  padding: 0.6rem;
+  font-size: 1.9rem;
+}
+
+.hero-link,
+.hero-link:visited {
+  padding: 0.6rem;
+  font-size: 1.4rem;
+  color: var(--lm-primary-color);
+  &:hover {
+    color: var(--lm-primary-color-light);
+
+  }
 }
 </style>

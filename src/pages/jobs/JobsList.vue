@@ -1,25 +1,24 @@
 <template>
-  <section>
-    <base-card class="header"><h2>Jobs</h2></base-card>
+  <div class="jobs-wrapper">
+    <!-- <header class="jobs-header">Jobs</header> -->
     <base-card>
       <job-filter @get-skills="filterJobs"></job-filter>
     </base-card>
-    <div>
-      <base-card>
-        <ul v-if="hasJobs && hasSkills">
-          <job-item
-            v-for="job in availableJobs"
-            :key="job.id"
-            :id="job.id"
-            :title="job.title"
-            :skills="job.skills"
-            :desc="job.description"
-          ></job-item>
-        </ul>
-        <p v-else>No Jobs Found!</p>
-      </base-card>
-    </div>
-  </section>
+    <base-card>
+      <ul class="jobs-container" v-if="hasJobs && hasSkills">
+        <job-item
+          v-for="job in availableJobs"
+          :key="job.id"
+          :id="job.id"
+          :title="job.title"
+          :terr="job.territory"
+          :skills="job.skills"
+          :desc="job.description"
+        ></job-item>
+      </ul>
+      <p v-else>No Jobs Found!</p>
+    </base-card>
+  </div>
 </template>
 
 <script>
@@ -82,17 +81,25 @@ export default {
 };
 </script>
 
-<style scoped>
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+<style>
+.jobs-wrapper {
+  width: 100%;
+  max-width: calc(var(--max-width) * 0.71);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.header {
+.jobs-header {
+  width: 100%;
+  padding: 0 0.6rem;
+  font-size: 1.1rem;
+}  
+
+.jobs-container {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 </style>

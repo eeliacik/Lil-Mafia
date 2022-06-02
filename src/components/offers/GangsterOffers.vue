@@ -27,8 +27,7 @@ export default {
 </script>
 
 <style scoped>
-a:link,
-a:visited {
+a:link {
   color: black;
   text-decoration: none;
 }

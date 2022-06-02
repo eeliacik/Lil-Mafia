@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div>
     <base-card><h2>My Jobs</h2></base-card>
     <div>
       <base-card>
@@ -16,7 +16,7 @@
         </ul>
       </base-card>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

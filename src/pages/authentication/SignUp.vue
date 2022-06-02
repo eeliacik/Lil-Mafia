@@ -1,20 +1,29 @@
 <template>
-  <section>
-    <base-card><h2>Sign Up</h2> </base-card>
-    <base-card>
-      <button @click="switchUserType('gangster')">Register as Gangster</button>
-      <button @click="switchUserType('capo')">Register as Capo</button>
-    </base-card>
-    <base-card>
-      <div v-if="typeSelect === 'gangster'">
-        <gangster-form @sign-up-gangster="signUp"></gangster-form>
+  <div class="form-wrapper">
+    <div class="form-header">Sign Up</div>
+    <div class="form-switcher-container">
+      <div
+        class="form-switcher"
+        :class="{ 'form-switcher-active': typeSelect === 'capo' }"
+        @click="switchUserType('capo')"
+      >
+        Capo
       </div>
-      <div v-else>
-        <capo-form @sign-up-capo="signUp"></capo-form>
+      <div
+        class="form-switcher"
+        :class="{ 'form-switcher-active': typeSelect === 'gangster' }"
+        @click="switchUserType('gangster')"
+      >
+        Gangster
       </div>
+    </div>
+    <gangster-form
+      v-if="typeSelect === 'gangster'"
+      @sign-up-gangster="signUp"
+    ></gangster-form>
+    <capo-form v-else @sign-up-capo="signUp"></capo-form>
     <p v-if="isLoading">Signing Up...</p>
-    </base-card>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -24,7 +33,7 @@ export default {
   components: { CapoForm, GangsterForm },
   data() {
     return {
-      typeSelect: 'gangster',
+      typeSelect: 'capo',
       isLoading: false,
     };
   },
@@ -35,7 +44,9 @@ export default {
         .dispatch('signUp', formData)
         .then((data) => {
           this.isLoading = false;
-          this.$router.replace(data.userType === 'gangster' ? '/jobs' : '/newjob')
+          this.$router.replace(
+            data.userType === 'gangster' ? '/jobs' : '/newjob'
+          );
         })
         .catch((error) => {
           console.log(error);
@@ -47,3 +58,37 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+
+.form-switcher-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--theme-color-dark-2);
+  border-radius: 0.2rem;
+  box-shadow: 0 0.01rem 0.5rem var(--theme-dark-shadow);
+}
+
+.form-switcher {
+  width: 100%;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--theme-color-light-3);
+  border-radius: 0.2rem;
+  &:hover {
+    color: var(--lm-primary-color-light);
+    cursor: pointer;
+  }
+}
+
+.form-switcher-active {
+  color: var(--lm-primary-color);
+  border: 0.06rem solid var(--lm-primary-color);
+  &:hover {
+    color: var(--lm-primary-color);
+  }
+}
+</style>

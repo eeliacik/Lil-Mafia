@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div>
     <base-card class="header"><h2>My Offers</h2></base-card>
     <base-card>
       <p v-if="offers.length === 0">You haven't bid on any job yet.</p>
@@ -13,7 +13,7 @@
         ></gangster-offers>
       </ul>
     </base-card>
-  </section>
+  </div>
 </template>
 
 <script>

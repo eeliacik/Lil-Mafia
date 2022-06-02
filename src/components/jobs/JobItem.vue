@@ -1,25 +1,26 @@
 <template>
-  <li>
-    <base-card>
-      <h3>{{ title }}</h3>
-      <div>
+  <div class="job-item">
+    <div class="job-title">{{ title }}</div>
+    <div class="job-terr">{{ terr }}</div>
+    <!-- <div>
         <base-badge
           v-for="skill in skills"
           :key="skill"
           :type="skill"
           :title="skill"
         ></base-badge>
-      </div>
-      <button>
-        <router-link :to="jobDetailsLink">Job Details</router-link>
-      </button>
-    </base-card>
-  </li>
+      </div> -->
+    <button>
+      <router-link :to="jobDetailsLink">Job Details</router-link>
+    </button>
+  </div>
 </template>
 
 <script>
+// import BaseBadge from '../UI/BaseBadge.vue';
 export default {
-  props: ['id', 'title', 'skills'],
+  // components: { BaseBadge },
+  props: ['id', 'title', 'terr'],
   computed: {
     jobDetailsLink() {
       return {
@@ -31,21 +32,18 @@ export default {
 };
 </script>
 
-<style scoped>
-a:link,
-a:visited {
-  color: black;
-  text-decoration: none;
-}
-
-h3 {
-  margin: 0;
-  padding: 0 0 1rem 0;
-}
-
-div {
+<style>
+.job-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  border-bottom: 0.06rem solid var(--theme-color-dark-3);
+}
+
+.job-title {
+ width: 40%;
+}
+
+.job-terr {
+  width: 20%;
 }
 </style>

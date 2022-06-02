@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="filter-container">
     <span class="filter-item">
       <input
         id="blackmail"
@@ -86,27 +86,25 @@ export default {
 };
 </script>
 
-<style scoped>
-h3 {
-  margin: 0.5rem;
-}
+<style>
 
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
 .filter-item {
-  margin: 0.5rem;
-}
-
-.filter-item label,
-.filter-item input {
-  vertical-align: middle;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
 }
 
 .filter-item label {
-  margin: 0.20rem;
 }
 
 .filter-item input {
   margin: 0;
-  height: 1.15rem;
-  width: 1.15rem;
+  height: 1.2rem;
+  width: 1.2rem;
 }
 </style>

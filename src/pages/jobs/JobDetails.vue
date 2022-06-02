@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div>
     <job-bidding
       :showDialog="showDialog"
       :sendingBid="sendingBid"
@@ -63,7 +63,7 @@
         </base-card>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -169,8 +169,7 @@ export default {
 </script>
 
 <style scoped>
-a:link,
-a:visited {
+a:link {
   color: black;
   text-decoration: none;
 }

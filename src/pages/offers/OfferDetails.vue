@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div>
     <base-card class="header">
       <h2>Offer Details</h2>
     </base-card>
@@ -43,7 +43,7 @@
         <p v-show="withdrawing">Withdrawing...</p>
       </div>
     </base-card>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -105,8 +105,7 @@ export default {
 </script>
 
 <style scoped>
-a:link,
-a:visited {
+a:link {
   color: black;
   text-decoration: none;
 }

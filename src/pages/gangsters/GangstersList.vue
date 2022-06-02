@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div>
     <base-card>
     <h2>Gangsters</h2>
       <ul v-if="hasGangsters && hasSkills">
@@ -17,7 +17,7 @@
       </ul>
       <p v-else>No Gangster Found!</p>
     </base-card>
-  </section>
+  </div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div>
     <base-card>
       <div>
         <h2>{{ fullName }}</h2>
@@ -43,7 +43,7 @@
         </div>
       </div>
     </base-card>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -130,8 +130,7 @@ export default {
 
 <style scoped>
 
-a:link,
-a:visited {
+a:link {
   color: black;
   text-decoration: none;
 }

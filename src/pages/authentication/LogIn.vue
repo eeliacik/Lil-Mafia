@@ -1,47 +1,39 @@
 <template>
-  <section>
-    <base-card><h2>Log In</h2></base-card>
-    <base-card class="container">
-      <form @submit.prevent="submitForm">
-        <div class="form-block">
-          <div class="form-input" :class="{ invalid: !this.email.isValid }">
-            <label for="email">E-mail</label>
-            <input
-              type="email"
-              id="email"
-              v-model.trim="email.val"
-              @blur="clearValidationError('email')"
-            />
-            <p v-show="!this.email.isValid">
-              * Please enter your email address
-            </p>
-          </div>
-          <div class="form-input" :class="{ invalid: !this.password.isValid }">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              v-model="password.val"
-              @blur="clearValidationError('password')"
-            />
-            <p v-show="!this.password.isValid">
-              * Please enter a password (min 6 characters)
-            </p>
-          </div>
-          <div class="form-action">
-            <div class="form-action">
-              <button @click="login">Log In</button>
-              <p>
-                New to Lil'Mafia?
-                <router-link to="/signup">Sign up</router-link> now.
-              </p>
-            </div>
-          </div>
-          <p v-show="isLoading">Signing In...</p>
-        </div>
-      </form>
-    </base-card>
-  </section>
+  <form class="form-wrapper" @submit.prevent="submitForm">
+    <div class="form-header form-header-login">Log In</div>
+    
+    <div class="form-container">
+      <div class="form-item" :class="{ invalid: !this.email.isValid }">
+        <label class="form-label" for="email">Email</label>
+        <input
+          class="form-input"
+          type="email"
+          id="email"
+          v-model.trim="email.val"
+          @blur="clearValidationError('email')"
+        />
+        <p v-show="!this.email.isValid">Please enter your email address</p>
+      </div>
+      <div class="form-item" :class="{ invalid: !this.password.isValid }">
+        <label class="form-label" for="password">Password</label>
+        <input
+          class="form-input"
+          type="password"
+          id="password"
+          v-model="password.val"
+          @blur="clearValidationError('password')"
+        />
+        <p v-show="!this.password.isValid">
+          Please enter a password (min 6 characters)
+        </p>
+      </div>
+      <div class="form-action">
+        <router-link class="signup-link" to="/signup">SIGNUP</router-link>
+        <div class="login-button" @click="login">LOGIN</div>
+      </div>
+      <p v-show="isLoading">Signing In...</p>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -99,54 +91,105 @@ export default {
 };
 </script>
 
-<style scoped>
-.form-block {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 1rem;
+<style lang="scss">
+.form-wrapper {
+  width: 100%;
+  max-width: calc(var(--max-width) * 0.33);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.form-header {
+  width: 100%;
+  padding: 0 0.6rem;
+  font-size: 1.1rem;
+}
+
+.form-header-login {
+  padding-bottom: 1rem;
+}
+
+.form-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.form-input {
-  padding: 0.5rem 0;
+.form-item {
+  height: 5.03rem;
   display: flex;
   flex-direction: column;
 }
 
+.form-label {
+  padding-left: 0.6rem;
+  padding-bottom: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: var(--theme-color-light-2);
+}
+
+.form-input {
+  background-color: var(--theme-color-dark);
+  border: 0.06rem solid var(--theme-color-light-3);
+  color: var(--theme-color-light-2);
+  border-radius: 0.2rem;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  outline: none;
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    border: 0.06rem solid var(--lm-primary-color);
+  }
+}
+
 .form-action {
+  padding: 0;
   display: flex;
-  justify-content: flex-start;
-  gap: 10px;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
 }
 
-/* .form-action a:hover{
-  color: orange;
-} */
-
-a:visited,
-a:link {
-  text-decoration: none;
-  color: blue;
+.login-button {
+  background-color: var(--lm-secondary-color-dark);
+  color: var(--theme-color-light);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  &:hover {
+    background-color: var(--lm-secondary-color);
+    cursor: pointer;
+  }
 }
 
-label {
-  font-weight: bold;
-}
-
-p {
-  margin: 0;
+.signup-link,
+.signup-link:visited {
+  padding: 0.3rem 0.6rem;
+  color: var(--lm-primary-color);
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  &:hover {
+    color: var(--lm-primary-color-light);
+    background-color: var(--theme-color-dark-2);
+  }
 }
 
 .invalid input,
 .invalid textarea {
-  border: 1px solid red;
+  border: 0.06rem solid var(--lm-danger-color);
 }
 
 .invalid p {
   margin: 0;
-  padding: 0;
-  font-size: 0.8rem;
-  color: red;
+  padding: 0.1rem 0.6rem 0.3rem 0.6rem;
+  font-size: 0.6rem;
+  color: var(--lm-danger-color);
 }
 </style>

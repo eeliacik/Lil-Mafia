@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+:root {
+  // Fonts
+  --base-font: 'Open Sans', sans-serif;
+  // Colors
+  --theme-color-dark: #121212;
+  --theme-color-dark-2: #292929;
+  --theme-color-dark-3: #414141;
+  --theme-color-dark-4: #595959;
+  --theme-color-light: #e8e8e8;
+  --theme-color-light-2: #cfcfcf;
+  --theme-color-light-3: #b8b8b8;
+  --theme-color-light-4: #a1a1a1;
+  --theme-dark-shadow: #010101;
+  --theme-dark-shadow-2: #030303;
+  --theme-dark-shadow-3: #050505;
+
+  --primary-color: hsl(195, 83%, 38%);
+  --secondary-color: hsl(312, 42%, 58%);
+  --success-color: hsl(164, 95%, 43%);
+  --warning-color: hsl(42, 100%, 70%);
+  --danger-color: hsl(346, 84%, 61%);
+
+  --primary-color-h: 195;
+  --primary-color-s: 83%;
+  --primary-color-l: 38%;
+
+  --secondary-color-h: 312;
+  --secondary-color-s: 83%;
+  --secondary-color-l: 58%;
+
+  --success-color-h: 164;
+  --success-color-s: 95%;
+  --success-color-l: 43%;
+
+  --warning-color-h: 42;
+  --warning-color-s: 100%;
+  --warning-color-l: 70%;
+
+  --danger-color-h: 346;
+  --danger-color-s: 84%;
+  --danger-color-l: 61%;
+
+  --lm-primary-color: hsl(
+    var(--primary-color-h),
+    var(--primary-color-s),
+    var(--primary-color-l)
+  );
+  --lm-primary-color-light: hsl(
+    var(--primary-color-h),
+    var(--primary-color-s),
+    calc(var(--primary-color-l) + 10%)
+  );
+  --lm-primary-color-dark: hsl(
+    var(--primary-color-h),
+    var(--primary-color-s),
+    calc(var(--primary-color-l) - 10%)
+  );
+
+  --lm-secondary-color: hsl(
+    var(--secondary-color-h),
+    var(--secondary-color-s),
+    var(--secondary-color-l)
+  );
+  --lm-secondary-color-light: hsl(
+    var(--secondary-color-h),
+    var(--secondary-color-s),
+    calc(var(--secondary-color-l) + 10%)
+  );
+  --lm-secondary-color-dark: hsl(
+    var(--secondary-color-h),
+    var(--secondary-color-s),
+    calc(var(--secondary-color-l) - 10%)
+  );
+
+  --lm-success-color: hsl(
+    var(--success-color-h),
+    var(--success-color-s),
+    var(--success-color-l)
+  );
+  --lm-success-color-light: hsl(
+    var(--success-color-h),
+    var(--success-color-s),
+    calc(var(--success-color-l) + 10%)
+  );
+  --lm-success-color-dark: hsl(
+    var(--success-color-h),
+    var(--success-color-s),
+    calc(var(--success-color-l) - 10%)
+  );
+
+  --lm-warning-color: hsl(
+    var(--warning-color-h),
+    var(--warning-color-s),
+    var(--warning-color-l)
+  );
+  --lm-warning-color-light: hsl(
+    var(--warning-color-h),
+    var(--warning-color-s),
+    calc(var(--warning-color-l) + 10%)
+  );
+  --lm-warning-color-dark: hsl(
+    var(--warning-color-h),
+    var(--warning-color-s),
+    calc(var(--warning-color-l) - 10%)
+  );
+
+  --lm-danger-color: hsl(
+    var(--danger-color-h),
+    var(--danger-color-s),
+    var(--danger-color-l)
+  );
+  --lm-danger-color-light: hsl(
+    var(--danger-color-h),
+    var(--danger-color-s),
+    calc(var(--danger-color-l) + 10%)
+  );
+  --lm-danger-color-dark: hsl(
+    var(--danger-color-h),
+    var(--danger-color-s),
+    calc(var(--danger-color-l) - 10%)
+  );
+  // Predefined dimensions
+  --header-height: 4rem;
+  --max-width: 1200px;
+  // Elevations
+  --z-index: 0;
+  --z-index-2: 1rem;
+  --z-index-3: 2rem;
+  --z-index-4: 3rem;
+}
+
+body {
+  font-family: var(--base-font);
+  background-color: var(--theme-color-dark);
+  color: var(--theme-color-light);
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  width: 100%;
+}
+
