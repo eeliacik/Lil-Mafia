@@ -36,7 +36,9 @@ ul {
 }
 
 a,
-a:visited {
+a:visited,
+.router-link,
+.router-link:visited {
   text-decoration: none;
 }
 
