@@ -3,6 +3,7 @@
     <div class="job-item">
       <div class="job-title">{{ title }}</div>
       <div class="job-terr">{{ terr }}</div>
+      <div class="job-bids">{{ bids }}</div>
       <!-- <div>
         <base-badge
           v-for="skill in skills"
@@ -19,7 +20,7 @@
 // import BaseBadge from '../UI/BaseBadge.vue';
 export default {
   // components: { BaseBadge },
-  props: ['id', 'title', 'terr'],
+  props: ['id', 'title', 'terr', 'bids'],
   computed: {
     jobDetailsLink() {
       return {
@@ -52,5 +53,10 @@ export default {
 
 .job-terr {
   width: 30%;
+}
+
+.job-bids {
+  width: 2.5rem;
+  text-align: right;
 }
 </style>
