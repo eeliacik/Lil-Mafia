@@ -1,8 +1,6 @@
 <template>
   <div class="jobs-wrapper">
-    <base-card>
       <job-filter @get-skills="filterJobs"></job-filter>
-    </base-card>
     <base-card>
       <div class="jobs-list-title-container">
         <span class="jobs-list-title-01">Title</span>
@@ -104,6 +102,7 @@ export default {
   margin-bottom: 0.6rem;
   border-bottom: 0.03rem solid var(--theme-color-light-2);
   font-size: 0.9rem;
+  cursor: default;
 }
 
 .jobs-list-title-01 {
