@@ -71,13 +71,9 @@
               id="blackmail"
               v-model="skills.val"
             />
-            <!-- <div class="checkbox">
-              <span class="checkbox-symbol"></span>
-            </div> -->
             <span class="checkbox-label">Blackmail</span>
           </label>
         </div>
-
         <div class="checkbox-wrapper">
           <label class="checkbox-container" for="bully">
             <input
@@ -90,7 +86,6 @@
             <span class="checkbox-label">Bully</span>
           </label>
         </div>
-
         <div class="checkbox-wrapper">
           <label class="checkbox-container" for="kidnap">
             <input
@@ -103,7 +98,6 @@
             <span class="checkbox-label">Kidnap</span>
           </label>
         </div>
-
         <div class="checkbox-wrapper">
           <label class="checkbox-container" for="launder">
             <input
@@ -116,7 +110,6 @@
             <span class="checkbox-label">Launder</span>
           </label>
         </div>
-
         <div class="checkbox-wrapper">
           <label class="checkbox-container" for="pickpocket">
             <input
@@ -129,7 +122,6 @@
             <span class="checkbox-label">Pickpocket</span>
           </label>
         </div>
-
         <div class="checkbox-wrapper">
           <label class="checkbox-container" for="smuggle">
             <input
@@ -326,21 +318,7 @@ export default {
   //   background-color: var(--lm-primary-color-light);
   // }
 }
-// .checkbox {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-// .checkbox-symbol {
-//   height: 0.3rem;
-//   width: 0.6rem;
-//   margin-left: 1rem;
-//   margin-bottom: 0.1rem ;
-//   border-left: 0.1rem solid var(--theme-color-light-2);
-//   border-bottom: 0.1rem solid var(--theme-color-light-2);
-//   transform: rotate(-45deg);
-//   opacity: 0%
-// }
+
 .checkbox-label {
   padding: 0.3rem 0.6rem;
   font-size: 0.8rem;
@@ -348,8 +326,6 @@ export default {
   border-radius: 1rem;
   color: var(--theme-color-light-3);
   &:hover {
-    // background-color: var(--theme-color-dark-3);
-    // color: var(--lm-primary-color-light);
     color: var(--theme-color-light-2);
   }
 }
