@@ -89,6 +89,7 @@ export default {
 <style>
 
 .filter-container {
+  padding: 0 0.6rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;

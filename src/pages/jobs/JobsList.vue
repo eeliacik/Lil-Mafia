@@ -5,6 +5,11 @@
       <job-filter @get-skills="filterJobs"></job-filter>
     </base-card>
     <base-card>
+    <div class="jobs-list-title-container">
+      <span class="jobs-list-title-01">Title</span>
+      <span class="jobs-list-title-02">Territory</span>
+      <span class="jobs-list-title-03">Bids</span>
+    </div>
       <ul class="jobs-container" v-if="hasJobs && hasSkills">
         <job-item
           v-for="job in availableJobs"
@@ -13,10 +18,11 @@
           :title="job.title"
           :terr="job.territory"
           :skills="job.skills"
+          :bids="job.bids.length"
           :desc="job.description"
         ></job-item>
       </ul>
-      <p v-else>No Jobs Found!</p>
+      <span class="empty-message" v-else>No Jobs Found!</span>
     </base-card>
   </div>
 </template>
@@ -91,16 +97,40 @@ export default {
   gap: 1rem;
 }
 
-.jobs-header {
+.jobs-list-title-container {
   width: 100%;
-  padding: 0 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.6rem 0.6rem 0.6rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 0.03rem solid var(--theme-color-light-2);
   font-size: 1.1rem;
-}  
+} 
+
+.jobs-list-title-01 {
+  width: 40%;
+}
+
+.jobs-list-title-02 {
+  width: 30%;
+}
+
+.jobs-list-title-03 {
+  width: 2.5rem;
+  text-align: right;
+}
 
 .jobs-container {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  padding: 0 0.6rem;
   margin-bottom: -0.5rem;
+}
+.empty-message {
+  margin: 0;
+  padding: 0.6rem;
+  font-size: 1rem;
+  color: var(--lm-warning-color);
 }
 </style>
