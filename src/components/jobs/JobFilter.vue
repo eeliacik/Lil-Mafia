@@ -100,8 +100,7 @@ export default {
   align-items: center;
 }
 
-.filter-item label {
-}
+/* .filter-item label {} */
 
 .filter-item input {
   margin: 0;

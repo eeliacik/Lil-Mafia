@@ -1,15 +1,14 @@
 <template>
   <div class="jobs-wrapper">
-    <!-- <header class="jobs-header">Jobs</header> -->
     <base-card>
       <job-filter @get-skills="filterJobs"></job-filter>
     </base-card>
     <base-card>
-    <div class="jobs-list-title-container">
-      <span class="jobs-list-title-01">Title</span>
-      <span class="jobs-list-title-02">Territory</span>
-      <span class="jobs-list-title-03">Bids</span>
-    </div>
+      <div class="jobs-list-title-container">
+        <span class="jobs-list-title-01">Title</span>
+        <span class="jobs-list-title-02">Territory</span>
+        <span class="jobs-list-title-03">Bids</span>
+      </div>
       <ul class="jobs-container" v-if="hasJobs && hasSkills">
         <job-item
           v-for="job in availableJobs"
@@ -104,15 +103,15 @@ export default {
   padding: 0 0.6rem 0.6rem 0.6rem;
   margin-bottom: 0.6rem;
   border-bottom: 0.03rem solid var(--theme-color-light-2);
-  font-size: 1.1rem;
-} 
+  font-size: 0.9rem;
+}
 
 .jobs-list-title-01 {
-  width: 40%;
+  width: 55%;
 }
 
 .jobs-list-title-02 {
-  width: 30%;
+  width: 25%;
 }
 
 .jobs-list-title-03 {
@@ -127,6 +126,7 @@ export default {
   padding: 0 0.6rem;
   margin-bottom: -0.5rem;
 }
+
 .empty-message {
   margin: 0;
   padding: 0.6rem;

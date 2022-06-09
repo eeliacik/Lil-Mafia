@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <base-card class="header"><h2>My Offers</h2></base-card>
-    <base-card>
-      <p v-if="offers.length === 0">You haven't bid on any job yet.</p>
-      <ul v-else>
+    <base-card class="offers-wrapper">
+      <div class="offers-list-title-container">
+        <span class="offers-list-title-01">Title</span>
+        <span class="offers-list-title-02">Status</span>
+        <span class="offers-list-title-03">Price</span>
+      </div>
+      <span class="empty-message" v-if="offers.length === 0">No bids placed yet.</span>
+      <ul class="offers-container" v-else>
         <gangster-offers
           v-for="offer in offers"
           :key="offer.jobId"
@@ -13,7 +16,6 @@
         ></gangster-offers>
       </ul>
     </base-card>
-  </div>
 </template>
 
 <script>
@@ -39,24 +41,43 @@ export default {
 </script>
 
 <style scoped>
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.offers-wrapper {
+  width: 100%;
+  max-width: calc(var(--max-width) * 0.71);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.header {
-  display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  gap: 1rem;
 }
 
-.list-button {
+.offers-list-title-container {
+  width: 100%;
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
+  padding: 0 0.6rem 0.6rem 0.6rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 0.03rem solid var(--theme-color-light-2);
+  font-size: 0.9rem;
+}
+
+.offers-list-title-01 {
+  width: 55%;
+}
+
+.offers-list-title-02 {
+  width: 25%;
+}
+
+.offers-list-title-03 {
+  width: 5rem;
+  text-align: right;
+}
+
+.offers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0 0.6rem;
+  margin-bottom: -0.5rem;
 }
 </style>
