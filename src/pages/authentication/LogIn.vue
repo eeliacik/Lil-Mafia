@@ -28,8 +28,8 @@
         </p>
       </div>
       <div class="form-action">
-        <router-link class="signup-link" to="/signup">SIGNUP</router-link>
         <div class="login-button" @click="login">LOGIN</div>
+        <router-link class="signup-link" to="/signup">SIGNUP</router-link>
       </div>
       <p v-show="isLoading">Signing In...</p>
     </div>
@@ -141,7 +141,7 @@ export default {
   font-size: 0.9rem;
   outline: none;
   &:hover {
-    cursor: pointer;
+    border-color: var(--theme-color-light-2)
   }
   &:focus {
     border: 0.06rem solid var(--lm-primary-color);
@@ -152,7 +152,7 @@ export default {
   padding: 0;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
 }
