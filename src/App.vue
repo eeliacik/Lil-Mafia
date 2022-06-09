@@ -54,8 +54,7 @@ a:visited,
   gap: 1rem;
 }
 
-.main-wrapper {
-}
+// .main-wrapper {}
 
 .main-container {
   width: 100%;

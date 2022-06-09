@@ -48,11 +48,11 @@ export default {
 }
 
 .job-title {
-  width: 40%;
+  width: 55%;
 }
 
 .job-terr {
-  width: 30%;
+  width: 25%;
 }
 
 .job-bids {
