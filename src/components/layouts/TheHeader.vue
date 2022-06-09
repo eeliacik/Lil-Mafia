@@ -36,10 +36,10 @@
         </ul>
       </nav>
       <div class="auth-container">
-        <router-link class="auth-item" v-if="!isAuthenticated" to="/login"
+        <router-link class="auth-login" v-if="!isAuthenticated" to="/login"
           >Login</router-link
         >
-        <router-link class="auth-item" v-else @click="logout" to="/"
+        <router-link class="auth-logout" v-else @click="logout" to="/"
           >Logout</router-link
         >
       </div>
@@ -214,15 +214,23 @@ nav {
   }
 }
 
-.auth-item,
-.auth-item:visited {
+.auth-login,
+.auth-logout,
+.auth-login:visited,
+.auth-logout:visited {
   padding: 0.3rem 0.6rem;
   border-radius: 0.3rem;
   color: var(--theme-color-light-2);
   font-size: 0.9rem;
-  &:hover {
-    background-color: var(--theme-color-dark-3);
-    color: var(--lm-primary-color-light);
-  }
+}
+
+.auth-login:hover {
+  background-color: var(--theme-color-dark-3);
+  color: var(--lm-primary-color-light);
+}
+
+.auth-logout:hover {
+  background-color: var(--theme-color-dark-3);
+  color: var(--lm-secondary-color-light);
 }
 </style>
