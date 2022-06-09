@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="jobDetailsLink">
+  <router-link class="job-link" :to="jobDetailsLink">
     <div class="job-item">
       <div class="job-title">{{ title }}</div>
       <div class="job-terr">{{ terr }}</div>
@@ -31,12 +31,19 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .job-item {
+  margin-bottom: 0.3rem;
   display: flex;
   justify-content: space-between;
   color: var(--theme-color-light-2);
+}
+
+.job-link {
   border-bottom: 0.06rem solid var(--theme-color-dark-3);
+  &:last-of-type {
+    border-bottom: none;
+  }
 }
 
 .job-title {

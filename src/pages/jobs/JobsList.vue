@@ -100,6 +100,7 @@ export default {
 .jobs-container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
+  margin-bottom: -0.5rem;
 }
 </style>
