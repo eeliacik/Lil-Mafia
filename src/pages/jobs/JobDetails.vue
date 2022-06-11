@@ -28,7 +28,9 @@
         <div class="details-item">
           <div class="details-title">Skills</div>
           <ul class="details-skills-container">
-            <li class="details-skill" v-for="skill in skills" :key="skill">{{ skill }}</li>
+            <li class="details-skill" v-for="skill in skills" :key="skill">
+              {{ skill.charAt(0).toUpperCase() + skill.slice(1) }}
+            </li>
           </ul>
         </div>
         <div class="details-action">
