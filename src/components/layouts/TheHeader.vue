@@ -98,7 +98,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1.4rem;
 }
 
 // .header-bar {
@@ -128,6 +128,7 @@ export default {
   display: flex;
   flex-direction: row;
   gap: 0.3rem;
+  padding: 0 0.6rem;
 }
 
 .logo {
