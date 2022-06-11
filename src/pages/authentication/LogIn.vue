@@ -105,6 +105,7 @@ export default {
   width: 100%;
   padding: 0 0.6rem;
   font-size: 1.1rem;
+  cursor: default;
 }
 
 .form-header-login {

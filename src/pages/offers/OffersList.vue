@@ -55,8 +55,8 @@ export default {
   justify-content: space-between;
   padding: 0 0.6rem 0.6rem 0.6rem;
   margin-bottom: 0.6rem;
-  border-bottom: 0.03rem solid var(--theme-color-light-2);
-  font-size: 0.9rem;
+  border-bottom: 0.03rem solid var(--theme-color-light-4);
+  font-size: 0.7rem;
   cursor: default;
 }
 

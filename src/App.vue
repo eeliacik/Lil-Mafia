@@ -63,15 +63,36 @@ a:visited,
   margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-bottom: 1rem; 
+  padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-// @media (max-width: 768px) {
-//   .main-wrapper{
-//     width: 600px;
-//   }
-// }
+@media (max-width: 480px) {
+
+
+  .header-container {
+    padding: 0;
+    gap: 1rem;
+  }
+
+  .main-container {
+    padding: 0;
+  }
+
+  .logo-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-container {
+    gap: 1rem;
+  }
+
+  .logo-text {
+    display: none;
+  }
+}
 </style>

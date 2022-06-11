@@ -1,41 +1,45 @@
 <template>
-  <div>
+  <div class="details-wrapper">
     <job-bidding
       :showDialog="showDialog"
       :sendingBid="sendingBid"
       @place-bid="placeBid"
       @close-dialog="closeDialog"
     ></job-bidding>
-    <base-card class="header">
-      <h2>Job Details</h2>
-    </base-card>
-    <base-card class="container">
-      <div class="details-card">
-        <h2>{{ title }}</h2>
-        <h3>
-          {{ terr }}
-        </h3>
-        <p>{{ desc }}</p>
-        <div>
-          <base-badge
-            v-for="skill in skills"
-            :key="skill"
-            :type="skill"
-            :title="skill"
-          ></base-badge>
+    <div class="details-header">Job Details</div>
+    <base-card>
+      <div class="details-container">
+        <div class="details-item">
+          <!-- <div class="details-item">{{ title }}</div> -->
+          <div class="details-item-title">
+            {{ title }}
+          </div>
         </div>
-      </div>
-      <div class="details-action">
-        <div v-if="userType === 'gangster' && !bidPlaced">
-          <button @click="openBidding">Place Your Bid</button>
+        <div class="details-item">
+          <div class="details-title">Territory</div>
+          <div class="details-item-terr">{{ terr }}</div>
         </div>
-        <div>
-          <button v-if="isUserJob">
-            <router-link to="/myjobs">Back to My Jobs</router-link>
-          </button>
-          <button v-else>
-            <router-link to="/jobs">Back to Jobs</router-link>
-          </button>
+        <div class="details-item">
+          <div class="details-title">Description</div>
+          <div class="details-item-desc">
+            {{ desc }}
+          </div>
+        </div>
+        <div class="details-item">
+          <div class="details-title">Skills</div>
+          <ul class="details-skills-container">
+            <li class="details-skill" v-for="skill in skills" :key="skill">{{ skill }}</li>
+          </ul>
+        </div>
+        <div class="details-action">
+          <div v-if="userType === 'gangster' && !bidPlaced">
+            <span class="bid-button" @click="openBidding">PLACE BID</span>
+          </div>
+          <router-link
+            class="back-link"
+            :to="this.isUserJob ? '/myjobs' : '/jobs'"
+            >BACK TO JOBS</router-link
+          >
         </div>
       </div>
     </base-card>
@@ -168,44 +172,95 @@ export default {
 };
 </script>
 
-<style scoped>
-a:link {
-  color: black;
-  text-decoration: none;
-}
-
-h2 {
-  margin: 0;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+<style lang="scss">
+.details-wrapper {
+  width: 100%;
+  max-width: calc(var(--max-width) * 0.71);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.header {
-  display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  gap: 1rem;
 }
 
-.container {
-  margin: 1rem auto;
+.details-header {
+  width: 100%;
+  padding: 0 1.2rem;
+  font-size: 1.1rem;
 }
 
-.details-card {
-  border: 1px solid lightgray;
-  padding: 1rem;
+.details-container {
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  cursor: default;
+}
+
+.details-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.details-title {
+  color: var(--theme-color-light-3);
+  font-size: 0.7rem;
+}
+
+.details-item-title {
+  color: var(--theme-color-light);
+  font-size: 1.8rem;
+}
+
+.details-item-terr {
+  font-size: 1.3rem;
+}
+
+.details-item-desc {
+  font-size: 1rem;
+}
+
+.details-skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.details-skill {
+  font-size: 1rem;
+  color: var(--lm-primary-color-light);
 }
 
 .details-action {
+  padding-top: 1rem;
   display: flex;
-  justify-content: flex-end;
-  margin: 1rem;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bid-button {
+  background-color: var(--lm-secondary-color-dark);
+  color: var(--theme-color-light);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  &:hover {
+    background-color: var(--lm-secondary-color);
+    cursor: pointer;
+  }
+}
+
+.back-link,
+.back-link:visited {
+  padding: 0.3rem 0.6rem;
+  color: var(--lm-primary-color);
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  &:hover {
+    color: var(--lm-primary-color-light);
+    background-color: var(--theme-color-dark-3);
+  }
 }
 </style>
