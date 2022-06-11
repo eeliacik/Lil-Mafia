@@ -90,6 +90,16 @@
         <input
           type="checkbox"
           name="skills"
+          value="robbery"
+          id="robbery"
+          v-model="skills.val"
+        />
+        <label for="robbery">Robbery</label>
+      </div>
+      <div class="skill-checkbox">
+        <input
+          type="checkbox"
+          name="skills"
           value="smuggle"
           id="smuggle"
           v-model="skills.val"

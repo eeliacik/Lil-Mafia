@@ -50,6 +50,11 @@ export default {
     color: white;
 }
 
+.robbery {
+    background-color:darkkhaki;
+    color: white;
+}
+
 .smuggle {
     background-color: slategray;
     color: white;

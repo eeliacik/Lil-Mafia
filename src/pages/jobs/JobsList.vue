@@ -40,6 +40,7 @@ export default {
         'kidnap',
         'launder',
         'pickpocket',
+        'robbery',
         'smuggle',
       ],
     };

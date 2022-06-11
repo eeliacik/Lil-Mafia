@@ -66,6 +66,19 @@
       </label>
     </div>
     <div class="checkbox-wrapper">
+      <label class="checkbox-container" for="robbery">
+        <input
+          type="checkbox"
+          name="skills"
+          value="robbery"
+          id="robbery"
+          v-model="skills"
+          @change="setFilter"
+        />
+        <span class="checkbox-label filter-checkbox-label">Robbery</span>
+      </label>
+    </div>
+    <div class="checkbox-wrapper">
       <label class="checkbox-container" for="smuggle">
         <input
           type="checkbox"
@@ -92,6 +105,7 @@ export default {
         'kidnap',
         'launder',
         'pickpocket',
+        'robbery',
         'smuggle',
       ],
     };

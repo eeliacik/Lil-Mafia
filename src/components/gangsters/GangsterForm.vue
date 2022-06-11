@@ -123,6 +123,18 @@
           </label>
         </div>
         <div class="checkbox-wrapper">
+          <label class="checkbox-container" for="robbery">
+            <input
+              type="checkbox"
+              name="skills"
+              value="robbery"
+              id="robbery"
+              v-model="skills.val"
+            />
+            <span class="checkbox-label">Robbery</span>
+          </label>
+        </div>
+        <div class="checkbox-wrapper">
           <label class="checkbox-container" for="smuggle">
             <input
               type="checkbox"
