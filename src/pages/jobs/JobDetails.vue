@@ -35,7 +35,7 @@
         </div>
         <div class="details-action">
           <div v-if="userType === 'gangster' && !bidPlaced">
-            <span class="bid-button" @click="openBidding">PLACE BID</span>
+            <span class="bid-button" @click="openBidding">BID</span>
           </div>
           <router-link
             class="back-link"
