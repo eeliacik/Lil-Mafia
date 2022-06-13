@@ -5,7 +5,6 @@
       <div class="bid-container" v-if="!sendingBid">
         <div class="bid-title">Enter Bid</div>
         <div class="bid-input-container">
-          <label class="bid-label" for="bid">Price ($)</label>
           <input
             class="bid-input"
             id="bid"
@@ -14,8 +13,12 @@
             max="1000000"
             step="1000"
             v-model="price"
-            :placeholder="'$' + price"
           />
+          <label class="bid-label" for="bid">$</label>
+          <div class="bid-spinners-container">
+            <div class="bid-spinner-down" @click="priceDown">-</div>
+            <div class="bid-spinner-up" @click="priceUp">+</div>
+          </div>
         </div>
         <div class="bid-action">
           <div class="send-button" @click="placeBid">SEND</div>
@@ -35,15 +38,27 @@ export default {
   emits: ['close-dialog', 'place-bid'],
   data() {
     return {
-      price: 999,
+      price: 1000,
     };
   },
   methods: {
+    priceUp() {
+      this.price += 1000;
+    },
+    priceDown() {
+      this.price -= 1000;
+    },
     closeDialog() {
       this.$emit('close-dialog');
     },
     placeBid() {
       this.$emit('place-bid', this.price);
+    },
+  },
+  watch: {
+    price() {
+      0 > this.price ? (this.price = 0) : this.price;
+      1000000 < this.price ? (this.price = 1000000) : this.price;
     },
   },
 };
@@ -63,7 +78,7 @@ export default {
 
 .bid-wrapper {
   width: 100%;
-  max-width: calc(var(--max-width) * 0.33);
+  max-width: calc(var(--max-width) * 0.24);
   top: 10rem;
   z-index: var(--z-index-4);
   padding: 1.2rem;
@@ -87,30 +102,87 @@ export default {
 }
 
 .bid-input-container {
+  width: 100%;
+  position: relative;
   display: flex;
-  flex-direction: column;
   gap: 0.6rem;
 }
 
-.bid-label {
-  font-size: 0.8rem;
-  padding-left: 0.6rem;
-}
-
 .bid-input {
+  width: 100%;
   background-color: var(--theme-color-dark-2);
   border: 0.06rem solid var(--theme-color-light-4);
   color: var(--theme-color-light-3);
   border-radius: 0.2rem;
   padding: 0.6rem;
-  // padding-left: 1.8rem;
+  padding-left: 2rem;
   font-size: 1.6rem;
   outline: none;
   &:hover {
     border-color: var(--theme-color-light-3);
+    color: var(--theme-color-light-2);
+  }
+  &:hover + .bid-label {
+    color: var(--theme-color-light-2);
   }
   &:focus {
     border: 0.06rem solid var(--lm-primary-color);
+  }
+}
+
+.bid-label {
+  position: absolute;
+  top: 0.24rem;
+  left: 0.6rem;
+  font-size: 1.8rem;
+  color: var(--theme-color-light-3);
+}
+
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.bid-spinners-container {
+  position: absolute;
+  top: 0.66rem;
+  right: 0.66rem;
+  display: flex;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.bid-spinner-up {
+  width: 1.85rem;
+  height: 1.85rem;
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--theme-color-light-2);
+  background-color: var(--lm-primary-color);
+  border-left: 0.03rem solid var(--lm-primary-color-dark);
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  &:hover {
+    color: var(--theme-color-light);
+    background-color: var(--lm-primary-color-light);
+    cursor: pointer;
+  }
+}
+
+.bid-spinner-down {
+  width: 1.85rem;
+  height: 1.85rem;
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--theme-color-light-2);
+  background-color: var(--lm-primary-color);
+  border-right: 0.03rem solid var(--lm-primary-color-dark);
+  border-top-left-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+  &:hover {
+    color: var(--theme-color-light);
+    background-color: var(--lm-primary-color-light);
+    cursor: pointer;
   }
 }
 
