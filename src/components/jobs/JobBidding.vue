@@ -13,8 +13,8 @@
             min="1000"
             max="1000000"
             step="1000"
-            placeholder="$"
             v-model="price"
+            :placeholder="'$' + price"
           />
         </div>
         <div class="bid-action">
@@ -35,7 +35,7 @@ export default {
   emits: ['close-dialog', 'place-bid'],
   data() {
     return {
-      price: 1000,
+      price: 999,
     };
   },
   methods: {
@@ -62,7 +62,8 @@ export default {
 }
 
 .bid-wrapper {
-  width: 30%;
+  width: 100%;
+  max-width: calc(var(--max-width) * 0.33);
   top: 10rem;
   z-index: var(--z-index-4);
   padding: 1.2rem;
@@ -102,6 +103,7 @@ export default {
   color: var(--theme-color-light-3);
   border-radius: 0.2rem;
   padding: 0.6rem;
+  // padding-left: 1.8rem;
   font-size: 1.6rem;
   outline: none;
   &:hover {
@@ -132,7 +134,6 @@ export default {
     cursor: pointer;
   }
 }
-
 
 .close-button {
   padding: 0.3rem 0.6rem;
