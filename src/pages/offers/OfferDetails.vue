@@ -1,46 +1,65 @@
 <template>
-  <div>
-    <base-card class="header">
-      <h2>Offer Details</h2>
-    </base-card>
-    <base-card class="container">
-      <div class="details-card">
-        <h2>{{ title }}</h2>
-        <h3>
-          {{ terr }}
-        </h3>
-        <p>{{ desc }}</p>
-        <div>
-          <base-badge
-            v-for="skill in skills"
-            :key="skill"
-            :type="skill"
-            :title="skill"
-          ></base-badge>
+  <div class="details-wrapper">
+    <div class="details-header">Offer Details</div>
+
+    <base-card>
+      <div class="details-container">
+        <div class="details-item">
+          <div class="details-item-title">
+            {{ title }}
+          </div>
         </div>
-      </div>
-      <p v-if="bidPlaced && bidStatus === 'accepted'">Your offer accepted.</p>
-      <p v-else-if="bidPlaced && bidStatus === 'declined'">
-        Your offer rejected.
-      </p>
-      <p v-else-if="bidPlaced && bidStatus === 'waiting'">
-        Your offer is waiting.
-      </p>
-      <div class="details-action">
-        <div v-if="userType === 'gangster'">
-          <button
-            v-if="bidPlaced && bidStatus === 'waiting'"
-            @click="withdrawOffer"
+        <div class="details-item">
+          <div class="details-title">Territory</div>
+          <div class="details-item-terr">{{ terr }}</div>
+        </div>
+        <div class="details-item">
+          <div class="details-title">Description</div>
+          <div class="details-item-desc">
+            {{ desc }}
+          </div>
+        </div>
+        <div class="details-item">
+          <div class="details-title">Skills</div>
+          <ul class="details-skills-container">
+            <li class="details-skill" v-for="skill in skills" :key="skill">
+              {{ skill.charAt(0).toUpperCase() + skill.slice(1) }}
+            </li>
+          </ul>
+        </div>
+        <div class="status-container">
+          <p
+            class="status-accepted"
+            v-if="bidPlaced && bidStatus === 'accepted'"
           >
-            Withdraw Offer
-          </button>
+            Accepted
+          </p>
+          <p
+            class="status-rejected"
+            v-else-if="bidPlaced && bidStatus === 'declined'"
+          >
+            Rejected
+          </p>
+          <p
+            class="status-waiting"
+            v-else-if="bidPlaced && bidStatus === 'waiting'"
+          >
+            Waiting
+          </p>
         </div>
-        <div>
-          <button>
-            <router-link to="/myoffers">Back to My Offers</router-link>
-          </button>
+        <div class="details-action">
+          <div
+            v-if="
+              userType === 'gangster' && bidPlaced && bidStatus === 'waiting'
+            "
+            @click="withdrawOffer"
+            class="withdraw-button"
+          >
+            WITHDRAW
+          </div>
+          <router-link class="back-link" to="/myoffers">BACK</router-link>
+          <p v-show="withdrawing">Withdrawing...</p>
         </div>
-        <p v-show="withdrawing">Withdrawing...</p>
       </div>
     </base-card>
   </div>
@@ -104,44 +123,35 @@ export default {
 };
 </script>
 
-<style scoped>
-a:link {
-  color: black;
-  text-decoration: none;
+<style lang="scss">
+
+.status-container {
+  font-size: 2rem;
+
 }
 
-h2 {
+.status-accepted {
   margin: 0;
+  color: var(--lm-success-color);
 }
-
-ul {
+.status-rejected {
   margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  color: var(--lm-danger-color);
+}
+.status-waiting {
+  margin: 0;
+  color: var(--lm-warning-color);
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.container {
-  margin: 1rem auto;
-}
-
-.details-card {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-}
-
-.details-action {
-  display: flex;
-  justify-content: flex-end;
-  margin: 1rem;
+.withdraw-button {
+  background-color: var(--lm-danger-color-dark);
+  color: var(--theme-color-light);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  &:hover {
+    background-color: var(--lm-danger-color);
+    cursor: pointer;
+  }
 }
 </style>
