@@ -10,7 +10,6 @@
     <base-card>
       <div class="details-container">
         <div class="details-item">
-          <!-- <div class="details-item">{{ title }}</div> -->
           <div class="details-item-title">
             {{ title }}
           </div>
@@ -40,7 +39,7 @@
           <router-link
             class="back-link"
             :to="this.isUserJob ? '/myjobs' : '/jobs'"
-            >BACK TO JOBS</router-link
+            >BACK</router-link
           >
         </div>
       </div>
