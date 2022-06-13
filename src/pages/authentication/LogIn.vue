@@ -95,6 +95,7 @@ export default {
 .form-wrapper {
   width: 100%;
   max-width: calc(var(--max-width) * 0.33);
+  padding: 0 0.6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
