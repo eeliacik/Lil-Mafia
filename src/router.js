@@ -8,7 +8,7 @@ import GangsterDetails from './pages/gangsters/GangsterDetails.vue';
 import JobsList from './pages/jobs/JobsList.vue';
 import JobDetails from './pages/jobs/JobDetails.vue';
 import NewJob from './pages/jobs/NewJob.vue';
-import MyJobsList from './pages/jobs/MyJobsList.vue';
+import JobsListCapo from './pages/jobs/JobsListCapo.vue';
 import OffersList from './pages/offers/OffersList.vue';
 import OfferDetails from './pages/offers/OfferDetails.vue';
 import NotFound from './pages/NotFound.vue';
@@ -27,7 +27,7 @@ const router = createRouter({
       props: true,
     },
     { name: 'jobs', path: '/jobs', component: JobsList },
-    { name: 'my-jobs', path: '/myjobs', component: MyJobsList },
+    { name: 'my-jobs', path: '/myjobs', component: JobsListCapo },
     {
       name: 'job-details',
       path: '/job/:id',
