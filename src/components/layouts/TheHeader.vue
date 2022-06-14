@@ -19,18 +19,13 @@
       <nav>
         <ul class="navigation-list">
           <li class="navigation-item">
-            <router-link v-if="userType === 'gangster'" to="/jobs"
+            <router-link :to="userType === 'gangster' ? '/jobs' : '/myjobs'"
               >Jobs</router-link
             >
           </li>
           <li class="navigation-item">
             <router-link v-if="userType === 'gangster'" to="/myoffers"
               >Offers</router-link
-            >
-          </li>
-          <li class="navigation-item">
-            <router-link v-if="userType === 'capo'" to="/myjobs"
-              >Jobs</router-link
             >
           </li>
         </ul>
@@ -44,12 +39,6 @@
         >
       </div>
     </div>
-    <!-- <div class="header-bar">
-      <div class="header-bar-text" v-show="homeLink === '/'">
-        <span class="header-bar-front">_</span>
-        Header
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -100,29 +89,6 @@ export default {
   align-items: center;
   gap: 1.4rem;
 }
-
-// .header-bar {
-//   width: 100%;
-//   /* background-color: var(--theme-color-dark-2); */
-//   border-top: 1px solid var(--theme-color-dark-4);
-//   /* border-bottom: 1px solid var(--theme-color-dark-4); */
-// }
-
-// .header-bar-front {
-//   color: var(--lm-secondary-color-light);
-//   font-weight: bold;
-// }
-
-// .header-bar-text {
-//   color: var(--theme-color-light-4);
-//   width: 100%;
-//   max-width: var(--max-width);
-//   margin: 0;
-//   margin-left: auto;
-//   margin-right: auto;
-//   padding: 1rem;
-//   padding-bottom: 0.25rem;
-// }
 
 .logo-container {
   display: flex;

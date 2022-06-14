@@ -35,10 +35,10 @@
             Accepted
           </p>
           <p
-            class="status-rejected"
+            class="status-declined"
             v-else-if="bidPlaced && bidStatus === 'declined'"
           >
-            Rejected
+            Declined
           </p>
           <p
             class="status-waiting"
@@ -134,7 +134,7 @@ export default {
   margin: 0;
   color: var(--lm-success-color);
 }
-.status-rejected {
+.status-declined {
   margin: 0;
   color: var(--lm-danger-color);
 }

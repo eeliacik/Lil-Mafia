@@ -1,25 +1,26 @@
 <template>
   <div class="jobs-wrapper">
+    <div class="new-job-container">
+      <router-link class="new-job-link" to="/newjob">+ NEW JOB</router-link>
+    </div>
     <base-card>
-      <div class="jobs-list-title-container">
-        <span class="jobs-list-title-01">Title</span>
-        <span class="jobs-list-title-02">Territory</span>
-        <span class="jobs-list-title-03">Offers</span>
+      <div class="jobs-list-container">
+        <div class="jobs-list-title-container">
+          <span class="jobs-list-title-01">Title</span>
+          <span class="jobs-list-title-02">Territory</span>
+          <span class="jobs-list-title-03">Offers</span>
+        </div>
+        <ul class="jobs-container">
+          <job-item-capo
+            v-for="job in capoJobs"
+            :key="job.id"
+            :id="job.id"
+            :title="job.title"
+            :terr="job.territory"
+            :bids="job.bids"
+          ></job-item-capo>
+        </ul>
       </div>
-      <router-link to="/newjob">New Job</router-link>
-      <span class="empty-message" v-if="!hasJobs"
-        >You haven't add any job yet.</span
-      >
-      <ul class="jobs-container" v-else>
-        <job-item-capo
-          v-for="job in capoJobs"
-          :key="job.id"
-          :id="job.id"
-          :title="job.title"
-          :terr="job.territory"
-          :bids="job.bids"
-        ></job-item-capo>
-      </ul>
     </base-card>
   </div>
 </template>
@@ -52,3 +53,22 @@ export default {
 };
 </script>
 
+<style lang="scss">
+.new-job-container {
+  padding-left: 0.6rem;
+  display: flex;
+}
+
+.new-job-link {
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.2rem;
+  color: var(--lm-secondary-color);
+  // color: var(--theme-color-light-2);
+  // background-color: var(--lm-secondary-color);
+  font-size: 0.9rem;
+  &:hover {
+    color: var(--lm-secondary-color-light);
+    background-color: var(--theme-color-dark-2);
+  }
+}
+</style>
