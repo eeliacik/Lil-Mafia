@@ -1,25 +1,27 @@
 <template>
   <div class="jobs-wrapper">
-      <job-filter @get-skills="filterJobs"></job-filter>
+    <job-filter @get-skills="filterJobs"></job-filter>
     <base-card>
-      <div class="jobs-list-title-container">
-        <span class="jobs-list-title-01">Title</span>
-        <span class="jobs-list-title-02">Territory</span>
-        <span class="jobs-list-title-03">Bids</span>
+      <div class="jobs-list-container">
+        <div class="jobs-list-title-container">
+          <span class="jobs-list-title-01">Title</span>
+          <span class="jobs-list-title-02">Territory</span>
+          <span class="jobs-list-title-03">Bids</span>
+        </div>
+        <ul class="jobs-container" v-if="hasJobs && hasSkills">
+          <job-item
+            v-for="job in availableJobs"
+            :key="job.id"
+            :id="job.id"
+            :title="job.title"
+            :terr="job.territory"
+            :skills="job.skills"
+            :bids="job.bids.length"
+            :desc="job.description"
+          ></job-item>
+        </ul>
+        <span class="empty-message" v-else>No Jobs Found!</span>
       </div>
-      <ul class="jobs-container" v-if="hasJobs && hasSkills">
-        <job-item
-          v-for="job in availableJobs"
-          :key="job.id"
-          :id="job.id"
-          :title="job.title"
-          :terr="job.territory"
-          :skills="job.skills"
-          :bids="job.bids.length"
-          :desc="job.description"
-        ></job-item>
-      </ul>
-      <span class="empty-message" v-else>No Jobs Found!</span>
     </base-card>
   </div>
 </template>
@@ -95,12 +97,17 @@ export default {
   gap: 1rem;
 }
 
+.jobs-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
 .jobs-list-title-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 0 0.6rem 0.6rem 0.6rem;
-  margin-bottom: 0.6rem;
   border-bottom: 0.03rem solid var(--theme-color-light-4);
   font-size: 0.8rem;
   cursor: default;
