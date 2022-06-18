@@ -137,9 +137,9 @@ export default {
   width: 0.9rem;
   height: 0.65rem;
   /* background-color: var(--lm-secondary-color-light); */
-  border-left: 0.15rem solid var(--lm-secondary-color-light);
-  border-right: 0.15rem solid var(--lm-secondary-color-light);
-  border-bottom: 0.15rem solid var(--lm-secondary-color-light);
+  border-left: 0.15rem solid var(--lm-secondary-color);
+  border-right: 0.15rem solid var(--lm-secondary-color);
+  border-bottom: 0.15rem solid var(--lm-secondary-color);
   /* background: linear-gradient(var(--theme-color-dark-4), var(--lm-secondary-color-light)); */
   border-bottom-left-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;

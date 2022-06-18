@@ -47,17 +47,28 @@
             Waiting
           </p>
         </div>
-        <div class="details-action">
-          <div
-            v-if="
+        <div class="details-action" v-if="
               userType === 'gangster' && bidPlaced && bidStatus === 'waiting'
-            "
+            ">
+          <div
             @click="withdrawOffer"
             class="withdraw-button"
           >
             WITHDRAW
           </div>
-          <router-link class="back-link" to="/myoffers">BACK</router-link>
+          <router-link
+            class="back-link"
+            to="/myoffers"
+            >BACK</router-link
+          >
+          <p v-show="withdrawing">Withdrawing...</p>
+        </div>
+        <div class="details-action" v-else>
+          <router-link
+            class="back-button"
+            to="/myoffers"
+            >BACK</router-link
+          >
           <p v-show="withdrawing">Withdrawing...</p>
         </div>
       </div>
@@ -124,10 +135,8 @@ export default {
 </script>
 
 <style lang="scss">
-
 .status-container {
   font-size: 2rem;
-
 }
 
 .status-accepted {
@@ -144,14 +153,28 @@ export default {
 }
 
 .withdraw-button {
-  background-color: var(--lm-danger-color-dark);
-  color: var(--theme-color-light);
   padding: 0.3rem 0.6rem;
   border-radius: 0.2rem;
   font-size: 0.9rem;
+  color: var(--theme-color-light-2);
+  background-color: var(--lm-danger-color-dark);
   &:hover {
+    color: var(--theme-color-light);
     background-color: var(--lm-danger-color);
     cursor: pointer;
+  }
+}
+
+.back-button,
+.back-button:visited {
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  color: var(--theme-color-light-2);
+  background-color: var(--lm-primary-color);
+  &:hover {
+    color: var(--theme-color-light);
+    background-color: var(--lm-primary-color-light);
   }
 }
 </style>
