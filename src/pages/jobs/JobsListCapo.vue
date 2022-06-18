@@ -1,7 +1,7 @@
 <template>
   <div class="jobs-wrapper">
     <div class="new-job-container">
-      <router-link class="new-job-link" to="/newjob">+ NEW JOB</router-link>
+      <router-link class="new-job-link" to="/newjob">+ NEW</router-link>
     </div>
     <base-card>
       <div class="jobs-list-container">
@@ -62,12 +62,12 @@ export default {
 .new-job-link {
   padding: 0.2rem 0.6rem;
   border-radius: 0.2rem;
-  color: var(--lm-secondary-color);
+  color: var(--lm-success-color);
   // color: var(--theme-color-light-2);
   // background-color: var(--lm-secondary-color);
   font-size: 0.9rem;
   &:hover {
-    color: var(--lm-secondary-color-light);
+    color: var(--lm-success-color-light);
     background-color: var(--theme-color-dark-2);
   }
 }

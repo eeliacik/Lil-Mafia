@@ -19,7 +19,7 @@
       <nav>
         <ul class="navigation-list">
           <li class="navigation-item">
-            <router-link :to="userType === 'gangster' ? '/jobs' : '/myjobs'"
+            <router-link v-if="isAuthenticated" :to="userType === 'gangster' ? '/jobs' : '/myjobs'"
               >Jobs</router-link
             >
           </li>
@@ -198,6 +198,6 @@ nav {
 
 .auth-logout:hover {
   background-color: var(--theme-color-dark-3);
-  color: var(--lm-secondary-color-light);
+  color: var(--lm-danger-color);
 }
 </style>
