@@ -44,29 +44,28 @@
         </div>
       </div>
     </base-card>
+    <div class="details-header">Received Offers</div>
     <div v-if="userType === 'capo'">
-      <div v-if="hasOffers">
-        <base-card class="header">
-          <h2>Received Offers</h2>
-        </base-card>
-        <base-card>
-          <ul>
-            <capo-offers
-              v-for="gangster in gangsterOffers"
-              :key="gangster.id"
-              :id="gangster.id"
-              :aka="gangster.nickName"
-              :offers="gangster.offers"
-              :job="this.job"
-            ></capo-offers>
-          </ul>
-        </base-card>
-      </div>
-      <div v-else>
-        <base-card class="header">
-          <h2>No offers received yet.</h2>
-        </base-card>
-      </div>
+      <base-card class="offers-wrapper">
+
+        <div class="offers-list-title-container">
+          <span class="offers-list-title-01">Title</span>
+          <span class="offers-list-title-02">Status</span>
+          <span class="offers-list-title-03">Price</span>
+        </div>
+
+        <span class="empty-message" v-if="!hasOffers">No bids.</span>
+        <ul class="offers-container" v-else>
+          <capo-offers
+            v-for="gangster in gangsterOffers"
+            :key="gangster.id"
+            :id="gangster.id"
+            :aka="gangster.nickName"
+            :offers="gangster.offers"
+            :job="this.job"
+          ></capo-offers>
+        </ul>
+      </base-card>
     </div>
   </div>
 </template>

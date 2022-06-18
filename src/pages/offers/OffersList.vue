@@ -40,7 +40,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
 .offers-wrapper {
   width: 100%;
   max-width: calc(var(--max-width) * 0.71);
