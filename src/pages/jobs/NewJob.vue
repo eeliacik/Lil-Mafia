@@ -1,11 +1,9 @@
 <template>
-  <base-card>
-    <h2>New Job</h2>
-  </base-card>
-  <base-card>
+  <div class="form-wrapper">
+    <div class="form-header">New Job</div>
     <job-form @add-job="newjob"></job-form>
-    <p v-show="sendingJob">Creating new job...</p>
-  </base-card>
+    <p v-show="sendingJob">Creating Job...</p>
+  </div>
 </template>
 
 <script>

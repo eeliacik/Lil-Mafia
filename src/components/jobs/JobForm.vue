@@ -1,116 +1,137 @@
 <template>
-  <form @submit.prevent="submitForm">
-    <div class="form-block" :class="{ invalid: !this.title.isValid }">
-      <label for="title">Title</label>
+  <form class="form-contianer" @submit.prevent="submitForm">
+    <div class="form-item" :class="{ invalid: !this.title.isValid }">
+      <label class="form-label" for="title">Title</label>
       <input
+        class="form-input"
         id="title"
         type="text"
         v-model.trim="title.val"
         @blur="clearValidationError('title')"
       />
-      <p v-if="!this.title.isValid">* Please enter the job title</p>
+      <p v-show="!this.title.isValid">Please enter the job title</p>
     </div>
-    <div class="form-block" :class="{ invalid: !this.terr.isValid }">
-      <label for="territory">Territory</label>
+    <div class="form-item" :class="{ invalid: !this.terr.isValid }">
+      <label class="form-label" for="territory">Territory</label>
       <input
+        class="form-input"
         id="territory"
         type="text"
         v-model.trim="terr.val"
         @blur="clearValidationError('terr')"
       />
-      <p v-if="!this.terr.isValid">* Please enter the territory</p>
+      <p v-if="!this.terr.isValid">Please enter the territory</p>
     </div>
-    <div class="form-block" :class="{ invalid: !this.desc.isValid }">
-      <label for="description">Description</label>
+    <div class="form-description" :class="{ invalid: !this.desc.isValid }">
+      <label class="form-label" for="description">Description</label>
       <textarea
+        class="form-input"
         id="description"
         rows="5"
         v-model.trim="desc.val"
         @blur="clearValidationError('desc')"
       />
-      <p v-if="!this.desc.isValid">* Please enter the job description</p>
+      <p v-if="!this.desc.isValid">Please enter the job description</p>
     </div>
     <div
-      class="form-block"
+      class="form-skills"
       :class="{ invalid: !this.skills.isValid }"
       @change="clearValidationError('skills')"
     >
-      <h4>Skills</h4>
-      <div class="skill-checkbox">
-        <input
-          type="checkbox"
-          name="skills"
-          value="blackmail"
-          id="blackmail"
-          v-model="skills.val"
-        />
-        <label for="blackmail">Blackmail</label>
+    <div class="form-label">Skills</div>
+      <div class="skills-container">
+        <div class="checkbox-wrapper">
+          <label class="checkbox-container" for="blackmail">
+            <input
+              type="checkbox"
+              name="skills"
+              value="blackmail"
+              id="blackmail"
+              v-model="skills.val"
+            />
+            <span class="checkbox-label">Blackmail</span>
+          </label>
+        </div>
+        <div class="checkbox-wrapper">
+          <label class="checkbox-container" for="bully">
+            <input
+              type="checkbox"
+              name="skills"
+              value="bully"
+              id="bully"
+              v-model="skills.val"
+            />
+            <span class="checkbox-label">Bully</span>
+          </label>
+        </div>
+        <div class="checkbox-wrapper">
+          <label class="checkbox-container" for="kidnap">
+            <input
+              type="checkbox"
+              name="skills"
+              value="kidnap"
+              id="kidnap"
+              v-model="skills.val"
+            />
+            <span class="checkbox-label">Kidnap</span>
+          </label>
+        </div>
+        <div class="checkbox-wrapper">
+          <label class="checkbox-container" for="launder">
+            <input
+              type="checkbox"
+              name="skills"
+              value="launder"
+              id="launder"
+              v-model="skills.val"
+            />
+            <span class="checkbox-label">Launder</span>
+          </label>
+        </div>
+        <div class="checkbox-wrapper">
+          <label class="checkbox-container" for="pickpocket">
+            <input
+              type="checkbox"
+              name="skills"
+              value="pickpocket"
+              id="pickpocket"
+              v-model="skills.val"
+            />
+            <span class="checkbox-label">Pickpocket</span>
+          </label>
+        </div>
+        <div class="checkbox-wrapper">
+          <label class="checkbox-container" for="robbery">
+            <input
+              type="checkbox"
+              name="skills"
+              value="robbery"
+              id="robbery"
+              v-model="skills.val"
+            />
+            <span class="checkbox-label">Robbery</span>
+          </label>
+        </div>
+        <div class="checkbox-wrapper">
+          <label class="checkbox-container" for="smuggle">
+            <input
+              type="checkbox"
+              name="skills"
+              value="smuggle"
+              id="smuggle"
+              v-model="skills.val"
+            />
+            <span class="checkbox-label">Smuggle</span>
+          </label>
+        </div>
       </div>
-      <div class="skill-checkbox">
-        <input
-          type="checkbox"
-          name="skills"
-          value="bully"
-          id="bully"
-          v-model="skills.val"
-        />
-        <label for="bully">Bully</label>
-      </div>
-      <div class="skill-checkbox">
-        <input
-          type="checkbox"
-          name="skills"
-          value="kidnap"
-          id="kidnap"
-          v-model="skills.val"
-        />
-        <label for="kidnap">Kidnap</label>
-      </div>
-      <div class="skill-checkbox">
-        <input
-          type="checkbox"
-          name="skills"
-          value="launder"
-          id="launder"
-          v-model="skills.val"
-        />
-        <label for="launder">Launder</label>
-      </div>
-      <div class="skill-checkbox">
-        <input
-          type="checkbox"
-          name="skills"
-          value="pickpocket"
-          id="pickpocket"
-          v-model="skills.val"
-        />
-        <label for="pickpocket">Pickpocket</label>
-      </div>
-      <div class="skill-checkbox">
-        <input
-          type="checkbox"
-          name="skills"
-          value="robbery"
-          id="robbery"
-          v-model="skills.val"
-        />
-        <label for="robbery">Robbery</label>
-      </div>
-      <div class="skill-checkbox">
-        <input
-          type="checkbox"
-          name="skills"
-          value="smuggle"
-          id="smuggle"
-          v-model="skills.val"
-        />
-        <label for="smuggle">Smuggle</label>
-      </div>
-      <p v-if="!this.skills.isValid">
-        * Please choose at least one of the skills above
+      <p v-show="!this.skills.isValid">
+        Please choose at least one of the skills above
       </p>
     </div>
-    <button>Create Job</button>
+    <div class="form-action">
+      <div class="create-button" @click="submitForm">CREATE</div>
+    </div>
   </form>
 </template>
 
@@ -181,46 +202,17 @@ export default {
 };
 </script>
 
-<style scoped>
-.form-block {
-  margin: 0.5rem 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-block h4 {
-  margin: 0;
-  font-weight: bold;
-}
-
-.form-block label {
-  font-weight: bold;
-}
-.skill-checkbox {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.skill-checkbox input {
-  margin: 0;
-  height: 1.15rem;
-  width: 1.15rem;
-}
-
-.skill-checkbox label {
-  margin-left: 0.25rem;
-  font-weight: normal;
-}
-
-.invalid input,
-.invalid textarea {
-  border: 1px solid red;
-}
-
-p {
-  margin: 0;
-  padding: 0;
-  font-size: 0.8rem;
-  color: red;
+<style lang="scss">
+.create-button {
+  background-color: var(--lm-secondary-color-dark);
+  color: var(--theme-color-light);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  &:hover {
+    background-color: var(--lm-secondary-color);
+    cursor: pointer;
+  }
 }
 </style>
+
