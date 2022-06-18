@@ -37,7 +37,7 @@
             <span class="bid-button" @click="openBidding">BID</span>
           </div>
           <router-link
-            class="back-link"
+            class="back-button"
             :to="this.isUserJob ? '/myjobs' : '/jobs'"
             >BACK</router-link
           >
