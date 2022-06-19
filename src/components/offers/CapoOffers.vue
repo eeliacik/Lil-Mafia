@@ -2,7 +2,9 @@
   <router-link class="offer-link" :to="gangsterDetailsLink">
     <div class="offer-item">
       <span class="offer-title">{{ aka }}</span>
-      <span class="offer-status">{{ status }}</span>
+      <span class="offer-status" :class="'status-' + status">{{
+        status.charAt(0).toUpperCase() + status.slice(1)
+      }}</span>
       <span class="offer-price">{{ price }} $</span>
     </div>
   </router-link>
