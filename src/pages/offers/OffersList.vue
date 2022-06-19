@@ -1,11 +1,14 @@
 <template>
-    <base-card class="offers-wrapper">
+  <div class="offers-wrapper">
+    <base-card>
       <div class="offers-list-title-container">
         <span class="offers-list-title-01">Title</span>
         <span class="offers-list-title-02">Status</span>
         <span class="offers-list-title-03">Price</span>
       </div>
-      <span class="empty-message" v-if="offers.length === 0">No bids placed yet.</span>
+      <span class="empty-message" v-if="offers.length === 0"
+        >No bids placed yet.</span
+      >
       <ul class="offers-container" v-else>
         <gangster-offers
           v-for="offer in offers"
@@ -16,6 +19,7 @@
         ></gangster-offers>
       </ul>
     </base-card>
+  </div>
 </template>
 
 <script>
@@ -28,14 +32,18 @@ export default {
       return this.$store.getters['gangsters/gangsters'] || [];
     },
     offers() {
-      const gangster = this.gangsters.find((gangster) => gangster.id === this.$store.getters.userId)
-      return gangster ? gangster.offers.filter((offer) => offer.jobId !== 'take this!') : []
+      const gangster = this.gangsters.find(
+        (gangster) => gangster.id === this.$store.getters.userId
+      );
+      return gangster
+        ? gangster.offers.filter((offer) => offer.jobId !== 'take this!')
+        : [];
     },
   },
-   created() {
+  created() {
     this.$store.dispatch('jobs/loadJobs');
     this.$store.dispatch('gangsters/loadGangsters');
-    console.log('offers: ', this.offers)
+    console.log('offers: ', this.offers);
   },
 };
 </script>

@@ -65,7 +65,7 @@ export default {
         .dispatch('login', authData)
         .then((userType) => {
           this.isLoading = false;
-          this.$router.push(userType === 'gangster' ? '/jobs' : '/myjobs');
+          this.$router.push(userType === 'gangster' ? '/jobs' : '/capojobs');
         })
         .catch((error) => {
           console.log(error);
