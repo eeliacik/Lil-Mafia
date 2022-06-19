@@ -44,16 +44,14 @@
         </div>
       </div>
     </base-card>
-    <div class="details-header">Received Offers</div>
+    <div v-if="userType === 'capo'" class="details-header">Received Offers</div>
     <div v-if="userType === 'capo'">
       <base-card class="offers-wrapper">
-
         <div class="offers-list-title-container">
           <span class="offers-list-title-01">Title</span>
           <span class="offers-list-title-02">Status</span>
           <span class="offers-list-title-03">Price</span>
         </div>
-
         <span class="empty-message" v-if="!hasOffers">No bids.</span>
         <ul class="offers-container" v-else>
           <capo-offers
@@ -123,7 +121,7 @@ export default {
       });
     },
     hasOffers() {
-      return !!this.gangsterOffers.length;
+      return this.gangsterOffers.length > 0;
     },
   },
   methods: {

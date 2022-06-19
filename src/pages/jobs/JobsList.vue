@@ -16,7 +16,7 @@
             :title="job.title"
             :terr="job.territory"
             :skills="job.skills"
-            :bids="job.bids.length"
+            :bids="job.bids"
             :desc="job.description"
           ></job-item>
         </ul>

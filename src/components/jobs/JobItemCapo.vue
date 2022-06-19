@@ -13,7 +13,7 @@ export default {
   props: ['id', 'title', 'terr', 'bids'],
   computed: {
     offerCount() {
-      return this.bids.length;
+      return this.bids.length - 1;
     },
     jobDetailsLink() {
       return {

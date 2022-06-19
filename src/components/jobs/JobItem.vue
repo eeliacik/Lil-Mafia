@@ -3,7 +3,7 @@
     <div class="job-item">
       <div class="job-title">{{ title }}</div>
       <div class="job-terr">{{ terr }}</div>
-      <div class="job-bids">{{ bids }}</div>
+      <div class="job-bids">{{ bids.length - 1 }}</div>
     </div>
   </router-link>
 </template>
