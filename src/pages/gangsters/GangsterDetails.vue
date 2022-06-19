@@ -1,45 +1,52 @@
 <template>
-  <div>
+  <div class="details-wrapper">
+    <div class="details-header">Gangster Details</div>
     <base-card>
-      <div>
-        <h2>{{ fullName }}</h2>
-        <h3>From "{{ from }}"</h3>
-        <h3>aKa "{{ aka }}"</h3>
-        <h1>Description:</h1>
-        <p>{{ desc }}</p>
-        <div>
-          <h1>Skills:</h1>
-          <base-badge
-            v-for="skill in skills"
-            :key="skill"
-            :type="skill"
-            :title="skill"
-          ></base-badge>
+      <div class="details-container">
+        <div class="details-item">
+          <div class="details-item-title">
+            {{ fullName }}
+          </div>
         </div>
-      </div>
-    </base-card>
-    <base-card>
-      <div class="job-offer">
-        <h2>{{ aka }}</h2>
-        <h3>wants</h3>
-        <h2>{{ price }} $</h2>
-        <h3>to finish "{{ title }}"</h3>
-      </div>
-      <p v-show="isLoading">Loading...</p>
-      <div v-if="!this.isLoading">
-        <div class="details-action">
-          <div v-if="status === 'waiting'">
-            <button class="accept-button" @click="acceptOffer">
-              Accept Offer
-            </button>
-            <button class="decline-button" @click="declineOffer">
-              Decline Offer
+        <div class="details-item">
+          <div class="details-title">From</div>
+          <div class="details-item-terr">{{ from }}</div>
+        </div>
+        <div class="details-item">
+          <div class="details-title">aKa</div>
+          <div class="details-item-terr">{{ aka }}</div>
+        </div>
+        <div class="details-item">
+          <div class="details-title">Description</div>
+          <div class="details-item-desc">
+            {{ desc }}
+          </div>
+        </div>
+        <div class="details-item">
+          <div class="details-title">Skills</div>
+          <ul class="details-skills-container">
+            <li class="details-skill" v-for="skill in skills" :key="skill">
+              {{ skill.charAt(0).toUpperCase() + skill.slice(1) }}
+            </li>
+          </ul>
+        </div>
+        <p class="bid-price">$ {{ price }}</p>
+        <p v-show="isLoading">Loading...</p>
+        <div v-if="!this.isLoading">
+          <div class="details-action">
+            <div v-if="status === 'waiting'">
+              <button class="accept-button" @click="acceptOffer">
+                ACCEPT
+              </button>
+              <button class="decline-button" @click="declineOffer">
+                DECLINE
+              </button>
+            </div>
+            <p v-else>You have {{ status }} this offer.</p>
+            <button>
+              <router-link :to="backToJob">BACK</router-link>
             </button>
           </div>
-          <p v-else>You have {{ status }} this offer.</p>
-          <button>
-            <router-link :to="backToJob">Back to Job</router-link>
-          </button>
         </div>
       </div>
     </base-card>
@@ -128,33 +135,10 @@ export default {
 };
 </script>
 
-<style scoped>
-
-a:link {
-  color: black;
-  text-decoration: none;
-}
-
-.job-offer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
-
-.details-action {
-  display: flex;
-  justify-content: space-between;
-  margin: 5px;
-}
-
-.accept-button {
-  height: 30px;
-  background-color: lightgreen;
-}
-
-.decline-button {
-  height: 30px;
-  background-color: lightcoral;
+<style lang="scss">
+.bid-price {
+  margin: 0;
+  font-size: 2.5rem;
+  color: var(--lm-warning-color);
 }
 </style>
