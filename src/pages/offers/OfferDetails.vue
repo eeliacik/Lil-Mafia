@@ -58,7 +58,7 @@
           </div>
           <router-link
             class="back-link"
-            to="/myoffers"
+            to="/gangsteroffers"
             >BACK</router-link
           >
           <p v-show="withdrawing">Withdrawing...</p>
@@ -66,7 +66,7 @@
         <div class="details-action" v-else>
           <router-link
             class="back-button"
-            to="/myoffers"
+            to="/gangsteroffers"
             >BACK</router-link
           >
           <p v-show="withdrawing">Withdrawing...</p>
@@ -127,7 +127,7 @@ export default {
         console.error(JSON.stringify(error));
       } finally {
         this.withdrawing = false;
-        this.$router.push('/myoffers');
+        this.$router.push('/gangsteroffers');
       }
     },
   },

@@ -29,7 +29,7 @@ export default {
         console.error(error);
       }
       this.sendingJob = false;
-      this.$router.replace('/myjobs');
+      this.$router.replace('/capojobs');
     },
   },
 };

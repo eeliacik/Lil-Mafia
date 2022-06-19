@@ -19,12 +19,12 @@
       <nav>
         <ul class="navigation-list">
           <li class="navigation-item">
-            <router-link v-if="isAuthenticated" :to="userType === 'gangster' ? '/jobs' : '/myjobs'"
+            <router-link v-if="isAuthenticated" :to="userType === 'gangster' ? '/jobs' : '/capojobs'"
               >Jobs</router-link
             >
           </li>
           <li class="navigation-item">
-            <router-link v-if="userType === 'gangster'" to="/myoffers"
+            <router-link v-if="userType === 'gangster'" to="/gangsteroffers"
               >Offers</router-link
             >
           </li>
@@ -55,7 +55,7 @@ export default {
       if (this.userType === 'gangster') {
         return '/jobs';
       } else if (this.userType === 'capo') {
-        return '/myjobs';
+        return '/capojobs';
       } else {
         return '/';
       }

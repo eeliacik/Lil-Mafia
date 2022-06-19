@@ -38,7 +38,7 @@
           </div>
           <router-link
             class="back-button"
-            :to="this.isUserJob ? '/myjobs' : '/jobs'"
+            :to="this.isUserJob ? '/capojobs' : '/jobs'"
             >BACK</router-link
           >
         </div>
@@ -140,7 +140,7 @@ export default {
       }
       this.showDialog = false;
       this.sendingBid = false;
-      this.$router.push('/myoffers');
+      this.$router.push('/gangsteroffers');
     },
     // placeBid(price) {
     //   const jobId = this.id;
@@ -156,7 +156,7 @@ export default {
     //     })
     //     .then(() => {
     //       this.sendingBid = false;
-    //       this.$router.push('/myoffers');
+    //       this.$router.push('/gangsteroffers');
     //     });
     // },
     closeDialog() {

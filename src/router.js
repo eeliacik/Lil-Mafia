@@ -27,7 +27,7 @@ const router = createRouter({
       props: true,
     },
     { name: 'jobs', path: '/jobs', component: JobsList },
-    { name: 'my-jobs', path: '/myjobs', component: JobsListCapo },
+    { name: 'capo-jobs', path: '/capojobs', component: JobsListCapo },
     {
       name: 'job-details',
       path: '/job/:id',
@@ -39,7 +39,7 @@ const router = createRouter({
       path: '/newjob',
       component: NewJob,
     },
-    { name: 'my-offers', path: '/myoffers', component: OffersList },
+    { name: 'my-offers', path: '/gangsteroffers', component: OffersList },
     {
       name: 'offer-details',
       path: '/offer/:id',
