@@ -30,24 +30,34 @@
             </li>
           </ul>
         </div>
-        <p class="bid-price">$ {{ price }}</p>
-        <p v-show="isLoading">Loading...</p>
         <div v-if="!this.isLoading">
+          <p
+            class="bid-price"
+            :class="{ 'status-waiting': status === 'waiting' }"
+          >
+            $ {{ price }}
+          </p>
+          <div class="status-container" v-if="status !== 'waiting'">
+            <p class="status-accepted" v-if="status === 'accepted'">Accepted</p>
+            <p class="status-declined" v-else-if="status === 'declined'">
+              Declined
+            </p>
+          </div>
           <div class="details-action">
             <div v-if="status === 'waiting'">
-              <button class="accept-button" @click="acceptOffer">
-                ACCEPT
-              </button>
+              <button class="accept-button" @click="acceptOffer">ACCEPT</button>
               <button class="decline-button" @click="declineOffer">
                 DECLINE
               </button>
             </div>
-            <p v-else>You have {{ status }} this offer.</p>
-            <button>
-              <router-link :to="backToJob">BACK</router-link>
-            </button>
+            <div>
+              <button>
+                <router-link :to="backToJob">BACK</router-link>
+              </button>
+            </div>
           </div>
         </div>
+        <p v-else>Loading...</p>
       </div>
     </base-card>
   </div>
@@ -139,6 +149,6 @@ export default {
 .bid-price {
   margin: 0;
   font-size: 2.5rem;
-  color: var(--lm-warning-color);
+  // color: var(--lm-warning-color);
 }
 </style>
