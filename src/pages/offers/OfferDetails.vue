@@ -47,30 +47,25 @@
             Waiting
           </p>
         </div>
-        <div class="details-action" v-if="
-              userType === 'gangster' && bidPlaced && bidStatus === 'waiting'
-            ">
+        <div v-if="!withdrawing">
           <div
-            @click="withdrawOffer"
-            class="withdraw-button"
+            class="details-action"
+            v-if="
+              userType === 'gangster' && bidPlaced && bidStatus === 'waiting'
+            "
           >
-            WITHDRAW
+            <div @click="withdrawOffer" class="withdraw-button">WITHDRAW</div>
+            <router-link class="back-link" to="/gangsteroffers"
+              >BACK</router-link
+            >
           </div>
-          <router-link
-            class="back-link"
-            to="/gangsteroffers"
-            >BACK</router-link
-          >
-          <p v-show="withdrawing">Withdrawing...</p>
+          <div class="details-action" v-else>
+            <router-link class="back-button" to="/gangsteroffers"
+              >BACK</router-link
+            >
+          </div>
         </div>
-        <div class="details-action" v-else>
-          <router-link
-            class="back-button"
-            to="/gangsteroffers"
-            >BACK</router-link
-          >
-          <p v-show="withdrawing">Withdrawing...</p>
-        </div>
+        <p v-else>Withdrawing...</p>
       </div>
     </base-card>
   </div>

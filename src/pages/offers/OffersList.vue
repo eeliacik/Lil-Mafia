@@ -7,7 +7,7 @@
         <span class="offers-list-title-03">Price</span>
       </div>
       <span class="empty-message" v-if="offers.length === 0"
-        >No bids placed yet.</span
+        >No offers.</span
       >
       <ul class="offers-container" v-else>
         <gangster-offers
