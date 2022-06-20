@@ -13,12 +13,16 @@
             max="1000000"
             step="1000"
             v-model="price"
+            @blur="clearValidationError"
           />
           <label class="bid-label" for="bid">$</label>
           <div class="bid-spinners-container">
             <div class="bid-spinner-down" @click="priceDown">-</div>
             <div class="bid-spinner-up" @click="priceUp">+</div>
           </div>
+          <span class="bid-invalid" v-show="!bidIsValid"
+            >MIN 10.000 / MAX 1.000.000</span
+          >
         </div>
         <div class="bid-action">
           <div class="send-button" @click="placeBid">SEND</div>
@@ -26,7 +30,7 @@
         </div>
       </div>
       <div v-else>
-        <p>Bidding...</p>
+        <p>Sending...</p>
       </div>
     </dialog>
   </teleport>
@@ -38,21 +42,27 @@ export default {
   emits: ['close-dialog', 'place-bid'],
   data() {
     return {
-      price: 1000,
+      price: 10000,
+      bidIsValid: true,
     };
   },
   methods: {
     priceUp() {
-      this.price += 1000;
+      this.price += 10000;
     },
     priceDown() {
-      this.price -= 1000;
+      this.price -= 10000;
     },
     closeDialog() {
       this.$emit('close-dialog');
     },
     placeBid() {
-      this.$emit('place-bid', this.price);
+      this.price < 10000 || this.price > 1000000
+        ? (this.bidIsValid = false)
+        : this.$emit('place-bid', this.price);
+    },
+    clearValidationError() {
+      this.bidIsValid = true;
     },
   },
   watch: {
@@ -103,9 +113,10 @@ export default {
 
 .bid-input-container {
   width: 100%;
+  height: 4.25rem;
   position: relative;
   display: flex;
-  gap: 0.6rem;
+  flex-direction: column;
 }
 
 .bid-input {
@@ -185,7 +196,11 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
   }
 }
-
+.bid-invalid {
+  padding-top: 0.1rem; 
+  font-size: 0.7rem;
+  color: var(--lm-danger-color);
+}
 .bid-action {
   display: flex;
   flex-direction: row;
