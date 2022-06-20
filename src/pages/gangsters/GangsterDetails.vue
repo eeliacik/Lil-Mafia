@@ -30,31 +30,27 @@
             </li>
           </ul>
         </div>
-        <div v-if="!this.isLoading">
-          <p
-            class="bid-price"
-            :class="{ 'status-waiting': status === 'waiting' }"
-          >
-            $ {{ price }}
+        <p
+          class="bid-price"
+          :class="{ 'status-waiting': status === 'waiting' }"
+        >
+          $ {{ price }}
+        </p>
+        <div class="status-container" v-if="status !== 'waiting'">
+          <p class="status-accepted" v-if="status === 'accepted'">Accepted</p>
+          <p class="status-declined" v-else-if="status === 'declined'">
+            Declined
           </p>
-          <div class="status-container" v-if="status !== 'waiting'">
-            <p class="status-accepted" v-if="status === 'accepted'">Accepted</p>
-            <p class="status-declined" v-else-if="status === 'declined'">
-              Declined
-            </p>
+        </div>
+
+        <div v-if="!this.isLoading">
+          <div class="details-action" v-if="status === 'waiting'">
+            <div @click="acceptOffer" class="accept-button">ACCEPT</div>
+            <div @click="declineOffer" class="decline-button">DECLINE</div>
+            <router-link class="back-link" :to="backToJob">BACK</router-link>
           </div>
-          <div class="details-action">
-            <div v-if="status === 'waiting'">
-              <button class="accept-button" @click="acceptOffer">ACCEPT</button>
-              <button class="decline-button" @click="declineOffer">
-                DECLINE
-              </button>
-            </div>
-            <div>
-              <button>
-                <router-link :to="backToJob">BACK</router-link>
-              </button>
-            </div>
+          <div class="details-action" v-else>
+            <router-link class="back-button" :to="backToJob">BACK</router-link>
           </div>
         </div>
         <p v-else>Loading...</p>
@@ -150,5 +146,30 @@ export default {
   margin: 0;
   font-size: 2.5rem;
   // color: var(--lm-warning-color);
+}
+
+.accept-button {
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  color: var(--theme-color-light-2);
+  background-color: var(--lm-success-color-dark);
+  &:hover {
+    color: var(--theme-color-light);
+    background-color: var(--lm-success-color);
+    cursor: pointer;
+  }
+}
+.decline-button {
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  color: var(--theme-color-light-2);
+  background-color: var(--lm-danger-color-dark);
+  &:hover {
+    color: var(--theme-color-light);
+    background-color: var(--lm-danger-color);
+    cursor: pointer;
+  }
 }
 </style>
