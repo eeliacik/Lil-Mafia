@@ -53,7 +53,7 @@
             <router-link class="back-button" :to="backToJob">BACK</router-link>
           </div>
         </div>
-        <p v-else>Loading...</p>
+        <p v-else>Sending...</p>
       </div>
     </base-card>
   </div>
