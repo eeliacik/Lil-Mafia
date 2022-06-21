@@ -5,7 +5,6 @@ import store from './store/index.js';
 
 import App from './App.vue';
 
-import BaseBadge from './components/UI/BaseBadge.vue';
 import BaseCard from './components/UI/BaseCard.vue';
 
 const app = createApp(App);
@@ -13,7 +12,6 @@ const app = createApp(App);
 app.use(router);
 app.use(store);
 
-app.component('base-badge', BaseBadge);
 app.component('base-card', BaseCard);
 
 app.mount('#app');
