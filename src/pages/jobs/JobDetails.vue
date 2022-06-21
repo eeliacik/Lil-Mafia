@@ -48,7 +48,7 @@
     <div v-if="userType === 'capo'">
       <base-card class="offers-wrapper">
         <div class="offers-list-title-container">
-          <span class="offers-list-title-01">Title</span>
+          <span class="offers-list-title-01">Gangster</span>
           <span class="offers-list-title-02">Status</span>
           <span class="offers-list-title-03">Price</span>
         </div>
