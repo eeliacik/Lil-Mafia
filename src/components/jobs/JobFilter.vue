@@ -27,6 +27,32 @@
       </label>
     </div>
     <div class="checkbox-wrapper">
+      <label class="checkbox-container" for="delivery">
+        <input
+          type="checkbox"
+          name="skills"
+          value="delivery"
+          id="delivery"
+          v-model="skills"
+          @change="setFilter"
+        />
+        <span class="checkbox-label filter-checkbox-label">Delivery</span>
+      </label>
+    </div>
+    <div class="checkbox-wrapper">
+      <label class="checkbox-container" for="Escort">
+        <input
+          type="checkbox"
+          name="skills"
+          value="Escort"
+          id="Escort"
+          v-model="skills"
+          @change="setFilter"
+        />
+        <span class="checkbox-label filter-checkbox-label">Escort</span>
+      </label>
+    </div>
+    <div class="checkbox-wrapper">
       <label class="checkbox-container" for="kidnap">
         <input
           type="checkbox"

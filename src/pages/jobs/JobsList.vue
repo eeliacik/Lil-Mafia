@@ -39,6 +39,8 @@ export default {
       activeSkills: [
         'blackmail',
         'bully',
+        'delivery',
+        'escort',
         'kidnap',
         'launder',
         'pickpocket',

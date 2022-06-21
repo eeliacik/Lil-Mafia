@@ -87,6 +87,30 @@
           </label>
         </div>
         <div class="checkbox-wrapper">
+          <label class="checkbox-container" for="delivery">
+            <input
+              type="checkbox"
+              name="skills"
+              value="delivery"
+              id="delivery"
+              v-model="skills.val"
+            />
+            <span class="checkbox-label">Delivery</span>
+          </label>
+        </div>
+        <div class="checkbox-wrapper">
+          <label class="checkbox-container" for="escort">
+            <input
+              type="checkbox"
+              name="skills"
+              value="escort"
+              id="escort"
+              v-model="skills.val"
+            />
+            <span class="checkbox-label">Escort</span>
+          </label>
+        </div>
+        <div class="checkbox-wrapper">
           <label class="checkbox-container" for="kidnap">
             <input
               type="checkbox"
