@@ -29,7 +29,7 @@ export default {
   components: { GangsterItem },
   data() {
     return {
-      activeSkills: ['blackmail', 'bully', 'kidnap', 'launder', 'pickpocket', 'robbery', 'smuggle'],
+      activeSkills: ['blackmail', 'bully', 'delivery', 'escort', 'kidnap', 'launder', 'pickpocket', 'robbery', 'smuggle'],
     };
   },
   computed: {
