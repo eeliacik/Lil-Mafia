@@ -21,7 +21,7 @@
             <div class="bid-spinner-up" @click="priceUp">+</div>
           </div>
           <span class="bid-invalid" v-show="!bidIsValid"
-            >MIN 10.000 / MAX 1.000.000</span
+            >Min 10.000 - Max 1.000.000</span
           >
         </div>
         <div class="bid-action">
@@ -48,9 +48,11 @@ export default {
   },
   methods: {
     priceUp() {
+      this.bidIsValid = true;
       this.price += 10000;
     },
     priceDown() {
+      this.bidIsValid = true;
       this.price -= 10000;
     },
     closeDialog() {
