@@ -40,12 +40,12 @@
       </label>
     </div>
     <div class="checkbox-wrapper">
-      <label class="checkbox-container" for="Escort">
+      <label class="checkbox-container" for="escort">
         <input
           type="checkbox"
           name="skills"
-          value="Escort"
-          id="Escort"
+          value="escort"
+          id="escort"
           v-model="skills"
           @change="setFilter"
         />
@@ -128,6 +128,8 @@ export default {
       skills: [
         'blackmail',
         'bully',
+        'delivery',
+        'escort',
         'kidnap',
         'launder',
         'pickpocket',

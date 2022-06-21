@@ -77,12 +77,12 @@
           </label>
         </div>
         <div class="checkbox-wrapper">
-          <label class="checkbox-container" for="Escort">
+          <label class="checkbox-container" for="escort">
             <input
               type="checkbox"
               name="skills"
-              value="Escort"
-              id="Escort"
+              value="escort"
+              id="escort"
               v-model="skills.val"
             />
             <span class="checkbox-label">Escort</span>
