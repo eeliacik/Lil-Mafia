@@ -39,7 +39,7 @@ const router = createRouter({
       path: '/newjob',
       component: NewJob,
     },
-    { name: 'my-offers', path: '/gangsteroffers', component: OffersList },
+    { name: 'gangster-offers', path: '/gangsteroffers', component: OffersList },
     {
       name: 'offer-details',
       path: '/offer/:id',
