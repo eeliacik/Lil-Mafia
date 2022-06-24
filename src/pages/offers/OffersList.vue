@@ -43,7 +43,6 @@ export default {
   created() {
     this.$store.dispatch('jobs/loadJobs');
     this.$store.dispatch('gangsters/loadGangsters');
-    console.log('offers: ', this.offers);
   },
 };
 </script>
