@@ -1,7 +1,6 @@
 <template>
   <form class="form-wrapper" @submit.prevent="submitForm">
     <div class="form-header form-header-login">Log In</div>
-    
     <div class="form-container">
       <div class="form-item" :class="{ invalid: !this.email.isValid }">
         <label class="form-label" for="email">Email</label>
@@ -12,7 +11,7 @@
           v-model.trim="email.val"
           @blur="clearValidationError('email')"
         />
-        <p v-show="!this.email.isValid">Please enter your email address</p>
+        <p>Please enter your email address</p>
       </div>
       <div class="form-item" :class="{ invalid: !this.password.isValid }">
         <label class="form-label" for="password">Password</label>
@@ -23,9 +22,7 @@
           v-model="password.val"
           @blur="clearValidationError('password')"
         />
-        <p v-show="!this.password.isValid">
-          Please enter a password (min 6 characters)
-        </p>
+        <p>Please enter a password (min 6 characters)</p>
       </div>
       <div class="form-action">
         <div class="login-button" @click="login">LOGIN</div>
@@ -121,7 +118,6 @@ export default {
 }
 
 .form-item {
-  height: 5.03rem;
   display: flex;
   flex-direction: column;
 }
@@ -143,7 +139,7 @@ export default {
   font-size: 0.9rem;
   outline: none;
   &:hover {
-    border-color: var(--theme-color-light-2)
+    border-color: var(--theme-color-light-2);
   }
   &:focus {
     border: 0.06rem solid var(--lm-primary-color);
@@ -151,7 +147,7 @@ export default {
 }
 
 .form-action {
-  padding: 0;
+  padding: 0.3rem 0 0 0;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -182,16 +178,19 @@ export default {
     background-color: var(--theme-color-dark-2);
   }
 }
-
+.form-item p,
+.form-description p,
+.form-skills p {
+  margin: 0;
+  padding: 0.1rem 0.6rem 0.3rem 0.6rem;
+  font-size: 0.6rem;
+  color: transparent;
+}
 .invalid input,
 .invalid textarea {
   border: 0.06rem solid var(--lm-danger-color);
 }
-
 .invalid p {
-  margin: 0;
-  padding: 0.1rem 0.6rem 0.3rem 0.6rem;
-  font-size: 0.6rem;
   color: var(--lm-danger-color);
 }
 </style>

@@ -9,7 +9,7 @@
         v-model.trim="firstName.val"
         @blur="clearValidationError('firstName')"
       />
-      <p v-show="!this.firstName.isValid">Please enter your firstname</p>
+      <p>Please enter your firstname</p>
     </div>
     <div class="form-item" :class="{ invalid: !this.lastName.isValid }">
       <label class="form-label" for="lastname">Lastname</label>
@@ -20,7 +20,7 @@
         v-model.trim="lastName.val"
         @blur="clearValidationError('lastName')"
       />
-      <p v-show="!this.lastName.isValid">Please enter your lastname</p>
+      <p>Please enter your lastname</p>
     </div>
     <div class="form-item" :class="{ invalid: !this.aka.isValid }">
       <label class="form-label" for="nickname">Nickname</label>
@@ -31,7 +31,7 @@
         v-model.trim="aka.val"
         @blur="clearValidationError('aka')"
       />
-      <p v-show="!this.lastName.isValid">Please enter your nickname</p>
+      <p>Please enter your nickname</p>
     </div>
     <div class="form-item" :class="{ invalid: !this.from.isValid }">
       <label class="form-label" for="from">From</label>
@@ -42,7 +42,7 @@
         v-model.trim="from.val"
         @blur="clearValidationError('from')"
       />
-      <p v-show="!this.from.isValid">Please enter your hometown</p>
+      <p>Please enter your hometown</p>
     </div>
     <div class="form-description" :class="{ invalid: !this.desc.isValid }">
       <label class="form-label" for="description">Description</label>
@@ -53,7 +53,7 @@
         v-model.trim="desc.val"
         @blur="clearValidationError('desc')"
       />
-      <p v-show="!this.desc.isValid">Please describe yourself</p>
+      <p>Please describe yourself</p>
     </div>
     <div
       class="form-skills"
@@ -171,9 +171,7 @@
           </label>
         </div>
       </div>
-      <p v-show="!this.skills.isValid">
-        Please choose at least one of the skills above
-      </p>
+      <p>Please choose at least one of the skills above</p>
     </div>
     <div class="form-item" :class="{ invalid: !this.email.isValid }">
       <label class="form-label" for="email">E-mail</label>
@@ -182,9 +180,9 @@
         type="email"
         id="email"
         v-model.trim="email.val"
-        @blur="clearValidationError('desc')"
+        @blur="clearValidationError('email')"
       />
-      <p v-show="!this.email.isValid">Please enter your email address</p>
+      <p>Please enter your email address</p>
     </div>
     <div class="form-item" :class="{ invalid: !this.password.isValid }">
       <label class="form-label" for="password">Password</label>
@@ -193,11 +191,9 @@
         type="password"
         id="password"
         v-model="password.val"
-        @blur="clearValidationError('desc')"
+        @blur="clearValidationError('password')"
       />
-      <p v-show="!this.password.isValid">
-        Please enter a password (min 6 characters)
-      </p>
+      <p>Please enter a password (min 6 characters)</p>
     </div>
     <div class="form-action">
       <div class="signup-button" @click="submitForm">SIGNUP</div>
@@ -313,13 +309,11 @@ export default {
 .form-description {
   display: flex;
   flex-direction: column;
-  height: 9.2rem;
 }
 
 .form-skills {
   display: flex;
   flex-direction: column;
-  height: 6.4rem;
 }
 
 .skills-container {
