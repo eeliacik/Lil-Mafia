@@ -9,7 +9,7 @@
         v-model.trim="title.val"
         @blur="clearValidationError('title')"
       />
-      <p v-show="!this.title.isValid">Please enter the job title</p>
+      <p>Please enter the job title</p>
     </div>
     <div class="form-item" :class="{ invalid: !this.terr.isValid }">
       <label class="form-label" for="territory">Territory</label>
@@ -20,7 +20,7 @@
         v-model.trim="terr.val"
         @blur="clearValidationError('terr')"
       />
-      <p v-if="!this.terr.isValid">Please enter the territory</p>
+      <p>Please enter the territory</p>
     </div>
     <div class="form-description" :class="{ invalid: !this.desc.isValid }">
       <label class="form-label" for="description">Description</label>
@@ -31,7 +31,7 @@
         v-model.trim="desc.val"
         @blur="clearValidationError('desc')"
       />
-      <p v-if="!this.desc.isValid">Please enter the job description</p>
+      <p>Please enter the job description</p>
     </div>
     <div
       class="form-skills"
@@ -149,7 +149,7 @@
           </label>
         </div>
       </div>
-      <p v-show="!this.skills.isValid">
+      <p>
         Please choose at least one of the skills above
       </p>
     </div>
