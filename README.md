@@ -32,11 +32,11 @@ Here is the working live demo of [Lil'Mafia](https://vue-crud-project-3e582.web.
 
 #### Visual design
 
-- General design revision
+- Minor changes and fixes
 
 ## Status
 
-I am working on visual design.
+working on data structure
 
 ## Languages and Tools:
 
