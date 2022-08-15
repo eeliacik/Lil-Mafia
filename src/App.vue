@@ -6,6 +6,7 @@
         <router-view></router-view>
       </div>
     </div>
+    <base-toast></base-toast>
     <!-- <the-footer></the-footer> -->
   </div>
 </template>
@@ -24,6 +25,7 @@ export default {
 
 <style lang="scss">
 @import './styles/main.scss';
+@import 'vue-toastification/dist/index.css';
 
 * {
   box-sizing: border-box;
