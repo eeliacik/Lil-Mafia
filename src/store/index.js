@@ -4,6 +4,7 @@ import gangstersModule from './modules/gangsters/index.js';
 import caposModule from './modules/capos/index.js';
 import jobsModule from './modules/jobs/index.js';
 import authenticationModule from './modules/authentication/index.js';
+import toasterModule from './modules/toaster/index.js';
 
 const store = createStore({
   state() {
@@ -14,6 +15,7 @@ const store = createStore({
     capos: caposModule,
     jobs: jobsModule,
     authentication: authenticationModule,
+    toaster: toasterModule,
   },
 });
 
