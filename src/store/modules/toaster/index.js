@@ -10,6 +10,12 @@ export default {
   mutations: {},
   actions: {
     showToast(context, data) {
+      
+      // toast.info('Info')
+      // toast.success('Success')
+      // toast.warning('Warning')
+      // toast.error('Danger')
+
       if (data.type === 'info') {
         toast.info(data.message);
       } else if (data.type === 'success') {

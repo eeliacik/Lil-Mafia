@@ -142,3 +142,19 @@ body {
   width: 100%;
 }
 
+.Vue-Toastification__toast--info {
+  background-color: var(--lm-primary-color);
+  color: var(--theme-color-light-2);
+}
+.Vue-Toastification__toast--success {
+  background-color: var(--lm-success-color);
+  color: var(--theme-color-light-2);
+}
+.Vue-Toastification__toast--warning {
+  background-color: var(--lm-warning-color);
+  color: var(--theme-color-light-2);
+}
+.Vue-Toastification__toast--error {
+  background-color: var(--lm-danger-color);
+  color: var(--theme-color-light-2);
+}
