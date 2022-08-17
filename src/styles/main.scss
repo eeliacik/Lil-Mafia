@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+@import 'vue-toastification/dist/index.css';
 
 :root {
   // Fonts
@@ -130,7 +131,6 @@
   --z-index-3: 2rem;
   --z-index-4: 3rem;
 }
-
 body {
   font-family: var(--base-font);
   background-color: var(--theme-color-dark);
@@ -138,8 +138,23 @@ body {
   margin: 0;
   padding: 0;
 }
-
 #app {
   width: 100%;
 }
 
+.Vue-Toastification__toast--info {
+  background-color: var(--lm-primary-color);
+  color: var(--theme-color-light);
+}
+.Vue-Toastification__toast--success {
+  background-color: var(--lm-success-color-dark);
+  color: var(--theme-color-light);
+}
+.Vue-Toastification__toast--warning {
+  background-color: var(--lm-warning-color-dark);
+  color: var(--theme-color-light);
+}
+.Vue-Toastification__toast--error {
+  background-color: var(--lm-danger-color);
+  color: var(--theme-color-light);
+}

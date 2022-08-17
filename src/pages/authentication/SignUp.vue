@@ -44,6 +44,15 @@ export default {
         .dispatch('signUp', formData)
         .then((data) => {
           this.isLoading = false;
+
+          // Toast //
+          const toastData = {
+            type: 'success',
+            message: 'Signed Up!',
+          };
+          this.$store.dispatch('toaster/showToast', toastData);
+          //
+
           this.$router.replace(
             data.userType === 'gangster' ? '/jobs' : '/newjob'
           );
@@ -60,7 +69,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .form-switcher-container {
   display: flex;
   flex-direction: row;
