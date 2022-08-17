@@ -144,17 +144,17 @@ body {
 
 .Vue-Toastification__toast--info {
   background-color: var(--lm-primary-color);
-  color: var(--theme-color-light-2);
+  color: var(--theme-color-light);
 }
 .Vue-Toastification__toast--success {
-  background-color: var(--lm-success-color);
-  color: var(--theme-color-light-2);
+  background-color: var(--lm-success-color-dark);
+  color: var(--theme-color-light);
 }
 .Vue-Toastification__toast--warning {
-  background-color: var(--lm-warning-color);
-  color: var(--theme-color-light-2);
+  background-color: var(--lm-warning-color-dark);
+  color: var(--theme-color-light);
 }
 .Vue-Toastification__toast--error {
   background-color: var(--lm-danger-color);
-  color: var(--theme-color-light-2);
+  color: var(--theme-color-light);
 }

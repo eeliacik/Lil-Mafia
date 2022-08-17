@@ -9,8 +9,8 @@ export default {
   },
   mutations: {},
   actions: {
-    showToast(context, data) {
-      
+    showToast(_, data) {
+
       // toast.info('Info')
       // toast.success('Success')
       // toast.warning('Warning')

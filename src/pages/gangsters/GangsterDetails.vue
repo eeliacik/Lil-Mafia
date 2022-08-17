@@ -47,7 +47,7 @@
           <div class="details-action" v-if="status === 'waiting'">
             <div @click="acceptOffer" class="accept-button">ACCEPT</div>
             <div @click="declineOffer" class="decline-button">DECLINE</div>
-            <router-link @click="showToast" class="back-link" :to="backToJob"
+            <router-link class="back-link" :to="backToJob"
               >BACK</router-link
             >
           </div>
@@ -138,14 +138,6 @@ export default {
       }
       this.isLoading = false;
       this.$router.push(this.backToJob);
-    },
-
-    showToast() {
-      const toastData = {
-        type: 'info',
-        message: 'Toasted!',
-      };
-      this.$store.dispatch('toaster/showToast', toastData);
     },
   },
 };
