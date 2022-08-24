@@ -1,7 +1,7 @@
 <template>
   <div class="jobs-wrapper">
     <div class="new-job-container">
-      <router-link class="new-job-link" to="/newjob">+ NEW</router-link>
+      <router-link class="new-job-link" to="/newjob">CREATE NEW JOB</router-link>
     </div>
     <base-card>
       <div class="jobs-list-container">
