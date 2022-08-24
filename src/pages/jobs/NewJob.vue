@@ -25,8 +25,26 @@ export default {
       this.sendingJob = true;
       try {
         await this.$store.dispatch('jobs/newjob', formData);
+
+      // Toast
+      const toastData = {
+            type: 'info',
+            message: 'Job created.',
+          };
+          this.$store.dispatch('toaster/showToast', toastData);
+      //
+
       } catch (error) {
         console.error(error);
+
+      // Toast
+      const toastData = {
+            type: 'error',
+            message: 'Job could not be created!',
+          };
+          this.$store.dispatch('toaster/showToast', toastData);
+      //
+
       }
       this.sendingJob = false;
       this.$router.replace('/capojobs');

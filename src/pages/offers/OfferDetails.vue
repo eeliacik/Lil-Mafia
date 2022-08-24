@@ -118,8 +118,26 @@ export default {
       try {
         await this.$store.dispatch('gangsters/removeOffer', jobId);
         await this.$store.dispatch('jobs/removeBid', jobId);
+
+        // Toast //
+        const toastData = {
+          type: 'info',
+          message: 'Offer canceled.',
+        };
+        this.$store.dispatch('toaster/showToast', toastData);
+        //
+
       } catch (error) {
         console.error(JSON.stringify(error));
+
+        // Toast //
+        const toastData = {
+          type: 'error',
+          message: 'An error occured.',
+        };
+        this.$store.dispatch('toaster/showToast', toastData);
+        //
+
       } finally {
         this.withdrawing = false;
         this.$router.push('/gangsteroffers');

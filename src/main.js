@@ -13,7 +13,7 @@ const app = createApp(App);
 
 const options = {
   position: 'bottom-center',
-  timeout: 3000,
+  timeout: 5000,
   icon: false,
   hideProgressBar: true,
 };

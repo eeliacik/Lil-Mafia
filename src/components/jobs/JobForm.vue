@@ -217,10 +217,7 @@ export default {
         skills: this.skills.val,
         bids: [{gangsterId: 'take this!', price: 0, status: 'zzz'}],
       };
-
       this.$emit('add-job', formData);
-
-      
     },
   },
 };

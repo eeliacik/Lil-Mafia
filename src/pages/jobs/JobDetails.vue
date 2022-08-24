@@ -135,8 +135,26 @@ export default {
       try {
         await this.$store.dispatch('gangsters/addOffer', bid);
         await this.$store.dispatch('jobs/addBid', bid);
+
+        // Toast //
+        const toastData = {
+          type: 'success',
+          message: 'Bid sent.',
+        };
+        this.$store.dispatch('toaster/showToast', toastData);
+        //
+
       } catch (error) {
         console.error(error);
+
+        // Toast //
+        const toastData = {
+          type: 'error',
+          message: 'An error occured.',
+        };
+        this.$store.dispatch('toaster/showToast', toastData);
+        //
+
       }
       this.showDialog = false;
       this.sendingBid = false;
