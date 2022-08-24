@@ -47,8 +47,8 @@ export default {
 
           // Toast //
           const toastData = {
-            type: 'success',
-            message: 'Signed Up!',
+            type: 'info',
+            message: 'Successfully Signed Up!',
           };
           this.$store.dispatch('toaster/showToast', toastData);
           //
@@ -59,6 +59,16 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+
+          // Toast //
+          const toastData = {
+            type: 'error',
+            message: 'Sign Up Failed!',
+          };
+          this.$store.dispatch('toaster/showToast', toastData);
+          //
+
+          this.isLoading = false;
         });
     },
     switchUserType(type) {

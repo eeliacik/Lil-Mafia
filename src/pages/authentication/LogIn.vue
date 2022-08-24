@@ -62,15 +62,6 @@ export default {
         .dispatch('login', authData)
         .then((userType) => {
           this.isLoading = false;
-
-          // Toast //
-          const toastData = {
-            type: 'success',
-            message: 'Signed In!',
-          };
-          this.$store.dispatch('toaster/showToast', toastData);
-          //
-
           this.$router.push(userType === 'gangster' ? '/jobs' : '/capojobs');
         })
         .catch((error) => {
@@ -79,7 +70,7 @@ export default {
           // Toast //
           const toastData = {
             type: 'error',
-            message: 'Login Failed! Try Again.',
+            message: 'Login Failed!',
           };
           this.$store.dispatch('toaster/showToast', toastData);
           //

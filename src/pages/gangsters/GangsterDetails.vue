@@ -118,8 +118,26 @@ export default {
       try {
         await this.$store.dispatch('gangsters/acceptOffer', offerData);
         await this.$store.dispatch('jobs/acceptBid', offerData);
+
+        // Toast
+         const toastData = {
+               type: 'info',
+               message: 'Offer accepted.',
+             };
+             this.$store.dispatch('toaster/showToast', toastData);
+         //
+
       } catch (error) {
         console.error(error);
+
+        // Toast
+        const toastData = {
+            type: 'error',
+            message: 'An error occured.',
+          };
+          this.$store.dispatch('toaster/showToast', toastData);
+        //
+
       }
       this.isLoading = false;
       this.$router.push(this.backToJob);
@@ -133,8 +151,26 @@ export default {
       try {
         await this.$store.dispatch('gangsters/declineOffer', offerData);
         await this.$store.dispatch('jobs/declineBid', offerData);
+
+        // Toast
+        const toastData = {
+              type: 'info',
+              message: 'Offer rejected.',
+            };
+            this.$store.dispatch('toaster/showToast', toastData);
+        //
+
       } catch (error) {
         console.error(error);
+
+        // Toast
+        const toastData = {
+            type: 'error',
+            message: 'An error occured.',
+          };
+          this.$store.dispatch('toaster/showToast', toastData);
+        //
+
       }
       this.isLoading = false;
       this.$router.push(this.backToJob);
