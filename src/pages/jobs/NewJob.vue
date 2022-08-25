@@ -1,7 +1,9 @@
 <template>
   <div class="form-wrapper">
     <div class="form-header">New Job</div>
-    <job-form @add-job="newjob"></job-form>
+    <job-form
+    :class="{ 'non-clickable': this.sendingJob }"
+    @add-job="newjob"></job-form>
     <p v-show="sendingJob">Creating Job...</p>
   </div>
 </template>
