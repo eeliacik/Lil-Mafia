@@ -26,8 +26,8 @@ Here is the working live demo of [Lil'Mafia](https://vue-crud-project-3e582.web.
 #### Data Structure
 
 - Job filter improvements
-- Sorting
-- Error handling
+- List sorting
+- Error handling improvements
 - Messaging
 
 #### Visual design
@@ -58,6 +58,9 @@ working on data structure
 
 <a href="https://nodejs.org" target="_blank" rel="noreferrer">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/></a>
+
+<a href="https://www.npmjs.com/" target="_blank" rel="noreferrer">
+<img src="https://www.vectorlogo.zone/logos/npmjs/npmjs-ar21.svg" alt="npm" width="40" height="40"/></a>
 
 <a href="https://pnpm.io/" target="_blank" rel="noreferrer">
 <img src="https://d33wubrfki0l68.cloudfront.net/2f3acb83b7d2349f2194bc38c0f22f295908dc33/c0f76/tr/img/pnpm-no-name-with-frame.svg" alt="pnpm" width="40" height="40"/></a>
