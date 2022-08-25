@@ -2,7 +2,7 @@
   <teleport to="body">
     <div v-if="showDialog" @click="closeDialog" class="backdrop"></div>
     <dialog class="bid-wrapper" open v-if="showDialog">
-      <div class="bid-container" v-if="!sendingBid">
+      <div class="bid-container" :class="{ 'non-clickable': this.sendingBid }">
         <div class="bid-title">Enter Bid</div>
         <div class="bid-input-container">
           <input
@@ -29,7 +29,7 @@
           <div class="close-button" @click="closeDialog">CLOSE</div>
         </div>
       </div>
-      <div v-else>
+      <div  v-show="sendingBid">
         <p>Sending...</p>
       </div>
     </dialog>
