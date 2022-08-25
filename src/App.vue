@@ -42,6 +42,10 @@ a:visited,
   text-decoration: none;
 }
 
+.non-clickable {
+  pointer-events: none;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -53,8 +57,6 @@ a:visited,
 .page-wrapper {
   gap: 1rem;
 }
-
-// .main-wrapper {}
 
 .main-container {
   width: 100%;

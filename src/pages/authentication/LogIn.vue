@@ -25,8 +25,8 @@
         <p>Please enter a password (min 6 characters)</p>
       </div>
       <div class="form-action">
-        <div class="login-button" @click="login">LOGIN</div>
-        <router-link class="signup-link" to="/signup">SIGNUP</router-link>
+        <div class="login-button" :class="{ 'non-clickable': this.isLoading }" @click="login">LOGIN</div>
+        <router-link class="signup-link" :class="{ 'non-clickable': this.isLoading }" to="/signup">SIGNUP</router-link>
       </div>
       <p v-show="isLoading">Signing In...</p>
     </div>
