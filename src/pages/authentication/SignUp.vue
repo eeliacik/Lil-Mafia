@@ -19,9 +19,14 @@
     </div>
     <gangster-form
       v-if="typeSelect === 'gangster'"
+      :class="{ 'non-clickable': this.isLoading }"
       @sign-up-gangster="signUp"
     ></gangster-form>
-    <capo-form v-else @sign-up-capo="signUp"></capo-form>
+    <capo-form
+      v-else
+      @sign-up-capo="signUp"
+      :class="{ 'non-clickable': this.isLoading }"
+    ></capo-form>
     <p v-if="isLoading">Signing Up...</p>
   </div>
 </template>
