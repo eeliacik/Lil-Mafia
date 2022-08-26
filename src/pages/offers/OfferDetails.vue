@@ -27,7 +27,7 @@
             </li>
           </ul>
         </div>
-        <div class="status-container">
+        <div class="status-container" v-show="!withdrawing">
           <p
             class="status-accepted"
             v-if="bidPlaced && bidStatus === 'accepted'"
@@ -47,7 +47,7 @@
             Waiting
           </p>
         </div>
-        <div v-if="!withdrawing">
+        <div v-show="!withdrawing">
           <div
             class="details-action"
             v-if="
@@ -65,7 +65,7 @@
             >
           </div>
         </div>
-        <p v-else>Withdrawing...</p>
+        <p v-show="withdrawing">Withdrawing...</p>
       </div>
     </base-card>
   </div>
