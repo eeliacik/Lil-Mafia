@@ -3,7 +3,9 @@
     <div class="job-item">
       <div class="job-title">{{ title }}</div>
       <div class="job-terr">{{ terr }}</div>
-      <div class="job-bids">{{ offerCount }}</div>
+      <div class="job-bids" :class="{ 'job-bids-zero': offerCount === 0 }">
+        {{ offerCount }}
+      </div>
     </div>
   </router-link>
 </template>
@@ -24,4 +26,3 @@ export default {
   },
 };
 </script>
-
