@@ -9,9 +9,9 @@
             class="bid-input"
             id="bid"
             type="number"
-            min="1000"
+            min="10000"
             max="1000000"
-            step="1000"
+            step="10000"
             v-model="price"
             @blur="clearValidationError"
           />
