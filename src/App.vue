@@ -42,6 +42,10 @@ a:visited,
   text-decoration: none;
 }
 
+textarea {
+  resize: vertical;
+}
+
 .non-clickable {
   pointer-events: none;
 }
@@ -72,7 +76,6 @@ a:visited,
 }
 
 @media (max-width: 480px) {
-
   .header-container {
     padding: 0;
     gap: 1rem;
