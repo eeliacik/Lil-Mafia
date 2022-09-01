@@ -28,28 +28,23 @@ export default {
 * {
   box-sizing: border-box;
 }
-
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 a,
 a:visited,
 .router-link,
 .router-link:visited {
   text-decoration: none;
 }
-
 textarea {
   resize: vertical;
 }
-
 .non-clickable {
   pointer-events: none;
 }
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -57,11 +52,9 @@ textarea {
   align-items: center;
   width: 100%;
 }
-
 .page-wrapper {
   gap: 1rem;
 }
-
 .main-container {
   width: 100%;
   max-width: var(--max-width);
@@ -74,7 +67,6 @@ textarea {
   flex-direction: column;
   align-items: center;
 }
-
 @media (max-width: 480px) {
   .header-container {
     padding: 0;
@@ -89,12 +81,12 @@ textarea {
     font-size: 1.1rem;
   }
 }
-
 @media (max-width: 380px) {
   .header-container {
     gap: 1rem;
   }
-
+}
+@media (max-width: 320px) {
   .logo-text {
     display: none;
   }
